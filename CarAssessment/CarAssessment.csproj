@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Models\Single\" />
+    <None Remove="Models\Collection\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Models\Parts\" />
+    <None Remove="Models\Enums\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Row\" />
+    <Folder Include="Models\Collection\" />
+    <Folder Include="Models\Parts\" />
+    <Folder Include="Models\Enums\" />
+  </ItemGroup>
+</Project>
