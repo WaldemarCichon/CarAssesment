@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<StackLayout
+    x:Class="CarAssessment.Components.TitledEditorField"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    HorizontalOptions="FillAndExpand">
+
+    <Label x:Name="TitleLabel" WidthRequest="1000" />
+    <Editor
+        x:Name="TextEditor"
+        HeightRequest="100"
+        HorizontalOptions="FillAndExpand"
+        PropertyChanged="TextEditor_PropertyChanged" />
+</StackLayout>

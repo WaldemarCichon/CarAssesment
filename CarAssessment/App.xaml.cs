@@ -11,7 +11,9 @@ namespace CarAssessment {
 			InitializeComponent();
 
 			DependencyService.Register<MockDataStore>();
+
 			MainPage = new AppShell();
+			Routing.RegisterRoute(nameof(CameraPage), typeof(CameraPage));
 		}
 
 		protected override void OnStart() {

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="CarAssessment.Components.PhotoField"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="250" />
+    </Grid.RowDefinitions>
+    <Label x:Name="TitleLabel" FontAttributes="Bold" />
+    <ImageButton
+        x:Name="Image"
+        Grid.Row="1"
+        Clicked="Image_Clicked"
+        HeightRequest="250"
+        IsVisible="True" />
+    <Button
+        x:Name="MakePhotoButton"
+        Grid.Row="1"
+        Clicked="MakePhotoButton_Clicked"
+        HorizontalOptions="Center"
+        Text="Foto aufnehmen"
+        VerticalOptions="CenterAndExpand" />
+</Grid>

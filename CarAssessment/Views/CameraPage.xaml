@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="CarAssessment.Views.CameraPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentPage.Content>
+        <Grid>
+            <xct:CameraView
+                x:Name="Camera"
+                MediaCaptured="Camera_MediaCaptured"
+                OnAvailable="Camera_OnAvailable" />
+            <ImageButton
+                x:Name="MakePhotoButton"
+                Margin="0,10,0,10"
+                Clicked="MakePhotoButton_Clicked"
+                HorizontalOptions="Center"
+                Source="camera64.png"
+                VerticalOptions="End" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
