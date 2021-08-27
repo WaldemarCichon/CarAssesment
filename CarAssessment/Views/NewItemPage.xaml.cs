@@ -21,13 +21,12 @@ namespace CarAssessment.Views {
 			InitializeComponent();
 			BindingContext = new NewItemViewModel();
 			var images = new List<Image>();
-			FrontLeft.ItemsSource = images;
 			images.Add(new Image() { Source = "IMG_2193.HEIC" });
 			images.Add(new Image() { Source = "IMG_2194.HEIC" });
 			images.Add(new Image() { Source = "IMG_2195.HEIC" });
 			images.Add(new Image() { Source = "IMG_2196.HEIC" });
 			images.Add(new Image() { Source = "IMG_2197.HEIC" });
-			FrontRight.ItemsSource = images;
+			FrontRight.SourceList = images;
 			RearLeft.ItemsSource = images;
 			RearRight.ItemsSource = images;
 			DamagePhotos.ItemsSource = images;
