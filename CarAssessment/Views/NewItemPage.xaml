@@ -9,7 +9,6 @@
     Title="New Item"
     ios:Page.UseSafeArea="true">
     <!--  Shell.PresentationMode="ModalAnimated"  -->
-
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -17,11 +16,16 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Label
-                FontAttributes="Bold"
-                FontSize="Large"
-                HorizontalOptions="Center"
-                Text="Kfz-Gutachten Version 0.1" />
+            <StackLayout>
+                <Label
+                    Background="Yellow"
+                    FontAttributes="Bold"
+                    FontSize="Header"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Text="Kfz-Gutachten Version 0.1" />
+                <BoxView HeightRequest="2000" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
             <ScrollView Grid.Row="1">
                 <Grid
                     Padding="2,0,2,0"
@@ -473,13 +477,15 @@
                     <CheckBox
                         Grid.Row="18"
                         Margin="350,0,0,0"
-                        HeightRequest="100" />
-                    <Image
+                        HeightRequest="100"
+                        IsChecked="{Binding IsServiceRecordBook}" />
+                    <local:PhotoField
+                        x:Name="Scheckheft"
                         Grid.Row="18"
                         Grid.Column="1"
                         HeightRequest="200"
                         HorizontalOptions="Center"
-                        Source="IMG_2198.HEIC" />
+                        ImagePath="{Binding ServiceRecordsPhotoPath, Mode=TwoWay}" />
                     <StackLayout
                         Grid.Row="19"
                         Grid.Column="0"
@@ -668,14 +674,15 @@
                         Text="{Binding AccidentTimestamp}" />
                     <StackLayout Grid.Row="34" Orientation="Horizontal">
                         <Label Text="Polizeibereicht vorhanden?" VerticalOptions="Center" />
-                        <CheckBox IsChecked="{Binding IsPoliceReport}" />
+                        <CheckBox IsChecked="{Binding IsPoliceReport, Mode=TwoWay}" />
+
                     </StackLayout>
-                    <Image
+                    <local:PhotoField
+                        x:Name="PoliceReport"
                         Grid.Row="34"
                         Grid.Column="1"
-                        HeightRequest="200"
-                        HorizontalOptions="Center"
-                        Source="IMG_2201.HEIC" />
+                        ImagePath="{Binding PoliceReportPhotoPath}"
+                        IsVisible="{Binding IsPoliceReport, Mode=OneWay}" />
                     <Label
                         Grid.Row="35"
                         Grid.ColumnSpan="2"

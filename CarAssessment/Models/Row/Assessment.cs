@@ -92,6 +92,7 @@ namespace CarAssessment.Models.Row {
 		public Boolean? IsRecommendedAdvocate { get; set; }
 		public String RecommendedAdvocate { get; set; }
 		public String CustomersAdvocate { get; set; }
+		public Boolean IsServiceRecordBook { get; set; }
 
 		public List<String> DamagePhotos { get; set; }
 		public List<String> NearbyPhotos { get; set; }
@@ -102,6 +103,9 @@ namespace CarAssessment.Models.Row {
 		public String FrontLeftPhotoPath { get; set; }
 		public String RearRightPhotoPath { get; set; }
 		public String RearLeftPhotoPath { get; set; }
+		public String CheckheftPhotoPath { get; set; }
+		public String PoliceReportPhotoPath { get; set; }
+		public String ServiceRecordBookPhotoPath { get; set; }
 
 		public String Line1 => OwnerName + " " + LicensePlateClient + " gegen " + LicensePlateOponent;
 		public String Line2 => "Unfalldatum: " + AccidentDate.ToString("dd.MM.yyyy") + ", Aufnahmnedatum: " + AdmissionDate.ToString("dd.MM.yyyy");
