@@ -7,22 +7,23 @@ using Xamarin.Forms;
 
 using CarAssessment.Models;
 using CarAssessment.Views;
+using CarAssessment.Models.Row;
 
 namespace CarAssessment.ViewModels {
 	public class ItemsViewModel : BaseViewModel {
-		private Item _selectedItem;
+		private Assessment _selectedItem;
 
-		public ObservableCollection<Item> Items { get; }
+		public ObservableCollection<Assessment> Assessments { get; }
 		public Command LoadItemsCommand { get; }
 		public Command AddItemCommand { get; }
-		public Command<Item> ItemTapped { get; }
+		public Command<Assessment> ItemTapped { get; }
 
 		public ItemsViewModel() {
 			Title = "Browse";
-			Items = new ObservableCollection<Item>();
+			Assessments = new ObservableCollection<Assessment>();
 			LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-			ItemTapped = new Command<Item>(OnItemSelected);
+			ItemTapped = new Command<Assessment>(OnItemSelected);
 
 			AddItemCommand = new Command(OnAddItem);
 		}
@@ -31,10 +32,10 @@ namespace CarAssessment.ViewModels {
 			IsBusy = true;
 
 			try {
-				Items.Clear();
+				Assessments.Clear();
 				var items = await DataStore.GetItemsAsync(true);
 				foreach (var item in items) {
-					Items.Add(item);
+					Assessments.Add(item);
 				}
 			} catch (Exception ex) {
 				Debug.WriteLine(ex);
@@ -48,7 +49,7 @@ namespace CarAssessment.ViewModels {
 			SelectedItem = null;
 		}
 
-		public Item SelectedItem {
+		public Assessment SelectedItem {
 			get => _selectedItem;
 			set {
 				SetProperty(ref _selectedItem, value);
@@ -60,12 +61,12 @@ namespace CarAssessment.ViewModels {
 			await Shell.Current.GoToAsync(nameof(NewItemPage));
 		}
 
-		async void OnItemSelected(Item item) {
+		async void OnItemSelected(Assessment item) {
 			if (item == null)
 				return;
 
 			// This will push the ItemDetailPage onto the navigation stack
-			await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
+			await Shell.Current.Navigation.PushAsync(new NewItemPage(item));
 		}
 	}
 }

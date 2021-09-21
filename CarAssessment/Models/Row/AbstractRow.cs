@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 namespace CarAssessment.Models.Row {
 	public abstract class AbstractRow {
 		public AbstractRow() {
+			Created = DateTime.Now;
 			InitRow();
 		}
 
@@ -12,8 +13,12 @@ namespace CarAssessment.Models.Row {
 		}
 
 		public int Id { get; set; }
+		public DateTime Created { get; private set; }
+		public DateTime Persisted { get; private set; }
 
-		public abstract void Persist();
+		public virtual void Persist() {
+			Persisted = DateTime.Now;
+		}
 
 		protected virtual void InitRow() { }
 

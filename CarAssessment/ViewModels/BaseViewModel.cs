@@ -7,10 +7,11 @@ using Xamarin.Forms;
 
 using CarAssessment.Models;
 using CarAssessment.Services;
+using CarAssessment.Models.Row;
 
 namespace CarAssessment.ViewModels {
 	public class BaseViewModel : INotifyPropertyChanged {
-		public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+		public IDataStore<Assessment> DataStore  => DependencyService.Get<IDataStore<Assessment>>();
 
 		bool isBusy = false;
 		public bool IsBusy {

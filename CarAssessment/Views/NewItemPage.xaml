@@ -80,229 +80,163 @@
                     <local:TitledEntryField
                         Title="Fahrzeughalter"
                         Grid.Row="0"
-                        Grid.Column="0" />
-                    <local:TitledEditorField
-                        Title="Anschrift"
+                        Grid.Column="0"
+                        Text="{Binding OwnerName}" />
+                    <local:TitledEntryField
+                        Title="Straße"
                         Grid.Row="0"
-                        Grid.Column="1" />
+                        Grid.Column="1"
+                        Text="{Binding Street}" />
+                    <local:TitledEntryField
+                        Title="PLZ"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="{Binding ZipCode}" />
+                    <local:TitledEntryField
+                        Title="Ort"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding City}" />
                     <local:TitledEntryField
                         Title="Kfz-Kennzeichen Mandant"
-                        Grid.Row="1"
-                        Grid.Column="0" />
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="{Binding LicensePlateClient}" />
                     <local:TitledEntryField
                         Title="Kfz-Kennzeichen Unfallgegner"
-                        Grid.Row="1"
-                        Grid.Column="1" />
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{Binding LicensePlateOponent}" />
                     <local:TitledEntryField
                         Title="Aufnahmedatum"
-                        Grid.Row="2"
-                        Grid.Column="0" />
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Text="{Binding AdmissionDate}" />
                     <local:TitledEntryField
                         Title="Unfalldatum"
-                        Grid.Row="2"
-                        Grid.Column="1" />
-                    <local:TitledEditorField Title="Besichtigungsort" Grid.Row="3" />
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{Binding AccidentDate}" />
+                    <local:TitledEditorField
+                        Title="Besichtigungsort"
+                        Grid.Row="4"
+                        Text="{Binding InspectionLocation}" />
                     <local:TitledEditorField
                         Title="Teilehmer Besichtigung"
-                        Grid.Row="3"
-                        Grid.Column="1" />
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Text="{Binding InspectionAttendees}" />
                     <!--#endregion-->
                     <!--#region Total Photos-->
                     <Grid
-                        Grid.Row="4"
-                        Grid.Column="0"
-                        HorizontalOptions="FillAndExpand">
-                        <local:PhotoField Title="Vorne Links" />
-                    </Grid>
-                    <Grid
-                        Grid.Row="4"
-                        Grid.Column="1"
-                        HorizontalOptions="FillAndExpand">
-                        <local:PhotoField Title="Vorne Rechts" />
-                    </Grid>
-                    <Grid
                         Grid.Row="5"
                         Grid.Column="0"
                         HorizontalOptions="FillAndExpand">
-                        <local:PhotoField Title="Hinten Links" />
+                        <local:PhotoField
+                            x:Name="FrontLeftPhoto"
+                            Title="Vorne Links"
+                            ImagePath="{Binding FrontLeftPhotoPath, Mode=TwoWay}" />
                     </Grid>
                     <Grid
                         Grid.Row="5"
                         Grid.Column="1"
                         HorizontalOptions="FillAndExpand">
-                        <local:PhotoField Title="Hinten Rechts" />
+                        <local:PhotoField
+                            x:Name="FrontRightPhoto"
+                            Title="Vorne Rechts"
+                            ImagePath="{Binding FrontRightPhotoPath, Mode=TwoWay}" />
                     </Grid>
-
-                    <local:PhotoCollectionField
-                        x:Name="FrontRight"
-                        Title="Titlekkkk"
-                        Grid.Row="5"
-                        Grid.Column="1" />
-                    <CollectionView
-                        x:Name="RearLeft"
-                        Grid.Row="7"
+                    <Grid
+                        Grid.Row="6"
                         Grid.Column="0"
-                        HeightRequest="210"
-                        ItemsLayout="HorizontalList">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Image
-                                        Margin="0,0,2,0"
-                                        HeightRequest="200"
-                                        Source="{Binding Source}"
-                                        VerticalOptions="Start" />
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                    <CollectionView
-                        x:Name="RearRight"
-                        Grid.Row="7"
+                        HorizontalOptions="FillAndExpand">
+                        <local:PhotoField
+                            x:Name="RearLeftPhoto"
+                            Title="Hinten Links"
+                            ImagePath="{Binding RearLeftPhotoPath, Mode=TwoWay}" />
+                    </Grid>
+                    <Grid
+                        Grid.Row="6"
                         Grid.Column="1"
-                        HeightRequest="210"
-                        ItemsLayout="HorizontalList">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Image
-                                        Margin="0,0,2,0"
-                                        HeightRequest="200"
-                                        Source="{Binding Source}"
-                                        VerticalOptions="Start" />
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                        HorizontalOptions="FillAndExpand">
+                        <local:PhotoField
+                            x:Name="RearRightPhoto"
+                            Title="Hinten Rechts"
+                            ImagePath="{Binding RearRightPhotoPath, Mode=TwoWay}" />
+                    </Grid>
                     <!--#endregion-->
                     <local:TitledEntryField
                         Title="Fahrgestellnummer"
-                        Grid.Row="8"
-                        Grid.Column="0" />
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Text="{Binding ChassisNumber}" />
                     <local:TitledEntryField
                         Title="Kilometerstand"
-                        Grid.Row="8"
-                        Grid.Column="1" />
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Text="{Binding Mileage}" />
                     <!--#region Damage Photos-->
                     <Grid
-                        Grid.Row="9"
+                        Grid.Row="8"
                         Grid.Column="0"
                         HorizontalOptions="FillAndExpand">
                         <Label
                             FontAttributes="Bold"
                             Text="Übersichtsfotos"
                             VerticalOptions="Center" />
-                        <Button HorizontalOptions="End" Text="Foto hinzufügen" />
+
                     </Grid>
                     <Grid
-                        Grid.Row="9"
+                        Grid.Row="8"
                         Grid.Column="1"
                         HorizontalOptions="FillAndExpand">
                         <Label
                             FontAttributes="Bold"
                             Text="Nahaufnahme"
                             VerticalOptions="Center" />
-                        <Button HorizontalOptions="End" Text="Foto hinzufügen" />
+
                     </Grid>
                     <Grid
-                        Grid.Row="11"
+                        Grid.Row="10"
                         Grid.Column="0"
                         HorizontalOptions="FillAndExpand">
                         <Label
                             FontAttributes="Bold"
                             Text="Detailsfotos"
                             VerticalOptions="Center" />
-                        <Button HorizontalOptions="End" Text="Foto hinzufügen" />
+
                     </Grid>
                     <Grid
-                        Grid.Row="11"
+                        Grid.Row="10"
                         Grid.Column="1"
                         HorizontalOptions="FillAndExpand">
                         <Label
                             FontAttributes="Bold"
                             Text="Sonstige Aufnahmen"
                             VerticalOptions="Center" />
-                        <Button HorizontalOptions="End" Text="Foto hinzufügen" />
+
                     </Grid>
-                    <CollectionView
-                        x:Name="DamagePhotos"
-                        Grid.Row="10"
-                        Grid.Column="0"
-                        HeightRequest="210"
-                        ItemsLayout="HorizontalList">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Image
-                                        Margin="0,0,2,0"
-                                        HeightRequest="200"
-                                        Source="{Binding Source}"
-                                        VerticalOptions="Start" />
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                    <CollectionView
+                    <local:PhotoCollectionField x:Name="DamagePhotos" Grid.Row="9" />
+                    <local:PhotoCollectionField
                         x:Name="NearbyPhotos"
-                        Grid.Row="10"
-                        Grid.Column="1"
-                        HeightRequest="210"
-                        ItemsLayout="HorizontalList">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Image
-                                        Margin="0,0,2,0"
-                                        HeightRequest="200"
-                                        Source="{Binding Source}"
-                                        VerticalOptions="Start" />
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                    <CollectionView
+                        Grid.Row="9"
+                        Grid.Column="1" />
+                    <local:PhotoCollectionField
                         x:Name="DetailPhotos"
-                        Grid.Row="12"
-                        Grid.Column="0"
-                        HeightRequest="210"
-                        ItemsLayout="HorizontalList">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Image
-                                        Margin="0,0,2,0"
-                                        HeightRequest="200"
-                                        Source="{Binding Source}"
-                                        VerticalOptions="Start" />
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                    <CollectionView
+                        Grid.Row="11"
+                        Grid.Column="0" />
+                    <local:PhotoCollectionField
                         x:Name="OtherPhotos"
-                        Grid.Row="12"
-                        Grid.Column="1"
-                        HeightRequest="400"
-                        ItemsLayout="HorizontalList">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Image
-                                        Margin="0,0,2,0"
-                                        HeightRequest="200"
-                                        Source="{Binding Source}"
-                                        VerticalOptions="Start" />
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                        Grid.Row="11"
+                        Grid.Column="1" />
+
                     <!--#endregion-->
                     <!--#region Damage-->
                     <CollectionView
                         x:Name="DamageListView"
-                        Grid.Row="13"
+                        Grid.Row="12"
                         Grid.ColumnSpan="2"
-                        HeightRequest="100"
+                        HeightRequest="400"
                         VerticalOptions="Start">
                         <CollectionView.Header>
                             <Grid>
@@ -310,13 +244,14 @@
                                     <ColumnDefinition Width="4*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Label
-                                    Grid.ColumnSpan="2"
+                                    Grid.ColumnSpan="4"
                                     FontAttributes="Bold"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="Beschreibung der beschädigten Teile" />
@@ -329,6 +264,12 @@
                                     Grid.Row="1"
                                     Grid.Column="2"
                                     Text="Stunden" />
+                                <Button
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    HeightRequest="25"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="+" />
                             </Grid>
                         </CollectionView.Header>
                         <CollectionView.ItemTemplate>
@@ -351,7 +292,6 @@
                                         </Picker.ItemsSource>
                                     </Picker>
                                     <Entry Grid.Column="2" Text="{Binding z}" />
-
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -456,8 +396,14 @@
                             HorizontalOptions="StartAndExpand"
                             Text="Vorne Links"
                             VerticalOptions="Center" />
-                        <local:TitledEntryField Title="Hersteller" Grid.Column="1" />
-                        <local:TitledEntryField Title="Profiltiefe" Grid.Column="2" />
+                        <local:TitledEntryField
+                            Title="Hersteller"
+                            Grid.Column="1"
+                            Text="{Binding FrontLeft.Manufacturer}" />
+                        <local:TitledEntryField
+                            Title="Profiltiefe"
+                            Grid.Column="2"
+                            Text="{Binding FrontLeft.TreadDepth}" />
                     </Grid>
                     <Grid Grid.Row="16" Grid.Column="1">
                         <Grid.ColumnDefinitions>
@@ -470,8 +416,14 @@
                             HorizontalOptions="StartAndExpand"
                             Text="Vorne Rechts"
                             VerticalOptions="Center" />
-                        <local:TitledEntryField Title="Hersteller" Grid.Column="1" />
-                        <local:TitledEntryField Title="Profiltiefe" Grid.Column="2" />
+                        <local:TitledEntryField
+                            Title="Hersteller"
+                            Grid.Column="1"
+                            Text="{Binding FrontRight.Manufacturer}" />
+                        <local:TitledEntryField
+                            Title="Profiltiefe"
+                            Grid.Column="2"
+                            Text="{Binding FrontRight.TreadDepth}" />
                     </Grid>
                     <Grid Grid.Row="17">
                         <Grid.ColumnDefinitions>
@@ -484,8 +436,14 @@
                             HorizontalOptions="StartAndExpand"
                             Text="Hinten Links"
                             VerticalOptions="Center" />
-                        <local:TitledEntryField Title="Hersteller" Grid.Column="1" />
-                        <local:TitledEntryField Title="Profiltiefe" Grid.Column="2" />
+                        <local:TitledEntryField
+                            Title="Hersteller"
+                            Grid.Column="1"
+                            Text="{Binding RearLeft.Manufacturer}" />
+                        <local:TitledEntryField
+                            Title="Profiltiefe"
+                            Grid.Column="2"
+                            Text="{Binding RearLeft.TreadDepth}" />
                     </Grid>
                     <Grid Grid.Row="17" Grid.Column="1">
                         <Grid.ColumnDefinitions>
@@ -498,8 +456,14 @@
                             HorizontalOptions="StartAndExpand"
                             Text="Hinten Rechts"
                             VerticalOptions="Center" />
-                        <local:TitledEntryField Title="Hersteller" Grid.Column="1" />
-                        <local:TitledEntryField Title="Profiltiefe" Grid.Column="2" />
+                        <local:TitledEntryField
+                            Title="Hersteller"
+                            Grid.Column="1"
+                            Text="{Binding RearRight.Manufacturer}" />
+                        <local:TitledEntryField
+                            Title="Profiltiefe"
+                            Grid.Column="2"
+                            Text="{Binding RearRight.TreadDepth}" />
                     </Grid>
                     <!--#endregion-->
                     <Label
@@ -530,22 +494,11 @@
                         Grid.Column="1"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal">
-                        <Label
-                            HorizontalOptions="StartAndExpand"
-                            Text="Fahrzeugschein"
-                            VerticalOptions="Center" />
-                        <Button
-                            Margin="190,0,0,0"
-                            HorizontalOptions="EndAndExpand"
-                            Text="Fotografieren" />
+                        <local:PhotoField
+                            x:Name="CarDocument"
+                            Title="Fahrzeugschein"
+                            ImagePath="{Binding CarDocumentPath, Mode=TwoWay}" />
                     </StackLayout>
-                    <Image
-                        Grid.Row="20"
-                        Grid.Column="1"
-                        HeightRequest="200"
-                        HorizontalOptions="Center"
-                        Source="IMG_2199.HEIC" />
-
                     <Label
                         Grid.Row="21"
                         Grid.ColumnSpan="2"
@@ -580,10 +533,19 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <local:TitledEntryField Title="Elektrik" />
-                        <local:TitledEntryField Title="Karosserie" Grid.Column="1" />
-                        <local:TitledEntryField Title="UPE-Aufschläge" Grid.Column="2" />
-                        <local:TitledEntryField Title="Kleinteile-Aufschlag" Grid.Column="3" />
+                        <local:TitledEntryField Title="Elektrik" Text="{Binding HourlyRateElectric}" />
+                        <local:TitledEntryField
+                            Title="Karosserie"
+                            Grid.Column="1"
+                            Text="{Binding HourlyRateBody}" />
+                        <local:TitledEntryField
+                            Title="UPE-Aufschläge"
+                            Grid.Column="2"
+                            Text="{Binding UPESurcharge}" />
+                        <local:TitledEntryField
+                            Title="Kleinteile-Aufschlag"
+                            Grid.Column="3"
+                            Text="{Binding SmallPartsS}" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="0"
@@ -592,32 +554,18 @@
                         <local:TitledEntryField
                             Title="Pauschal"
                             Grid.Row="1"
-                            Grid.Column="1" />
+                            Grid.Column="1"
+                            Text="{Binding FlatRatePainting}" />
                         <local:TitledEntryField
                             Title="Lackzuschlag %"
                             Grid.Row="1"
-                            Grid.Column="2" />
+                            Grid.Column="2"
+                            Text="{Binding HourlyRatePaintingSurcharge}" />
                         <local:TitledEntryField
                             Title="Lackpunkt"
                             Grid.Row="1"
-                            Grid.Column="3" />
-                        <Label
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Text="Lackierung"
-                            VerticalOptions="Center" />
-                        <local:TitledEntryField
-                            Title="Pauschal"
-                            Grid.Row="1"
-                            Grid.Column="1" />
-                        <local:TitledEntryField
-                            Title="Lackzuschlag %"
-                            Grid.Row="1"
-                            Grid.Column="2" />
-                        <local:TitledEntryField
-                            Title="Lackpunkt"
-                            Grid.Row="1"
-                            Grid.Column="3" />
+                            Grid.Column="3"
+                            Text="{Binding HourlyRatePaintingPoint}" />
                         <Label
                             Grid.Row="2"
                             Grid.Column="0"
@@ -626,18 +574,20 @@
                         <local:TitledEntryField
                             Title="Zeit"
                             Grid.Row="2"
-                            Grid.Column="1" />
+                            Grid.Column="1"
+                            Text="{Binding TimedRateTransport}" />
                         <local:TitledEntryField
                             Title="Pauschal"
                             Grid.Row="2"
-                            Grid.Column="2" />
+                            Grid.Column="2"
+                            Text="{Binding FlatRateTransport}" />
 
                     </Grid>
                     <StackLayout Grid.Row="25" Orientation="Horizontal">
                         <Label Text="Mietwagen erwünscht?" VerticalOptions="Center" />
-                        <CheckBox />
+                        <CheckBox IsChecked="{Binding RentalCar}" />
                         <Label Text="Berechtigt" VerticalOptions="Center" />
-                        <CheckBox />
+                        <CheckBox IsChecked="{Binding IsEligible}" />
                     </StackLayout>
                     <Label
                         Grid.Row="26"
@@ -650,7 +600,7 @@
                         Grid.ColumnSpan="2"
                         Orientation="Horizontal">
                         <Label Text="Unser Kunde" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding MustSlowDown}" />
                         <Label Text="musste verkehrbedingt bremsen" VerticalOptions="Center" />
                     </StackLayout>
                     <StackLayout
@@ -658,64 +608,67 @@
                         Grid.ColumnSpan="2"
                         Orientation="Horizontal">
                         <Label Text="Unfallgegner" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding WasDriving}" />
                         <Label Text="fuhr" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveAgainst}" />
                         <Label Text="fuhr auf" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding CameFromMinorStreet}" />
                         <Label Text="kam aus untergeordneter Straße" VerticalOptions="Center" />
                     </StackLayout>
                     <StackLayout
                         Grid.Row="29"
                         Grid.ColumnSpan="2"
                         Orientation="Horizontal">
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveBackwards}" />
                         <Label Text="fuhr rückwärts" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstParkingCar}" />
                         <Label Text="gegen parkendes Kfz" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstStoppedCustomer}" />
                         <Label Text="gegen stendenden Kunden" VerticalOptions="Center" />
                     </StackLayout>
                     <StackLayout
                         Grid.Row="30"
                         Grid.ColumnSpan="2"
                         Orientation="Horizontal">
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstDrivingCustomer}" />
                         <Label Text="gegen vorbeifahrenden Kunden" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstDrivingCustomer}" />
                         <Label Text="fuhr über Rot" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding OverStop}" />
                         <Label Text="fuhr über Stoppschild" VerticalOptions="Center" />
                     </StackLayout>
                     <StackLayout
                         Grid.Row="31"
                         Grid.ColumnSpan="2"
                         Orientation="Horizontal">
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DisobeyingRightLeft}" />
                         <Label Text="rechts vor links missachtet" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding TooFast}" />
                         <Label Text="war zu schnell" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding ChangedLane}" />
                         <Label Text="wechselte die Spur" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding OverlookedCustomer}" />
                         <Label Text="übersah unseren Kunden" VerticalOptions="Center" />
                     </StackLayout>
                     <local:TitledEditorField
                         Title="Schriftliche Schilderung"
                         Grid.Row="32"
                         Grid.RowSpan="2"
-                        HeightRequest="150" />
+                        HeightRequest="150"
+                        Text="{Binding Description}" />
                     <local:TitledEntryField
                         Title="Ort des Unfalls"
                         Grid.Row="32"
-                        Grid.Column="1" />
+                        Grid.Column="1"
+                        Text="{Binding AccidentLocation}" />
                     <local:TitledEntryField
                         Title="Genauer Zeitpunkt des Unfalls"
                         Grid.Row="33"
-                        Grid.Column="1" />
+                        Grid.Column="1"
+                        Text="{Binding AccidentTimestamp}" />
                     <StackLayout Grid.Row="34" Orientation="Horizontal">
                         <Label Text="Polizeibereicht vorhanden?" VerticalOptions="Center" />
-                        <CheckBox />
+                        <CheckBox IsChecked="{Binding IsPoliceReport}" />
                     </StackLayout>
                     <Image
                         Grid.Row="34"
@@ -731,19 +684,21 @@
                         Text="Anwalt" />
                     <StackLayout Grid.Row="36" Orientation="Horizontal">
                         <Label Text="Anwalt erwünscht:" />
-                        <CheckBox />
+                        <CheckBox IsChecked="{Binding WantAdvocate}" />
                         <Label Text="Unser Anwalt" />
-                        <CheckBox />
+                        <CheckBox IsChecked="{Binding IsRecommendedAdvocate}" />
                     </StackLayout>
                     <local:TitledEntryField
                         Title="Empfohlener Anwalt"
                         Grid.Row="36"
                         Grid.Column="1"
-                        IsVisible="false" />
+                        IsVisible="false"
+                        Text="{Binding RecommendedAdvocate}" />
                     <local:TitledEntryField
                         Title="Anwalt des Kunden"
                         Grid.Row="36"
-                        Grid.Column="1" />
+                        Grid.Column="1"
+                        Text="{Binding CustomersAdvocate}" />
                     <Label
                         Grid.Row="37"
                         Grid.ColumnSpan="2"
@@ -753,23 +708,28 @@
                     <local:TitledEntryField
                         Title="Telefon"
                         Grid.Row="38"
-                        Grid.Column="0" />
+                        Grid.Column="0"
+                        Text="{Binding Phone}" />
                     <local:TitledEntryField
                         Title="Email"
                         Grid.Row="38"
-                        Grid.Column="1" />
+                        Grid.Column="1"
+                        Text="{Binding Email}" />
                     <local:TitledEntryField
                         Title="Schadensnummer"
                         Grid.Row="39"
-                        Grid.Column="0" />
+                        Grid.Column="0"
+                        Text="{Binding DamageId}" />
                     <local:TitledEntryField
                         Title="Versicherungsnummer"
                         Grid.Row="39"
-                        Grid.Column="1" />
+                        Grid.Column="1"
+                        Text="{Binding InsuranceId}" />
                     <local:TitledEditorField
                         Title="Sonstiges"
                         Grid.Row="40"
-                        Grid.ColumnSpan="2" />
+                        Grid.ColumnSpan="2"
+                        Text="{Binding Miscellanious}" />
                     <StackLayout
                         Grid.Row="41"
                         Grid.ColumnSpan="2"
@@ -787,20 +747,21 @@
                             WidthRequest="500" />
                     </StackLayout>
                 </Grid>
-
             </ScrollView>
             <StackLayout
                 Grid.Row="2"
                 Orientation="Horizontal"
                 VerticalOptions="End">
                 <Button
-                    Command="{Binding CancelCommand}"
+                    x:Name="CancelButton"
+                    Clicked="CancelButton_Clicked"
                     HorizontalOptions="FillAndExpand"
-                    Text="Cancel" />
+                    Text="Verlassen" />
                 <Button
-                    Command="{Binding SaveCommand}"
+                    x:Name="SaveButton"
+                    Clicked="SaveButton_Clicked"
                     HorizontalOptions="FillAndExpand"
-                    Text="Save" />
+                    Text="Speichern" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

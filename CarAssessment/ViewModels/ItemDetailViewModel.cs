@@ -7,10 +7,10 @@ using Xamarin.Forms;
 namespace CarAssessment.ViewModels {
 	[QueryProperty(nameof(ItemId), nameof(ItemId))]
 	public class ItemDetailViewModel : BaseViewModel {
-		private string itemId;
+		private int itemId;
 		private string text;
 		private string description;
-		public string Id { get; set; }
+		public int Id { get; set; }
 
 		public string Text {
 			get => text;
@@ -22,7 +22,7 @@ namespace CarAssessment.ViewModels {
 			set => SetProperty(ref description, value);
 		}
 
-		public string ItemId {
+		public int ItemId {
 			get {
 				return itemId;
 			}
@@ -32,7 +32,7 @@ namespace CarAssessment.ViewModels {
 			}
 		}
 
-		public async void LoadItemId(string itemId) {
+		public async void LoadItemId(int itemId) {
 			try {
 				var item = await DataStore.GetItemAsync(itemId);
 				Id = item.Id;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CarAssessment.DataHandling;
+using CarAssessment.Models.Collection;
 using CarAssessment.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -12,9 +13,9 @@ namespace CarAssessment.Components {
 		}
 
 		public static readonly BindableProperty SourceListProperty = BindableProperty.Create(nameof(SourceList), typeof(List<Image>), typeof(PhotoCollectionField), null, BindingMode.OneWay);
-		public List<Image> SourceList {
+		public ImageList SourceList {
 			get {
-				return (List<Image>)GetValue(SourceListProperty);
+				return (ImageList)GetValue(SourceListProperty);
 			}
 
 			set {
@@ -50,8 +51,8 @@ namespace CarAssessment.Components {
 				if (args.PropertyName == "Source") {
 					MainThread.BeginInvokeOnMainThread(() => {
 						var image = new Image();
-						SourceList.Add(image);
 						image.Source = EntityRepository.Instance.CurrentPhotoField.Source;
+						SourceList.Add(image);
 						PhotoCollection.ItemsSource = null; PhotoCollection.ItemsSource = SourceList;
 					});
 				}

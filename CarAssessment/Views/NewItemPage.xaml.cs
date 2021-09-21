@@ -7,6 +7,10 @@ using CarAssessment.Components;
 
 using CarAssessment.Models;
 using CarAssessment.ViewModels;
+using CarAssessment.Models.Row;
+using CarAssessment.Services;
+using System.Threading.Tasks;
+using CarAssessment.Models.Collection;
 
 namespace CarAssessment.Views {
 	public partial class NewItemPage : ContentPage {
@@ -17,22 +21,35 @@ namespace CarAssessment.Views {
 			String z;
 		}
 
-		public NewItemPage() {
+		IDataStore<Assessment> DataStore => DependencyService.Get<IDataStore<Assessment>>();
+		Assessment Assessment { get; set; }
+
+		public NewItemPage(): this(null) {
+
+		}
+
+		public NewItemPage(Assessment assessment) {
 			InitializeComponent();
-			BindingContext = new NewItemViewModel();
-			var images = new List<Image>();
-			images.Add(new Image() { Source = "IMG_2193.HEIC" });
-			images.Add(new Image() { Source = "IMG_2194.HEIC" });
-			images.Add(new Image() { Source = "IMG_2195.HEIC" });
-			images.Add(new Image() { Source = "IMG_2196.HEIC" });
-			images.Add(new Image() { Source = "IMG_2197.HEIC" });
-			FrontRight.SourceList = images;
-			RearLeft.ItemsSource = images;
-			RearRight.ItemsSource = images;
-			DamagePhotos.ItemsSource = images;
-			NearbyPhotos.ItemsSource = images;
-			DetailPhotos.ItemsSource = images;
-			OtherPhotos.ItemsSource = images;
+			InitializeContext(assessment);
+		}
+
+		private async void InitializeContext(Assessment assessment) {
+			// BindingContext = new NewItemViewModel();
+			if (assessment == null) {
+				assessment = await DataStore.CreateItemAsync();
+			}
+			Assessment = assessment;
+			BindingContext = assessment;
+			DamagePhotos.SourceList = new ImageList(assessment.DamagePhotos);
+			NearbyPhotos.SourceList = new ImageList(assessment.NearbyPhotos);
+			DetailPhotos.SourceList = new ImageList(assessment.DetailPhotos);
+			OtherPhotos.SourceList = new ImageList(assessment.OtherPhotos);
+
+			FrontLeftPhoto.ImagePath = assessment.FrontLeftPhotoPath;
+			FrontRightPhoto.ImagePath = assessment.FrontRightPhotoPath;
+			RearLeftPhoto.ImagePath = assessment.RearLeftPhotoPath;
+			RearRightPhoto.ImagePath = assessment.RearRightPhotoPath;
+
 			var l = new List<Damage>();
 			l.Add(new Damage());
 			l.Add(new Damage());
@@ -43,5 +60,13 @@ namespace CarAssessment.Views {
 		async void AddNewPreDamageImage_Clicked(System.Object sender, System.EventArgs e) {
 			await Shell.Current.GoToAsync(nameof(CameraPage));
 		}
+
+		void CancelButton_Clicked(System.Object sender, System.EventArgs e) {
+		}
+
+		void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
+			DataStore.UpdateItemAsync(Assessment);	
+		}
+
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using CarAssessment.DataHandling;
 using Xamarin.Forms;
 
@@ -13,6 +14,8 @@ namespace CarAssessment.Views {
 
 
 		void MakePhotoButton_Clicked(System.Object sender, System.EventArgs e) {
+			Camera.CaptureMode = Xamarin.CommunityToolkit.UI.Views.CameraCaptureMode.Photo;
+			
 			Camera.Shutter();
 			Shell.Current.Navigation.PopAsync();
 		}
@@ -21,7 +24,10 @@ namespace CarAssessment.Views {
 		}
 
 		void Camera_MediaCaptured(System.Object sender, Xamarin.CommunityToolkit.UI.Views.MediaCapturedEventArgs e) {
-			EntityRepository.Instance.CurrentPhotoField.Source = e.Image;
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			var filename = Path.Combine(documents, "img"+new Random().Next()+".HEIC");
+			File.WriteAllBytes(filename, e.ImageData);
+			EntityRepository.Instance.CurrentPhotoField.Source = filename;
 		}
 	}
 }
