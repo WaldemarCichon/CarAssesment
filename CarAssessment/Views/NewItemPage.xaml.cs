@@ -11,10 +11,13 @@ using CarAssessment.Models.Row;
 using CarAssessment.Services;
 using System.Threading.Tasks;
 using CarAssessment.Models.Collection;
+using CarAssessment.Layout;
 
 namespace CarAssessment.Views {
 	public partial class NewItemPage : ContentPage {
-		public Item Item { get; set; }
+        private LayoutController layoutController;
+
+        public Item Item { get; set; }
 		class Damage {
 			String x;
 			int y;
@@ -31,6 +34,7 @@ namespace CarAssessment.Views {
 		public NewItemPage(Assessment assessment) {
 			InitializeComponent();
 			InitializeContext(assessment);
+			layoutController = new LayoutController(this);
 		}
 
 		private async void InitializeContext(Assessment assessment) {

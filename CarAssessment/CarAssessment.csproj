@@ -25,6 +25,7 @@
     <None Remove="Xamarin.Controls.SignaturePad.Forms" />
     <None Remove="Rg.Plugins.Popup" />
     <None Remove="EntityManager\" />
+    <None Remove="Layout\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Row\" />
@@ -33,5 +34,6 @@
     <Folder Include="Models\Enums\" />
     <Folder Include="Components\" />
     <Folder Include="DataHandling\" />
+    <Folder Include="Layout\" />
   </ItemGroup>
 </Project>

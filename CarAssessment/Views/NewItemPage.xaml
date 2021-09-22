@@ -18,13 +18,36 @@
             </Grid.RowDefinitions>
             <StackLayout>
                 <Label
-                    Background="Yellow"
+                    Margin="0,5,0,0"
                     FontAttributes="Bold"
-                    FontSize="Header"
-                    HeightRequest="100"
+                    FontSize="40"
+                    
                     HorizontalOptions="Center"
                     Text="Kfz-Gutachten Version 0.1" />
-                <BoxView HeightRequest="2000" HorizontalOptions="FillAndExpand" />
+                <BoxView HeightRequest="100"
+                         Color="GreenYellow"
+                         HorizontalOptions="FillAndExpand"
+                         CornerRadius="30"
+                         Margin="10,0,10,0"
+                         AutomationId="1"/>
+                <Label Text="Grunddaten"
+                       FontSize="40"
+                       Margin="0,-80,0,0"
+                       HorizontalOptions="Center"
+                       AutomationId="1"/>
+                <BoxView
+                    HeightRequest="100"
+                    Color="LightGray"
+                    HorizontalOptions="FillAndExpand"
+                    CornerRadius="30"
+                    Margin="10,25,10,0"
+                    AutomationId="2"/>
+                <Label
+                    Text="Bilder"
+                    FontSize="40"
+                    Margin="0,-80,0,0"
+                    HorizontalOptions="Center"
+                    AutomationId="2"/>
             </StackLayout>
             <ScrollView Grid.Row="1">
                 <Grid
@@ -85,51 +108,52 @@
                         Title="Fahrzeughalter"
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="{Binding OwnerName}" />
+                        Text="{Binding OwnerName}" AutomationId="1"/>
                     <local:TitledEntryField
                         Title="Straße"
                         Grid.Row="0"
                         Grid.Column="1"
-                        Text="{Binding Street}" />
+                        Text="{Binding Street}" AutomationId="1"/>
                     <local:TitledEntryField
                         Title="PLZ"
                         Grid.Row="1"
                         Grid.Column="0"
-                        Text="{Binding ZipCode}" />
+                        Text="{Binding ZipCode}" AutomationId="1"/>
                     <local:TitledEntryField
                         Title="Ort"
                         Grid.Row="1"
                         Grid.Column="1"
-                        Text="{Binding City}" />
+                        Text="{Binding City}" AutomationId="1"/>
                     <local:TitledEntryField
                         Title="Kfz-Kennzeichen Mandant"
                         Grid.Row="2"
                         Grid.Column="0"
-                        Text="{Binding LicensePlateClient}" />
+                        Text="{Binding LicensePlateClient}" AutomationId="1"/>
                     <local:TitledEntryField
                         Title="Kfz-Kennzeichen Unfallgegner"
                         Grid.Row="2"
                         Grid.Column="1"
-                        Text="{Binding LicensePlateOponent}" />
+                        Text="{Binding LicensePlateOponent}" AutomationId="1"/>
                     <local:TitledEntryField
                         Title="Aufnahmedatum"
                         Grid.Row="3"
                         Grid.Column="0"
-                        Text="{Binding AdmissionDate}" />
+                        Text="{Binding AdmissionDate}" AutomationId="1"/>
                     <local:TitledEntryField
                         Title="Unfalldatum"
                         Grid.Row="3"
                         Grid.Column="1"
-                        Text="{Binding AccidentDate}" />
+                        Text="{Binding AccidentDate}" AutomationId="1"/>
                     <local:TitledEditorField
                         Title="Besichtigungsort"
                         Grid.Row="4"
-                        Text="{Binding InspectionLocation}" />
+                        Text="{Binding InspectionLocation}" AutomationId="1"/>
                     <local:TitledEditorField
                         Title="Teilehmer Besichtigung"
                         Grid.Row="4"
                         Grid.Column="1"
-                        Text="{Binding InspectionAttendees}" />
+                        Text="{Binding InspectionAttendees}"
+                        AutomationId="1"/>
                     <!--#endregion-->
                     <!--#region Total Photos-->
                     <Grid
