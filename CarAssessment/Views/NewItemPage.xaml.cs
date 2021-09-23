@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using CarAssessment.Models.Collection;
 using CarAssessment.Layout;
 
+// Page is used as well for the new item but also for the editing
 namespace CarAssessment.Views {
 	public partial class NewItemPage : ContentPage {
         private LayoutController layoutController;
