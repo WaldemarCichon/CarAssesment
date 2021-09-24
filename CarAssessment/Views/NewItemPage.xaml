@@ -21,33 +21,84 @@
                     Margin="0,5,0,0"
                     FontAttributes="Bold"
                     FontSize="40"
-                    
                     HorizontalOptions="Center"
                     Text="Kfz-Gutachten Version 0.1" />
-                <BoxView HeightRequest="100"
-                         Color="GreenYellow"
-                         HorizontalOptions="FillAndExpand"
-                         CornerRadius="30"
-                         Margin="10,0,10,0"
-                         AutomationId="1"/>
-                <Label Text="Grunddaten"
-                       FontSize="40"
-                       Margin="0,-80,0,0"
-                       HorizontalOptions="Center"
-                       AutomationId="1"/>
                 <BoxView
-                    HeightRequest="100"
-                    Color="LightGray"
-                    HorizontalOptions="FillAndExpand"
+                    Margin="10,0,10,0"
+                    AutomationId="1"
                     CornerRadius="30"
-                    Margin="10,25,10,0"
-                    AutomationId="2"/>
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    Color="GreenYellow" />
                 <Label
-                    Text="Bilder"
-                    FontSize="40"
                     Margin="0,-80,0,0"
+                    AutomationId="1"
+                    FontSize="40"
                     HorizontalOptions="Center"
-                    AutomationId="2"/>
+                    Text="Grunddaten" />
+                <BoxView
+                    Margin="10,25,10,0"
+                    AutomationId="2"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-80,0,40"
+                    AutomationId="2"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="Fahrzeugbilder" />
+                <BoxView
+                    Margin="10,25,10,0"
+                    AutomationId="3"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-80,0,40"
+                    AutomationId="3"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="Schadensbilder" />
+                <BoxView
+                    Margin="10,25,10,0"
+                    AutomationId="4"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-80,0,40"
+                    AutomationId="4"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="Reifen" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Clicked="Previous"
+                        HorizontalOptions="Center"
+                        Text="&lt;&lt;&lt;"
+                        WidthRequest="200" />
+                    <Button
+                        Grid.Column="1"
+                        Clicked="Up"
+                        HorizontalOptions="Center"
+                        Text="^^^"
+                        WidthRequest="200" />
+                    <Button
+                        Grid.Column="2"
+                        Clicked="Next"
+                        HorizontalOptions="Center"
+                        Text="&gt;&gt;&gt;"
+                        WidthRequest="200" />
+                </Grid>
             </StackLayout>
             <ScrollView Grid.Row="1">
                 <Grid
@@ -108,90 +159,99 @@
                         Title="Fahrzeughalter"
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="{Binding OwnerName}" AutomationId="1"/>
+                        AutomationId="1"
+                        Text="{Binding OwnerName}" />
                     <local:TitledEntryField
                         Title="Straße"
                         Grid.Row="0"
                         Grid.Column="1"
-                        Text="{Binding Street}" AutomationId="1"/>
+                        AutomationId="1"
+                        Text="{Binding Street}" />
                     <local:TitledEntryField
                         Title="PLZ"
                         Grid.Row="1"
                         Grid.Column="0"
-                        Text="{Binding ZipCode}" AutomationId="1"/>
+                        AutomationId="1"
+                        Text="{Binding ZipCode}" />
                     <local:TitledEntryField
                         Title="Ort"
                         Grid.Row="1"
                         Grid.Column="1"
-                        Text="{Binding City}" AutomationId="1"/>
+                        AutomationId="1"
+                        Text="{Binding City}" />
                     <local:TitledEntryField
                         Title="Kfz-Kennzeichen Mandant"
                         Grid.Row="2"
                         Grid.Column="0"
-                        Text="{Binding LicensePlateClient}" AutomationId="1"/>
+                        AutomationId="1"
+                        Text="{Binding LicensePlateClient}" />
                     <local:TitledEntryField
                         Title="Kfz-Kennzeichen Unfallgegner"
                         Grid.Row="2"
                         Grid.Column="1"
-                        Text="{Binding LicensePlateOponent}" AutomationId="1"/>
+                        AutomationId="1"
+                        Text="{Binding LicensePlateOponent}" />
                     <local:TitledEntryField
                         Title="Aufnahmedatum"
                         Grid.Row="3"
                         Grid.Column="0"
-                        Text="{Binding AdmissionDate}" AutomationId="1"/>
+                        AutomationId="1"
+                        Text="{Binding AdmissionDate}" />
                     <local:TitledEntryField
                         Title="Unfalldatum"
                         Grid.Row="3"
                         Grid.Column="1"
-                        Text="{Binding AccidentDate}" AutomationId="1"/>
+                        AutomationId="1"
+                        Text="{Binding AccidentDate}" />
                     <local:TitledEditorField
                         Title="Besichtigungsort"
                         Grid.Row="4"
-                        Text="{Binding InspectionLocation}" AutomationId="1"/>
+                        AutomationId="1"
+                        Text="{Binding InspectionLocation}" />
                     <local:TitledEditorField
                         Title="Teilehmer Besichtigung"
                         Grid.Row="4"
                         Grid.Column="1"
-                        Text="{Binding InspectionAttendees}"
-                        AutomationId="1"/>
+                        AutomationId="1"
+                        Text="{Binding InspectionAttendees}" />
                     <!--#endregion-->
                     <!--#region Total Photos-->
-                    <Grid
+                    <local:PhotoField
+                        x:Name="FrontLeftPhoto"
+                        Title="Vorne Links"
                         Grid.Row="5"
                         Grid.Column="0"
-                        HorizontalOptions="FillAndExpand">
-                        <local:PhotoField
-                            x:Name="FrontLeftPhoto"
-                            Title="Vorne Links"
-                            ImagePath="{Binding FrontLeftPhotoPath, Mode=TwoWay}" />
-                    </Grid>
-                    <Grid
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding FrontLeftPhotoPath, Mode=TwoWay}" />
+                    <local:PhotoField
+                        x:Name="FrontRightPhoto"
+                        Title="Vorne Rechts"
                         Grid.Row="5"
                         Grid.Column="1"
-                        HorizontalOptions="FillAndExpand">
-                        <local:PhotoField
-                            x:Name="FrontRightPhoto"
-                            Title="Vorne Rechts"
-                            ImagePath="{Binding FrontRightPhotoPath, Mode=TwoWay}" />
-                    </Grid>
-                    <Grid
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding FrontRightPhotoPath, Mode=TwoWay}" />
+
+                    <local:PhotoField
+                        x:Name="RearLeftPhoto"
+                        Title="Hinten Links"
                         Grid.Row="6"
                         Grid.Column="0"
-                        HorizontalOptions="FillAndExpand">
-                        <local:PhotoField
-                            x:Name="RearLeftPhoto"
-                            Title="Hinten Links"
-                            ImagePath="{Binding RearLeftPhotoPath, Mode=TwoWay}" />
-                    </Grid>
-                    <Grid
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding RearLeftPhotoPath, Mode=TwoWay}" />
+
+
+                    <local:PhotoField
+                        x:Name="RearRightPhoto"
+                        Title="Hinten Rechts"
                         Grid.Row="6"
                         Grid.Column="1"
-                        HorizontalOptions="FillAndExpand">
-                        <local:PhotoField
-                            x:Name="RearRightPhoto"
-                            Title="Hinten Rechts"
-                            ImagePath="{Binding RearRightPhotoPath, Mode=TwoWay}" />
-                    </Grid>
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding RearRightPhotoPath, Mode=TwoWay}" />
+
                     <!--#endregion-->
                     <local:TitledEntryField
                         Title="Fahrgestellnummer"
@@ -204,207 +264,62 @@
                         Grid.Column="1"
                         Text="{Binding Mileage}" />
                     <!--#region Damage Photos-->
-                    <Grid
+                    <Label
                         Grid.Row="8"
                         Grid.Column="0"
-                        HorizontalOptions="FillAndExpand">
-                        <Label
-                            FontAttributes="Bold"
-                            Text="Übersichtsfotos"
-                            VerticalOptions="Center" />
+                        AutomationId="3"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Übersichtsfotos"
+                        VerticalOptions="Center" />
 
-                    </Grid>
-                    <Grid
+                    <Label
                         Grid.Row="8"
                         Grid.Column="1"
-                        HorizontalOptions="FillAndExpand">
-                        <Label
-                            FontAttributes="Bold"
-                            Text="Nahaufnahme"
-                            VerticalOptions="Center" />
+                        AutomationId="3"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Nahaufnahme"
+                        VerticalOptions="Center" />
 
-                    </Grid>
-                    <Grid
+                    <Label
                         Grid.Row="10"
                         Grid.Column="0"
-                        HorizontalOptions="FillAndExpand">
-                        <Label
-                            FontAttributes="Bold"
-                            Text="Detailsfotos"
-                            VerticalOptions="Center" />
+                        AutomationId="3"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Detailsfotos"
+                        VerticalOptions="Center" />
 
-                    </Grid>
-                    <Grid
+                    <Label
                         Grid.Row="10"
                         Grid.Column="1"
-                        HorizontalOptions="FillAndExpand">
-                        <Label
-                            FontAttributes="Bold"
-                            Text="Sonstige Aufnahmen"
-                            VerticalOptions="Center" />
+                        AutomationId="3"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Sonstige Aufnahmen"
+                        VerticalOptions="Center" />
 
-                    </Grid>
-                    <local:PhotoCollectionField x:Name="DamagePhotos" Grid.Row="9" />
+                    <local:PhotoCollectionField
+                        x:Name="DamagePhotos"
+                        Grid.Row="9"
+                        AutomationId="3" />
                     <local:PhotoCollectionField
                         x:Name="NearbyPhotos"
                         Grid.Row="9"
-                        Grid.Column="1" />
+                        Grid.Column="1"
+                        AutomationId="3" />
                     <local:PhotoCollectionField
                         x:Name="DetailPhotos"
                         Grid.Row="11"
-                        Grid.Column="0" />
+                        Grid.Column="0"
+                        AutomationId="3" />
                     <local:PhotoCollectionField
                         x:Name="OtherPhotos"
                         Grid.Row="11"
-                        Grid.Column="1" />
+                        Grid.Column="1"
+                        AutomationId="3" />
 
-                    <!--#endregion-->
-                    <!--#region Damage-->
-                    <CollectionView
-                        x:Name="DamageListView"
-                        Grid.Row="12"
-                        Grid.ColumnSpan="2"
-                        HeightRequest="400"
-                        VerticalOptions="Start">
-                        <CollectionView.Header>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="4*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    Grid.ColumnSpan="4"
-                                    FontAttributes="Bold"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Text="Beschreibung der beschädigten Teile" />
-                                <Label Grid.Row="1" Text="Beschädigung" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Text="Reperaturart" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="2"
-                                    Text="Stunden" />
-                                <Button
-                                    Grid.Row="1"
-                                    Grid.Column="3"
-                                    HeightRequest="25"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Text="+" />
-                            </Grid>
-                        </CollectionView.Header>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="4*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Entry Text="{Binding x}" />
-                                    <Picker Grid.Column="1" SelectedIndex="{Binding y}">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Nicht ausgewählt</x:String>
-                                                <x:String>Ersetzen</x:String>
-                                                <x:String>Lackieren</x:String>
-                                                <x:String>Instandsetzen</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                    <Entry Grid.Column="2" Text="{Binding z}" />
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                    <!--#endregion-->
-                    <!--#region Predamage-->
-                    <CollectionView
-                        x:Name="PreDamage"
-                        Grid.Row="14"
-                        Grid.ColumnSpan="2"
-                        HeightRequest="400">
-                        <CollectionView.Header>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    Grid.ColumnSpan="2"
-                                    FontAttributes="Bold"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Text="Vorschäden" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Text="Beschreibung" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Text="Behoben" />
-                                <Button
-                                    x:Name="AddNewPreDamageImage"
-                                    Grid.Row="1"
-                                    Grid.Column="2"
-                                    Clicked="AddNewPreDamageImage_Clicked"
-                                    HeightRequest="25"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Text="+" />
-                            </Grid>
-                        </CollectionView.Header>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="5*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <Entry />
-
-                                    <Picker Grid.Column="1" SelectedIndex="{Binding y}">
-                                        <Picker.ItemsSource>
-                                            <x:Array Type="{x:Type x:String}">
-                                                <x:String>Nicht ausgewählt</x:String>
-                                                <x:String>Nicht behoben</x:String>
-                                                <x:String>Teilweise behoben</x:String>
-                                                <x:String>Komplett behoben</x:String>
-                                            </x:Array>
-                                        </Picker.ItemsSource>
-                                    </Picker>
-                                    <Button
-                                        Grid.Column="2"
-                                        HeightRequest="25"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Text="-" />
-                                    <Image
-                                        Grid.Row="1"
-                                        Grid.ColumnSpan="2"
-                                        HeightRequest="200"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Source="IMG_2198.HEIC" />
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
                     <!--#endregion-->
                     <!--#region Tire-->
                     <Label

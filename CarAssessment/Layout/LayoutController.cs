@@ -22,11 +22,16 @@ namespace CarAssessment.Layout
         private void init()
         {
             iterate(contentPage.Content);
-            DisplayedGroup = 1;
+            DisplayedGroup = 2;
         }
+
+        private void display(View view) {
+            Console.WriteLine(view.ToString());
+		}
 
         private void iterate(View view)
         {
+            display(view);
             if (view.AutomationId != null)
             {
                 allViews.Add(view);
@@ -41,6 +46,10 @@ namespace CarAssessment.Layout
             {
                 iterateChildren(view as Grid);
             }
+
+            if (type == typeof(ScrollView)) {
+                iterate((view as ScrollView).Content);
+			}
         }
 
         private void iterateChildren(StackLayout stackLayout)
@@ -67,5 +76,17 @@ namespace CarAssessment.Layout
                 allViews.ForEach((view) => view.IsVisible = int.Parse(view.AutomationId) == displayedGroup);
             }
         }
+
+        public void Next() {
+            DisplayedGroup++;
+		}
+
+        public void Previous() {
+            DisplayedGroup--;
+		}
+
+        public void Up() {
+
+		}
     }
 }

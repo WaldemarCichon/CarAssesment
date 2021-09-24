@@ -16,7 +16,7 @@ using CarAssessment.Layout;
 // Page is used as well for the new item but also for the editing
 namespace CarAssessment.Views {
 	public partial class NewItemPage : ContentPage {
-        private LayoutController layoutController;
+        private LayoutController LayoutController { get; set; }
 
         public Item Item { get; set; }
 		class Damage {
@@ -35,7 +35,7 @@ namespace CarAssessment.Views {
 		public NewItemPage(Assessment assessment) {
 			InitializeComponent();
 			InitializeContext(assessment);
-			layoutController = new LayoutController(this);
+			LayoutController = new LayoutController(this);
 		}
 
 		private async void InitializeContext(Assessment assessment) {
@@ -58,8 +58,6 @@ namespace CarAssessment.Views {
 			var l = new List<Damage>();
 			l.Add(new Damage());
 			l.Add(new Damage());
-			DamageListView.ItemsSource = l;
-			PreDamage.ItemsSource = l;
 		}
 
 		async void AddNewPreDamageImage_Clicked(System.Object sender, System.EventArgs e) {
@@ -73,5 +71,16 @@ namespace CarAssessment.Views {
 			DataStore.UpdateItemAsync(Assessment);	
 		}
 
+		void Up(Object sender, EventArgs e) {
+			LayoutController.Up();
+		}
+
+		void Previous(Object sender, EventArgs e) {
+			LayoutController.Previous();
+		}
+
+		void Next(Object sender, EventArgs e) {
+			LayoutController.Next();
+		}
 	}
 }

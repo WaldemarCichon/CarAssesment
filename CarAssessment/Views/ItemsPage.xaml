@@ -6,7 +6,8 @@
     xmlns:local="clr-namespace:CarAssessment.ViewModels"
     xmlns:model="clr-namespace:CarAssessment.Models.Row"
     x:Name="BrowseItemsPage"
-    Title="{Binding Title}">
+    Title="{Binding Title}"
+    BackgroundColor="DarkGray">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding AddItemCommand}" Text="Add" />
