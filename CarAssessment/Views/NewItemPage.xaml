@@ -75,6 +75,45 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     Text="Reifen" />
+                <BoxView
+                    Margin="10,25,10,0"
+                    AutomationId="5"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-80,0,40"
+                    AutomationId="5"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="Fahrzeugdaten" />
+                <BoxView
+                    Margin="10,25,10,0"
+                    AutomationId="6"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-80,0,40"
+                    AutomationId="6"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="Reparatur" />
+                <BoxView
+                    Margin="10,25,10,0"
+                    AutomationId="7"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-80,0,40"
+                    AutomationId="7"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="????" />
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -83,8 +122,9 @@
                     </Grid.ColumnDefinitions>
                     <Button
                         Clicked="Previous"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
                         HorizontalOptions="Center"
-                        Text="&lt;&lt;&lt;"
+                        Text="&#xf30a;"
                         WidthRequest="200" />
                     <Button
                         Grid.Column="1"
@@ -155,63 +195,79 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <!--#region Main Data-->
+                    <BoxView
+                        Grid.Row="0"
+                        Grid.RowSpan="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Color="Aqua" />
                     <local:TitledEntryField
                         Title="Fahrzeughalter"
                         Grid.Row="0"
                         Grid.Column="0"
+                        Margin="10,4"
                         AutomationId="1"
                         Text="{Binding OwnerName}" />
                     <local:TitledEntryField
                         Title="Straße"
                         Grid.Row="0"
                         Grid.Column="1"
+                        Margin="10,4"
                         AutomationId="1"
                         Text="{Binding Street}" />
                     <local:TitledEntryField
                         Title="PLZ"
                         Grid.Row="1"
                         Grid.Column="0"
+                        Margin="10,4"
                         AutomationId="1"
                         Text="{Binding ZipCode}" />
                     <local:TitledEntryField
                         Title="Ort"
                         Grid.Row="1"
                         Grid.Column="1"
+                        Margin="10,4"
                         AutomationId="1"
                         Text="{Binding City}" />
                     <local:TitledEntryField
                         Title="Kfz-Kennzeichen Mandant"
                         Grid.Row="2"
                         Grid.Column="0"
+                        Margin="10,4"
                         AutomationId="1"
                         Text="{Binding LicensePlateClient}" />
                     <local:TitledEntryField
                         Title="Kfz-Kennzeichen Unfallgegner"
                         Grid.Row="2"
                         Grid.Column="1"
+                        Margin="10,4"
                         AutomationId="1"
                         Text="{Binding LicensePlateOponent}" />
                     <local:TitledEntryField
                         Title="Aufnahmedatum"
                         Grid.Row="3"
                         Grid.Column="0"
+                        Margin="10,4"
                         AutomationId="1"
                         Text="{Binding AdmissionDate}" />
                     <local:TitledEntryField
                         Title="Unfalldatum"
                         Grid.Row="3"
                         Grid.Column="1"
+                        Margin="10,4"
                         AutomationId="1"
                         Text="{Binding AccidentDate}" />
                     <local:TitledEditorField
                         Title="Besichtigungsort"
                         Grid.Row="4"
+                        Margin="10,4"
                         AutomationId="1"
                         Text="{Binding InspectionLocation}" />
                     <local:TitledEditorField
                         Title="Teilehmer Besichtigung"
                         Grid.Row="4"
                         Grid.Column="1"
+                        Margin="10,4,10,10"
                         AutomationId="1"
                         Text="{Binding InspectionAttendees}" />
                     <!--#endregion-->
@@ -257,11 +313,13 @@
                         Title="Fahrgestellnummer"
                         Grid.Row="7"
                         Grid.Column="0"
+                        AutomationId="6"
                         Text="{Binding ChassisNumber}" />
                     <local:TitledEntryField
                         Title="Kilometerstand"
                         Grid.Row="7"
                         Grid.Column="1"
+                        AutomationId="6"
                         Text="{Binding Mileage}" />
                     <!--#region Damage Photos-->
                     <Label
@@ -325,10 +383,11 @@
                     <Label
                         Grid.Row="15"
                         Grid.ColumnSpan="2"
+                        AutomationId="4"
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         Text="Reifen" />
-                    <Grid Grid.Row="16">
+                    <Grid Grid.Row="16" AutomationId="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -348,7 +407,10 @@
                             Grid.Column="2"
                             Text="{Binding FrontLeft.TreadDepth}" />
                     </Grid>
-                    <Grid Grid.Row="16" Grid.Column="1">
+                    <Grid
+                        Grid.Row="16"
+                        Grid.Column="1"
+                        AutomationId="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -368,7 +430,7 @@
                             Grid.Column="2"
                             Text="{Binding FrontRight.TreadDepth}" />
                     </Grid>
-                    <Grid Grid.Row="17">
+                    <Grid Grid.Row="17" AutomationId="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -388,7 +450,10 @@
                             Grid.Column="2"
                             Text="{Binding RearLeft.TreadDepth}" />
                     </Grid>
-                    <Grid Grid.Row="17" Grid.Column="1">
+                    <Grid
+                        Grid.Row="17"
+                        Grid.Column="1"
+                        AutomationId="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -409,25 +474,30 @@
                             Text="{Binding RearRight.TreadDepth}" />
                     </Grid>
                     <!--#endregion-->
+                    <!--#region Car Data-->
                     <Label
                         Grid.Row="18"
+                        AutomationId="5"
                         Text="Scheckheft vorhanden?"
                         VerticalOptions="Center" />
                     <CheckBox
                         Grid.Row="18"
                         Margin="350,0,0,0"
+                        AutomationId="5"
                         HeightRequest="100"
                         IsChecked="{Binding IsServiceRecordBook}" />
                     <local:PhotoField
                         x:Name="Scheckheft"
                         Grid.Row="18"
                         Grid.Column="1"
+                        AutomationId="5"
                         HeightRequest="200"
                         HorizontalOptions="Center"
                         ImagePath="{Binding ServiceRecordsPhotoPath, Mode=TwoWay}" />
                     <StackLayout
                         Grid.Row="19"
                         Grid.Column="0"
+                        AutomationId="5"
                         Orientation="Horizontal">
                         <Label Text="Kfz verkehrssicher?" VerticalOptions="Center" />
                         <CheckBox />
@@ -437,6 +507,7 @@
                     <StackLayout
                         Grid.Row="19"
                         Grid.Column="1"
+                        AutomationId="5"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal">
                         <local:PhotoField
@@ -444,28 +515,40 @@
                             Title="Fahrzeugschein"
                             ImagePath="{Binding CarDocumentPath, Mode=TwoWay}" />
                     </StackLayout>
+                    <!--#endregion-->
+                    <!--#region Repair-->
                     <Label
                         Grid.Row="21"
                         Grid.ColumnSpan="2"
+                        AutomationId="6"
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         Text="Reparatur" />
                     <Label
                         Grid.Row="22"
+                        AutomationId="6"
                         Text="Reparatur gewünscht?"
                         VerticalOptions="Center" />
-                    <CheckBox Grid.Row="22" Margin="200,0,0,0" />
+                    <CheckBox
+                        Grid.Row="22"
+                        Margin="200,0,0,0"
+                        AutomationId="6" />
                     <local:TitledEntryField
                         Title="Werkstatt"
                         Grid.Row="22"
-                        Grid.Column="1" />
+                        Grid.Column="1"
+                        AutomationId="6" />
                     <Label
                         Grid.Row="23"
                         Grid.ColumnSpan="2"
+                        AutomationId="6"
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         Text="Stundensätze" />
-                    <Grid Grid.Row="24" Grid.ColumnSpan="2">
+                    <Grid
+                        Grid.Row="24"
+                        Grid.ColumnSpan="2"
+                        AutomationId="6">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
@@ -528,21 +611,28 @@
                             Text="{Binding FlatRateTransport}" />
 
                     </Grid>
-                    <StackLayout Grid.Row="25" Orientation="Horizontal">
+                    <StackLayout
+                        Grid.Row="25"
+                        AutomationId="6"
+                        Orientation="Horizontal">
                         <Label Text="Mietwagen erwünscht?" VerticalOptions="Center" />
                         <CheckBox IsChecked="{Binding RentalCar}" />
                         <Label Text="Berechtigt" VerticalOptions="Center" />
                         <CheckBox IsChecked="{Binding IsEligible}" />
                     </StackLayout>
+                    <!--#endregion-->
+                    <!--#region Damage description-->
                     <Label
                         Grid.Row="26"
                         Grid.ColumnSpan="2"
+                        AutomationId="7"
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         Text="Schadensschilderung" />
                     <StackLayout
                         Grid.Row="27"
                         Grid.ColumnSpan="2"
+                        AutomationId="7"
                         Orientation="Horizontal">
                         <Label Text="Unser Kunde" VerticalOptions="Center" />
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding MustSlowDown}" />
@@ -551,6 +641,7 @@
                     <StackLayout
                         Grid.Row="28"
                         Grid.ColumnSpan="2"
+                        AutomationId="7"
                         Orientation="Horizontal">
                         <Label Text="Unfallgegner" VerticalOptions="Center" />
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding WasDriving}" />
@@ -563,6 +654,7 @@
                     <StackLayout
                         Grid.Row="29"
                         Grid.ColumnSpan="2"
+                        AutomationId="7"
                         Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveBackwards}" />
                         <Label Text="fuhr rückwärts" VerticalOptions="Center" />
@@ -585,6 +677,7 @@
                     <StackLayout
                         Grid.Row="31"
                         Grid.ColumnSpan="2"
+                        AutomationId="7"
                         Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DisobeyingRightLeft}" />
                         <Label Text="rechts vor links missachtet" VerticalOptions="Center" />
@@ -599,19 +692,25 @@
                         Title="Schriftliche Schilderung"
                         Grid.Row="32"
                         Grid.RowSpan="2"
+                        AutomationId="7"
                         HeightRequest="150"
                         Text="{Binding Description}" />
                     <local:TitledEntryField
                         Title="Ort des Unfalls"
                         Grid.Row="32"
                         Grid.Column="1"
+                        AutomationId="7"
                         Text="{Binding AccidentLocation}" />
                     <local:TitledEntryField
                         Title="Genauer Zeitpunkt des Unfalls"
                         Grid.Row="33"
                         Grid.Column="1"
+                        AutomationId="7"
                         Text="{Binding AccidentTimestamp}" />
-                    <StackLayout Grid.Row="34" Orientation="Horizontal">
+                    <StackLayout
+                        Grid.Row="34"
+                        AutomationId="7"
+                        Orientation="Horizontal">
                         <Label Text="Polizeibereicht vorhanden?" VerticalOptions="Center" />
                         <CheckBox IsChecked="{Binding IsPoliceReport, Mode=TwoWay}" />
 
@@ -620,15 +719,20 @@
                         x:Name="PoliceReport"
                         Grid.Row="34"
                         Grid.Column="1"
+                        AutomationId="7"
                         ImagePath="{Binding PoliceReportPhotoPath}"
                         IsVisible="{Binding IsPoliceReport, Mode=OneWay}" />
                     <Label
                         Grid.Row="35"
                         Grid.ColumnSpan="2"
+                        AutomationId="7"
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         Text="Anwalt" />
-                    <StackLayout Grid.Row="36" Orientation="Horizontal">
+                    <StackLayout
+                        Grid.Row="36"
+                        AutomationId="7"
+                        Orientation="Horizontal">
                         <Label Text="Anwalt erwünscht:" />
                         <CheckBox IsChecked="{Binding WantAdvocate}" />
                         <Label Text="Unser Anwalt" />
@@ -638,16 +742,19 @@
                         Title="Empfohlener Anwalt"
                         Grid.Row="36"
                         Grid.Column="1"
+                        AutomationId="7"
                         IsVisible="false"
                         Text="{Binding RecommendedAdvocate}" />
                     <local:TitledEntryField
                         Title="Anwalt des Kunden"
                         Grid.Row="36"
                         Grid.Column="1"
+                        AutomationId="7"
                         Text="{Binding CustomersAdvocate}" />
                     <Label
                         Grid.Row="37"
                         Grid.ColumnSpan="2"
+                        AutomationId="7"
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         Text="Weitere Mandantendaten" />
@@ -655,30 +762,36 @@
                         Title="Telefon"
                         Grid.Row="38"
                         Grid.Column="0"
+                        AutomationId="7"
                         Text="{Binding Phone}" />
                     <local:TitledEntryField
                         Title="Email"
                         Grid.Row="38"
                         Grid.Column="1"
+                        AutomationId="7"
                         Text="{Binding Email}" />
                     <local:TitledEntryField
                         Title="Schadensnummer"
                         Grid.Row="39"
                         Grid.Column="0"
+                        AutomationId="7"
                         Text="{Binding DamageId}" />
                     <local:TitledEntryField
                         Title="Versicherungsnummer"
                         Grid.Row="39"
                         Grid.Column="1"
+                        AutomationId="7"
                         Text="{Binding InsuranceId}" />
                     <local:TitledEditorField
                         Title="Sonstiges"
                         Grid.Row="40"
                         Grid.ColumnSpan="2"
+                        AutomationId="7"
                         Text="{Binding Miscellanious}" />
                     <StackLayout
                         Grid.Row="41"
                         Grid.ColumnSpan="2"
+                        AutomationId="7"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal"
                         VerticalOptions="Center">

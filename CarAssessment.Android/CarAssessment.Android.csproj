@@ -91,5 +91,9 @@
       <Name>CarAssessment</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\FontAwesomeRegular.otf" />
+    <AndroidAsset Include="Assets\FontAwesome6Solid.otf" />
+  </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

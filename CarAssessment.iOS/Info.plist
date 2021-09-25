@@ -36,5 +36,10 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Ich muss Fotos machen</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesomeRegular.otf</string>
+		<string>FontAwesome6Solid.otf</string>
+	</array>
 </dict>
 </plist>

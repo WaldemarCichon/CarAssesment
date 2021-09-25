@@ -138,6 +138,8 @@
     <BundleResource Include="Resources\camera.png" />
     <BundleResource Include="Resources\trash.png" />
     <BundleResource Include="Resources\camera64.png" />
+    <BundleResource Include="Resources\FontAwesomeRegular.otf" />
+    <BundleResource Include="Resources\FontAwesome6Solid.otf" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -1,15 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CarAssessment.App">
+<Application
+    x:Class="CarAssessment.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <!--
         Define global resources and styles here, that apply to all pages in your app.
     -->
     <Application.Resources>
         <ResourceDictionary>
+            <OnPlatform x:Key="FontAwesomeSolid" x:TypeArguments="x:String">
+                <On Platform="Android" Value="FontAwesome6Solid.otf#Regular" />
+                <On Platform="iOS" Value="FontAwesome6Free-Solid" />
+                <On Platform="UWP" Value="/Assets/FontAwesome6Solid.otf#Font Awesome 6 Free" />
+            </OnPlatform>
+
+            <OnPlatform x:Key="FontAwesomeRegular" x:TypeArguments="x:String">
+                <On Platform="Android" Value="FontAwesome6Regular.otf#Regular" />
+                <On Platform="iOS" Value="FontAwesome6Free-Regular" />
+                <On Platform="UWP" Value="/Assets/FontAwesomeRegular.otf#Font Awesome 6 Free" />
+            </OnPlatform>
             <Color x:Key="Primary">#2196F3</Color>
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextColor" Value="White" />
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -27,6 +39,6 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
