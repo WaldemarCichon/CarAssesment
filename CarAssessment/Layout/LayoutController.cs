@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CarAssessment.Views;
 using Xamarin.Forms;
 
 // Class allows switch on and off groups and colouring the headers
@@ -22,7 +23,7 @@ namespace CarAssessment.Layout
         private void init()
         {
             iterate(contentPage.Content);
-            DisplayedGroup = 2;
+            DisplayedGroup = 1;
         }
 
         private void display(View view) {
@@ -66,6 +67,7 @@ namespace CarAssessment.Layout
             {
                 iterate(child);
             }
+
         }
 
         private int DisplayedGroup
@@ -74,6 +76,7 @@ namespace CarAssessment.Layout
             set {
                 displayedGroup = value;
                 allViews.ForEach((view) => view.IsVisible = int.Parse(view.AutomationId) == displayedGroup);
+				((NewItemPage)contentPage).HandleSpecialFields(displayedGroup);
             }
         }
 

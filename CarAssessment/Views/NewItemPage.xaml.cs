@@ -25,6 +25,8 @@ namespace CarAssessment.Views {
 			String z;
 		}
 
+		public Command TitleClicked { get; } = new Command((param) => Console.WriteLine(param));
+
 		IDataStore<Assessment> DataStore => DependencyService.Get<IDataStore<Assessment>>();
 		Assessment Assessment { get; set; }
 
@@ -36,6 +38,19 @@ namespace CarAssessment.Views {
 			InitializeComponent();
 			InitializeContext(assessment);
 			LayoutController = new LayoutController(this);
+			var grid = this.Content as Grid;
+			var stackLayout = grid.Children[0] as StackLayout;
+			foreach (var view in stackLayout.Children) {
+				if (view.GetType() == typeof(Label)) {
+					var label = view as Label;
+					if (label.AutomationId == "0") {
+						if (label.GestureRecognizers.Count > 0) {
+							var tapGestureRecognizer = label.GestureRecognizers[0] as TapGestureRecognizer;
+							tapGestureRecognizer.Command = TitleClicked;
+						}
+					}
+				}
+			}
 		}
 
 		private async void InitializeContext(Assessment assessment) {
@@ -67,6 +82,25 @@ namespace CarAssessment.Views {
 		void CancelButton_Clicked(System.Object sender, System.EventArgs e) {
 		}
 
+		internal void HandleSpecialFields(int displayedGroup) {
+			if (displayedGroup == 0) {
+				NavigationButtons.IsVisible = false;
+				DialogBox.IsVisible = false;
+			} else {
+				NavigationButtons.IsVisible = true;
+				DialogBox.IsVisible = true;
+			}
+			if (displayedGroup == 7) {
+				PoliceReport.IsVisible = Assessment.IsPoliceReport == true;
+				RecommendedAdvocate.IsVisible = Assessment.WantAdvocate == true && Assessment.IsRecommendedAdvocate==true;
+				CustomersAdvocate.IsVisible = Assessment.WantAdvocate == true && Assessment.IsRecommendedAdvocate == false;
+			}
+		}
+
+		internal void HandleSpecialFields(object sender, CheckedChangedEventArgs args) {
+			HandleSpecialFields(int.Parse(((View)sender).AutomationId));
+		}
+
 		void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
 			DataStore.UpdateItemAsync(Assessment);	
 		}
@@ -82,5 +116,6 @@ namespace CarAssessment.Views {
 		void Next(Object sender, EventArgs e) {
 			LayoutController.Next();
 		}
+
 	}
 }
