@@ -30,6 +30,14 @@ namespace CarAssessment.Models.Row {
 			if (OtherPhotos == null) {
 				OtherPhotos = new List<string>();
 			}
+
+			if (DamageDescriptions == null) {
+				DamageDescriptions = new List<DamageDescription>();
+			}
+
+			if (PreDamages == null ) {
+				PreDamages = new List<PreDamage>();
+			}
 		}
 
 		public int UserId { get; set; }
@@ -110,6 +118,9 @@ namespace CarAssessment.Models.Row {
 		public String PoliceReportPhotoPath { get; set; }
 		public String ServiceRecordBookPhotoPath { get; set; }
 		public String CarDocumentPhotoPath { get; set; }
+
+		public List<DamageDescription> DamageDescriptions { get; set; }
+		public List<PreDamage> PreDamages { get; set; }
 
 		public String Line1 => OwnerName + " " + LicensePlateClient + " gegen " + LicensePlateOponent;
 		public String Line2 => "Unfalldatum: " + AccidentDate.ToString("dd.MM.yyyy") + ", Aufnahmnedatum: " + AdmissionDate.ToString("dd.MM.yyyy");

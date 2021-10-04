@@ -627,13 +627,70 @@
                     <!--#endregion-->
                     <!--#region Damage Description-->
                     <CollectionView
+                        x:Name="DamageDescriptions"
                         Grid.Row="12"
                         Grid.ColumnSpan="2"
+                        AutomationId="4"
                         ItemsSource="{Binding DamageDescriptions}"
                         SelectionMode="None">
+                        <CollectionView.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <Button
+                                    x:Name="NewDamageDescriptionButton"
+                                    Grid.ColumnSpan="5"
+                                    Clicked="NewDamageDescriptionButton_Clicked"
+                                    Text="Neue Zeile" />
+                                <Label Grid.Row="1" Text="Beschreibung" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="Lackieren" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Text="Ersetzen" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    Text="Instands." />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="4"
+                                    Text="Stunden" />
+                            </Grid>
+                        </CollectionView.Header>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout Padding="10" Orientation="Horizontal" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="100" />
+                                    </Grid.ColumnDefinitions>
+                                    <Entry Text="{Binding Description}" />
+                                    <RadioButton Grid.Column="1" IsChecked="{Binding Paint}" />
+                                    <RadioButton Grid.Column="2" IsChecked="{Binding Replace}" />
+                                    <RadioButton Grid.Column="3" IsChecked="{Binding Repair}" />
+                                    <Entry
+                                        Grid.Column="4"
+                                        Text="{Binding Hours}"
+                                        WidthRequest="100" />
+                                </Grid>
+
+
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -642,7 +699,7 @@
                     <Grid
                         Grid.Row="13"
                         Margin="10,-50,10,20"
-                        AutomationId="4">
+                        AutomationId="44">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -666,7 +723,7 @@
                         Grid.Row="13"
                         Grid.Column="1"
                         Margin="10,-50,10,20"
-                        AutomationId="4">
+                        AutomationId="44">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -689,7 +746,7 @@
                     <Grid
                         Grid.Row="14"
                         Margin="10,0,10,30"
-                        AutomationId="4">
+                        AutomationId="44">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -713,7 +770,7 @@
                         Grid.Row="14"
                         Grid.Column="1"
                         Margin="10,0,10,30"
-                        AutomationId="4">
+                        AutomationId="44">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />

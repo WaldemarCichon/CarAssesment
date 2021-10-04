@@ -71,6 +71,7 @@ namespace CarAssessment.Views {
 			RearLeftPhoto.ImagePath = assessment.RearLeftPhotoPath;
 			RearRightPhoto.ImagePath = assessment.RearRightPhotoPath;
 
+			DamageDescriptions.ItemsSource = assessment.DamageDescriptions;
 			var l = new List<Damage>();
 			l.Add(new Damage());
 			l.Add(new Damage());
@@ -136,5 +137,10 @@ namespace CarAssessment.Views {
 			LayoutController.Next();
 		}
 
+		void NewDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {
+			Assessment.DamageDescriptions.Add(new DamageDescription());
+			DamageDescriptions.ItemsSource = null;
+			DamageDescriptions.ItemsSource = Assessment.DamageDescriptions;
+		}
 	}
 }
