@@ -15,7 +15,6 @@ namespace CarAssessment {
 			DependencyService.Register<LiteDatabaseDataStore>();
 
 			MainPage = new AppShell();
-			Routing.RegisterRoute(nameof(CameraPage), typeof(CameraPage));
 		}
 
 		protected override void OnStart() {

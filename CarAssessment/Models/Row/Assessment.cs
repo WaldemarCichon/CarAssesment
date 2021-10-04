@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using CarAssessment.Models.Parts;
+using LiteDB;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace CarAssessment.Models.Row {
@@ -30,6 +32,7 @@ namespace CarAssessment.Models.Row {
 			}
 		}
 
+		public int UserId { get; set; }
 		public String OwnerName { get; set; }
 		public String Address { get; set; }
 		public String Street { get; set; }
@@ -106,13 +109,44 @@ namespace CarAssessment.Models.Row {
 		public String CheckheftPhotoPath { get; set; }
 		public String PoliceReportPhotoPath { get; set; }
 		public String ServiceRecordBookPhotoPath { get; set; }
+		public String CarDocumentPhotoPath { get; set; }
 
 		public String Line1 => OwnerName + " " + LicensePlateClient + " gegen " + LicensePlateOponent;
 		public String Line2 => "Unfalldatum: " + AccidentDate.ToString("dd.MM.yyyy") + ", Aufnahmnedatum: " + AdmissionDate.ToString("dd.MM.yyyy");
 
+		private void addIfNotEmpty(List<string> list, string entry) {
+			if (entry != null && entry.Length>0) {
+				list.Add(entry);
+			}
+		}
 
-	public override void Persist() {
+		private void addIfNotEmpty(List<string> list, List<string> entries) {
+			if (entries.Count > 0) {
+				list.AddRange(entries);
+			}
+		}
+
+		[JsonIgnore]
+		[BsonIgnore]
+		public List<string> PictureList {
+			get {
+				var list = new List<string>();
+				addIfNotEmpty(list, FrontRightPhotoPath);
+				addIfNotEmpty(list, FrontLeftPhotoPath);
+				addIfNotEmpty(list, RearLeftPhotoPath);
+				addIfNotEmpty(list, RearRightPhotoPath);
+				addIfNotEmpty(list, ServiceRecordBookPhotoPath);
+				addIfNotEmpty(list, PoliceReportPhotoPath);
+				addIfNotEmpty(list, CarDocumentPhotoPath);
+				return list;
+			}
+		}
+
+
+		public override void Persist() {
 			throw new NotImplementedException();
 		}
 	}
+
+
 }

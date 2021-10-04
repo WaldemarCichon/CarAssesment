@@ -3,8 +3,8 @@ using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
-using Newtonsoft.Json;
 using CarAssessment.Models.Row;
+using System.Text.Json;
 
 namespace CarAssessment.Model.Collection {
 	public class AbstractCollection<T> : List<T> where T : AbstractRow, new() {
@@ -79,7 +79,7 @@ namespace CarAssessment.Model.Collection {
 		}
 
 		public T ElementFromJson(string json) {
-			return JsonConvert.DeserializeObject<T>(json);
+			return JsonSerializer.Deserialize<T>(json);
 		}
 
 		private String getPath() {

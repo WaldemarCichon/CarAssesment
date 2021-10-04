@@ -1,14 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="CarAssessment.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+<ContentPage
+    x:Class="CarAssessment.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="DarkGray"
+    Shell.NavBarIsVisible="False"
+    mc:Ignorable="d">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+        <StackLayout
+            Padding="10,0,10,0"
+            Background="DarkGray"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand">
+            <Label
+                Margin="0,0,0,50"
+                FontSize="40"
+                HorizontalOptions="Center"
+                Text="Login"
+                TextColor="AliceBlue" />
+            <Label
+                HorizontalOptions="Center"
+                Text="Login name"
+                TextColor="AliceBlue" />
+            <Entry Margin="50" Text="{Binding UserName}" />
+            <Label
+                HorizontalOptions="Center"
+                Text="Passwort"
+                TextColor="AliceBlue" />
+            <Entry Margin="50" Text="{Binding Password}" />
+
+            <Button
+                x:Name="LoginButton"
+                Clicked="LoginButton_Clicked"
+                Text="Login"
+                VerticalOptions="Center" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

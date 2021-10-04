@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using CarAssessment.DataHandling;
+using CarAssessment.REST;
 using Xamarin.Forms;
 
 namespace CarAssessment.Views {
@@ -23,10 +24,11 @@ namespace CarAssessment.Views {
 		void Camera_OnAvailable(System.Object sender, System.Boolean e) {
 		}
 
-		void Camera_MediaCaptured(System.Object sender, Xamarin.CommunityToolkit.UI.Views.MediaCapturedEventArgs e) {
+		async void Camera_MediaCaptured(System.Object sender, Xamarin.CommunityToolkit.UI.Views.MediaCapturedEventArgs e) {
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 			var filename = Path.Combine(documents, "img"+new Random().Next()+".HEIC");
 			File.WriteAllBytes(filename, e.ImageData);
+			await HttpRepository.Instance.PostPicture(filename);
 			EntityRepository.Instance.CurrentPhotoField.Source = filename;
 		}
 	}

@@ -12,11 +12,12 @@ using CarAssessment.Services;
 using System.Threading.Tasks;
 using CarAssessment.Models.Collection;
 using CarAssessment.Layout;
+using CarAssessment.REST;
 
 // Page is used as well for the new item but also for the editing
 namespace CarAssessment.Views {
 	public partial class NewItemPage : ContentPage {
-        private LayoutController LayoutController { get; set; }
+        private static LayoutController LayoutController { get; set; }
 
         public Item Item { get; set; }
 		class Damage {
@@ -25,7 +26,7 @@ namespace CarAssessment.Views {
 			String z;
 		}
 
-		public Command TitleClicked { get; } = new Command((param) => Console.WriteLine(param));
+		public Command TitleClicked { get; } = new Command((param) => LayoutController.DisplayedGroup = int.Parse(param as string));
 
 		IDataStore<Assessment> DataStore => DependencyService.Get<IDataStore<Assessment>>();
 		Assessment Assessment { get; set; }
@@ -79,7 +80,10 @@ namespace CarAssessment.Views {
 			await Shell.Current.GoToAsync(nameof(CameraPage));
 		}
 
-		void CancelButton_Clicked(System.Object sender, System.EventArgs e) {
+		async void CancelButton_Clicked(System.Object sender, System.EventArgs e) {
+			if (await DisplayAlert("Abbrechen?", "Wollen Sie die Eingabe wirklich ohne Speichern abbrechen?", "Ja", "Nein")) {
+				await Shell.Current.GoToAsync("..");
+			}
 		}
 
 		internal void HandleSpecialFields(int displayedGroup) {
@@ -101,8 +105,23 @@ namespace CarAssessment.Views {
 			HandleSpecialFields(int.Parse(((View)sender).AutomationId));
 		}
 
-		void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
-			DataStore.UpdateItemAsync(Assessment);	
+		async void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
+			if (Assessment.IsNewRow) {
+				Assessment.LastSaved = DateTime.Now;
+				await DataStore.AddItemAsync(Assessment);
+			} else {
+				await DataStore.UpdateItemAsync(Assessment);
+			}
+			await DataStore.Commit();
+			if (await DisplayAlert("Senden", "Soll der Datensatz auch gesendet werden?", "Ja", "Nein")) { 
+				if (Assessment.ObjectId < 1) {
+					await HttpRepository.Instance.PostAssessment(Assessment);
+					await DataStore.UpdateItemAsync(Assessment);
+				} else {
+					await HttpRepository.Instance.PutAssessment(Assessment);
+				}
+			}
+			await Shell.Current.GoToAsync("..");
 		}
 
 		void Up(Object sender, EventArgs e) {

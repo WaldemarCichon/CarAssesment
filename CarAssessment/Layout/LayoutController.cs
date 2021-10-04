@@ -70,7 +70,7 @@ namespace CarAssessment.Layout
 
         }
 
-        private int DisplayedGroup
+        internal int DisplayedGroup
         {
             get => displayedGroup;
             set {
@@ -80,16 +80,27 @@ namespace CarAssessment.Layout
             }
         }
 
+        private void Validate(int Group) {
+
+		}
+
         public void Next() {
-            DisplayedGroup++;
+            Validate(DisplayedGroup);
+            if (DisplayedGroup < 9) {
+                DisplayedGroup++;
+            }
 		}
 
         public void Previous() {
-            DisplayedGroup--;
+            Validate(DisplayedGroup);
+            if (DisplayedGroup > 1) {
+                DisplayedGroup--;
+            }
 		}
 
         public void Up() {
-
+            Validate(DisplayedGroup);
+            DisplayedGroup = 0;
 		}
     }
 }

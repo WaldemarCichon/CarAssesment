@@ -12,5 +12,8 @@ namespace CarAssessment.Services {
 		Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
 		Task<bool> PersistAsync();
 		Task<int> SendItemsAsync();
+		Task<bool> Commit();
+		Task<bool> Rollback();
+		Task<bool> StartTransaction();
 	}
 }

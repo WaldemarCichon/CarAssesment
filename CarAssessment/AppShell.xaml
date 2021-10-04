@@ -30,16 +30,26 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <TabBar>
+    <TabBar x:Name="TabBar">
         <ShellContent
-            Title="About"
+            x:Name="LoginTab"
+            Title="Login"
+            ChildAdded="LoginTab_ChildAdded"
+            ContentTemplate="{DataTemplate local:LoginPage}"
+            Icon="icon_feed.png" />
+        <ShellContent
+            x:Name="AssessmentTab"
+            Title="Gutachten"
+            ContentTemplate="{DataTemplate local:ItemsPage}"
+            Icon="icon_feed.png"
+            IsVisible="False" />
+        <ShellContent
+            x:Name="AboutTab"
+            Title="Über"
             ContentTemplate="{DataTemplate local:AboutPage}"
             Icon="icon_about.png"
+            IsVisible="True"
             Route="AboutPage" />
-        <ShellContent
-            Title="Browse"
-            ContentTemplate="{DataTemplate local:ItemsPage}"
-            Icon="icon_feed.png" />
     </TabBar>
 
     <!--

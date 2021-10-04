@@ -1,5 +1,5 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace CarAssessment.Models.Row {
 	public abstract class AbstractRow {
@@ -13,17 +13,21 @@ namespace CarAssessment.Models.Row {
 		}
 
 		public int Id { get; set; }
-		public DateTime Created { get; private set; }
-		public DateTime Persisted { get; private set; }
+		public int ObjectId { get; set; }
+		public DateTime Created { get; set; }
+		public DateTime LastSaved { get; set; }
+		public DateTime Sent { get; set; }
+
+		public bool IsNewRow { get => Created > LastSaved; }
 
 		public virtual void Persist() {
-			Persisted = DateTime.Now;
+			// Persisted = DateTime.Now;
 		}
 
 		protected virtual void InitRow() { }
 
 		public string ToJSonString() {
-			return JsonConvert.SerializeObject(this);
+			return JsonSerializer.Serialize(this);
 		}
 
 		public virtual string Text => "???";

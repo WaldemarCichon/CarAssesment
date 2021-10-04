@@ -57,7 +57,13 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Fahrzeugbilder" />
+                    Text="Fahrzeugbilder">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="2" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
                 <BoxView
                     Margin="10,0,10,0"
                     AutomationId="0"
@@ -72,7 +78,13 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Schadensbilder" />
+                    Text="Schadensbilder">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="3" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
                 <BoxView
                     Margin="10,0,10,0"
                     AutomationId="0"
@@ -87,7 +99,13 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Reifen" />
+                    Text="Reifen">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="4" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
                 <BoxView
                     Margin="10,0,10,0"
                     AutomationId="0"
@@ -102,7 +120,13 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Fahrzeugdaten" />
+                    Text="Fahrzeugdaten">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="5" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
                 <BoxView
                     Margin="10,0,10,0"
                     AutomationId="0"
@@ -117,37 +141,13 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Reparatur" />
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="7"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-65,0,10"
-                    AutomationId="7"
-                    FontSize="40"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Schaden" />
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="8"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-65,0,10"
-                    AutomationId="0"
-                    FontSize="40"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Weitere Daten" />
+                    Text="Reparatur">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="6" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
                 <BoxView
                     Margin="10,0,10,0"
                     AutomationId="0"
@@ -162,7 +162,55 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="AGBs/Unterschrift" />
+                    Text="Schaden">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="7" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Weitere Daten">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="8" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="AGBs/Unterschrift">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="9" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
                 <!--#endregion-->
                 <!--#region Single Titles-->
                 <BoxView
@@ -577,6 +625,19 @@
                         AutomationId="3" />
 
                     <!--#endregion-->
+                    <!--#region Damage Description-->
+                    <CollectionView
+                        Grid.Row="12"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding DamageDescriptions}"
+                        SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="10" Orientation="Horizontal" />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <!--#endregion-->
                     <!--#region Tire-->
                     <Grid
                         Grid.Row="13"
@@ -729,7 +790,7 @@
                         Margin="10,0,10,30"
                         AutomationId="5"
                         HorizontalOptions="FillAndExpand"
-                        ImagePath="{Binding CarDocumentPath, Mode=TwoWay}" />
+                        ImagePath="{Binding CarDocumentPhotoPath, Mode=TwoWay}" />
                     <!--#endregion-->
                     <!--#region Repair-->
                     <Label
