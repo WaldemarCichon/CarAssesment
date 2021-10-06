@@ -86,15 +86,23 @@ namespace CarAssessment.Layout
 
         public void Next() {
             Validate(DisplayedGroup);
-            if (DisplayedGroup < 9) {
+            ((NewItemPage)contentPage).PrevArrowButton.IsVisible = true;
+            if (DisplayedGroup < 11) {
                 DisplayedGroup++;
+                if (DisplayedGroup == 11) {
+                    ((NewItemPage)contentPage).NextArrowButton.IsVisible = false;
+                }
             }
 		}
 
         public void Previous() {
             Validate(DisplayedGroup);
+            ((NewItemPage)contentPage).NextArrowButton.IsVisible = true;
             if (DisplayedGroup > 1) {
                 DisplayedGroup--;
+                if (DisplayedGroup == 1) {
+                    ((NewItemPage)contentPage).PrevArrowButton.IsVisible = false;
+				}
             }
 		}
 

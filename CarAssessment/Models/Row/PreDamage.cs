@@ -6,6 +6,6 @@ namespace CarAssessment.Models.Row {
 		}
 
 		public string Description { get; set; }
-		public string PhotoPath { get; set; }
+		public string ImagePath { get; set; }
 	}
 }

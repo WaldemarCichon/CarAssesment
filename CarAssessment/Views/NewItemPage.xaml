@@ -99,7 +99,7 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Reifen">
+                    Text="Schadensbeschreibungen">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer CommandParameter="4" />
                         <TapGestureRecognizer />
@@ -120,7 +120,7 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Fahrzeugdaten">
+                    Text="Reifen">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer CommandParameter="5" />
                         <TapGestureRecognizer />
@@ -137,11 +137,11 @@
                     Color="LightGray" />
                 <Label
                     Margin="0,-65,0,10"
-                    AutomationId="6"
+                    AutomationId="0"
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Reparatur">
+                    Text="Fahrzeugdaten">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer CommandParameter="6" />
                         <TapGestureRecognizer />
@@ -162,7 +162,7 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Schaden">
+                    Text="Vorschäden">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer CommandParameter="7" />
                         <TapGestureRecognizer />
@@ -179,11 +179,11 @@
                     Color="LightGray" />
                 <Label
                     Margin="0,-65,0,10"
-                    AutomationId="0"
+                    AutomationId="6"
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Weitere Daten">
+                    Text="Reparatur">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer CommandParameter="8" />
                         <TapGestureRecognizer />
@@ -204,9 +204,51 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="AGBs/Unterschrift">
+                    Text="Schaden">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer CommandParameter="9" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Weitere Daten">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="10" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="AGBs/Unterschrift">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="11" />
                         <TapGestureRecognizer />
 
                     </Label.GestureRecognizers>
@@ -270,7 +312,7 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Reifen" />
+                    Text="Schadensbeschreibungen" />
                 <BoxView
                     Margin="10,0,10,0"
                     AutomationId="5"
@@ -282,13 +324,28 @@
                 <Label
                     Margin="0,-110,0,50"
                     AutomationId="5"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Reifen" />
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="6"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="6"
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Fahrzeugdaten" />
                 <BoxView
                     Margin="10,0,10,0"
-                    AutomationId="6"
+                    AutomationId="7"
                     CornerRadius="30"
                     HeightRequest="100"
                     HorizontalOptions="FillAndExpand"
@@ -296,14 +353,29 @@
                     Color="LightGray" />
                 <Label
                     Margin="0,-110,0,50"
-                    AutomationId="6"
+                    AutomationId="7"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Vorschäden" />
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="8"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="8"
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Reparatur" />
                 <BoxView
                     Margin="10,0,10,0"
-                    AutomationId="7"
+                    AutomationId="9"
                     CornerRadius="30"
                     HeightRequest="100"
                     HorizontalOptions="FillAndExpand"
@@ -311,14 +383,14 @@
                     Color="LightGray" />
                 <Label
                     Margin="0,-110,0,50"
-                    AutomationId="7"
+                    AutomationId="9"
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Schaden" />
                 <BoxView
                     Margin="10,0,10,0"
-                    AutomationId="8"
+                    AutomationId="10"
                     CornerRadius="30"
                     HeightRequest="100"
                     HorizontalOptions="FillAndExpand"
@@ -326,14 +398,14 @@
                     Color="LightGray" />
                 <Label
                     Margin="0,-110,0,50"
-                    AutomationId="8"
+                    AutomationId="10"
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Weitere Daten" />
                 <BoxView
                     Margin="10,0,10,0"
-                    AutomationId="9"
+                    AutomationId="11"
                     CornerRadius="30"
                     HeightRequest="100"
                     HorizontalOptions="FillAndExpand"
@@ -341,7 +413,7 @@
                     Color="LightGray" />
                 <Label
                     Margin="0,-110,0,50"
-                    AutomationId="9"
+                    AutomationId="11"
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
@@ -355,12 +427,14 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Button
+                        x:Name="PrevArrowButton"
+                        x:FieldModifier="public"
                         Clicked="Previous"
                         FontFamily="{StaticResource FontAwesomeSolid}"
                         HorizontalOptions="Center"
+                        IsVisible="false"
                         Text="&#xf30a;"
                         WidthRequest="50" />
-
                     <Button
                         Grid.Column="1"
                         Clicked="Up"
@@ -369,7 +443,9 @@
                         Text=""
                         WidthRequest="50" />
                     <Button
+                        x:Name="NextArrowButton"
                         Grid.Column="2"
+                        x:FieldModifier="public"
                         Clicked="Next"
                         FontFamily="{StaticResource FontAwesomeSolid}"
                         HorizontalOptions="Center"
@@ -645,6 +721,7 @@
                                     <ColumnDefinition Width="80" />
                                     <ColumnDefinition Width="80" />
                                     <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Button
                                     x:Name="NewDamageDescriptionButton"
@@ -679,6 +756,7 @@
                                         <ColumnDefinition Width="80" />
                                         <ColumnDefinition Width="80" />
                                         <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Entry Text="{Binding Description}" />
                                     <RadioButton Grid.Column="1" IsChecked="{Binding Paint}" />
@@ -688,6 +766,11 @@
                                         Grid.Column="4"
                                         Text="{Binding Hours}"
                                         WidthRequest="100" />
+                                    <Button
+                                        Grid.Column="5"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        FontSize="Large"
+                                        Text="" />
                                 </Grid>
 
 
@@ -699,7 +782,7 @@
                     <Grid
                         Grid.Row="13"
                         Margin="10,-50,10,20"
-                        AutomationId="44">
+                        AutomationId="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -723,7 +806,7 @@
                         Grid.Row="13"
                         Grid.Column="1"
                         Margin="10,-50,10,20"
-                        AutomationId="44">
+                        AutomationId="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -746,7 +829,7 @@
                     <Grid
                         Grid.Row="14"
                         Margin="10,0,10,30"
-                        AutomationId="44">
+                        AutomationId="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -770,7 +853,7 @@
                         Grid.Row="14"
                         Grid.Column="1"
                         Margin="10,0,10,30"
-                        AutomationId="44">
+                        AutomationId="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
@@ -797,25 +880,25 @@
                         Grid.Row="7"
                         Grid.Column="0"
                         Margin="10,0,10,0"
-                        AutomationId="5"
+                        AutomationId="6"
                         Text="{Binding ChassisNumber}" />
                     <local:TitledEntryField
                         Title="Kilometerstand"
                         Grid.Row="7"
                         Grid.Column="1"
                         Margin="10,0,10,0"
-                        AutomationId="5"
+                        AutomationId="6"
                         Text="{Binding Mileage}" />
                     <Label
                         Grid.Row="15"
                         Margin="10,-50,10,30"
-                        AutomationId="5"
+                        AutomationId="6"
                         Text="Scheckheft vorhanden?"
                         VerticalOptions="Center" />
                     <CheckBox
                         Grid.Row="15"
                         Margin="210,-75,0,0"
-                        AutomationId="5"
+                        AutomationId="6"
                         HeightRequest="100"
                         IsChecked="{Binding IsServiceRecordBook}" />
                     <local:PhotoField
@@ -824,7 +907,7 @@
                         Grid.Row="15"
                         Grid.Column="1"
                         Margin="10,-50,10,0"
-                        AutomationId="5"
+                        AutomationId="6"
                         HeightRequest="200"
                         HorizontalOptions="Center"
                         ImagePath="{Binding ServiceRecordsPhotoPath, Mode=TwoWay}" />
@@ -832,7 +915,7 @@
                         Grid.Row="16"
                         Grid.Column="0"
                         Margin="10,0,10,30"
-                        AutomationId="5"
+                        AutomationId="6"
                         Orientation="Horizontal">
                         <Label Text="Kfz verkehrssicher?" VerticalOptions="Center" />
                         <CheckBox />
@@ -845,32 +928,86 @@
                         Grid.Row="16"
                         Grid.Column="1"
                         Margin="10,0,10,30"
-                        AutomationId="5"
+                        AutomationId="6"
                         HorizontalOptions="FillAndExpand"
                         ImagePath="{Binding CarDocumentPhotoPath, Mode=TwoWay}" />
+                    <!--#endregion-->
+                    <!--#region PreDamage-->
+                    <CollectionView
+                        x:Name="PreDamageDescriptions"
+                        Grid.Row="17"
+                        Grid.ColumnSpan="2"
+                        AutomationId="7">
+                        <CollectionView.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="400" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Button
+                                    x:Name="NewPreDamageDescriptionButton"
+                                    Grid.ColumnSpan="3"
+                                    Clicked="NewPreDamageDescriptionButton_Clicked"
+                                    Text="Neue Zeile" />
+                                <Label
+                                    Grid.Row="1"
+                                    HorizontalOptions="Center"
+                                    Text="Beschreibung" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    HorizontalOptions="Center"
+                                    Text="Foto" />
+                            </Grid>
+
+                        </CollectionView.Header>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="400" />
+                                        <ColumnDefinition Width="50" />
+                                    </Grid.ColumnDefinitions>
+                                    <Editor Text="{Binding Description}" />
+                                    <local:PhotoField Grid.Column="1" ImagePath="{Binding ImagePath}" />
+                                    <Button
+                                        Grid.Column="2"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        FontSize="Large"
+                                        Text="" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                     <!--#endregion-->
                     <!--#region Repair-->
                     <Label
                         Grid.Row="18"
                         Margin="10,-70,10,30"
-                        AutomationId="6"
+                        AutomationId="8"
                         Text="Reparatur gewünscht?"
                         VerticalOptions="Center" />
                     <CheckBox
                         Grid.Row="18"
                         Margin="200,-100,0,0"
-                        AutomationId="6" />
+                        AutomationId="8" />
                     <local:TitledEntryField
                         Title="Werkstatt"
                         Grid.Row="18"
                         Grid.Column="1"
                         Margin="10,-80,10,30"
-                        AutomationId="6" />
+                        AutomationId="8" />
                     <Label
                         Grid.Row="19"
                         Grid.ColumnSpan="2"
                         Margin="10,0,10,10"
-                        AutomationId="6"
+                        AutomationId="8"
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         Text="Stundensätze" />
@@ -878,7 +1015,7 @@
                         Grid.Row="20"
                         Grid.ColumnSpan="2"
                         Margin="10,0,10,00"
-                        AutomationId="6">
+                        AutomationId="8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
@@ -944,7 +1081,7 @@
                     <StackLayout
                         Grid.Row="21"
                         Margin="10,0,10,60"
-                        AutomationId="6"
+                        AutomationId="8"
                         Orientation="Horizontal">
                         <Label Text="Mietwagen erwünscht?" VerticalOptions="Center" />
                         <CheckBox IsChecked="{Binding RentalCar}" />
@@ -957,7 +1094,7 @@
                         Grid.Row="23"
                         Grid.ColumnSpan="2"
                         Margin="10,-160,10,0"
-                        AutomationId="7"
+                        AutomationId="9"
                         Orientation="Horizontal">
                         <Label Text="Unser Kunde" VerticalOptions="Center" />
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding MustSlowDown}" />
@@ -967,7 +1104,7 @@
                         Grid.Row="24"
                         Grid.ColumnSpan="2"
                         Margin="10,-100,10,0"
-                        AutomationId="7"
+                        AutomationId="9"
                         Orientation="Horizontal">
                         <Label Text="Unfallgegner" VerticalOptions="Center" />
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding WasDriving}" />
@@ -981,7 +1118,7 @@
                         Grid.Row="25"
                         Grid.ColumnSpan="2"
                         Margin="10,-40,10,0"
-                        AutomationId="7"
+                        AutomationId="9"
                         Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveBackwards}" />
                         <Label Text="fuhr rückwärts" VerticalOptions="Center" />
@@ -994,7 +1131,7 @@
                         Grid.Row="26"
                         Grid.ColumnSpan="2"
                         Margin="10,-10,10,0"
-                        AutomationId="7"
+                        AutomationId="9"
                         Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstDrivingCustomer}" />
                         <Label Text="gegen vorbeifahrenden Kunden" VerticalOptions="Center" />
@@ -1007,7 +1144,7 @@
                         Grid.Row="27"
                         Grid.ColumnSpan="2"
                         Margin="10,-10,10,0"
-                        AutomationId="7"
+                        AutomationId="9"
                         Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DisobeyingRightLeft}" />
                         <Label Text="rechts vor links missachtet" VerticalOptions="Center" />
@@ -1023,25 +1160,25 @@
                         Grid.Row="28"
                         Grid.RowSpan="2"
                         Margin="10,0,10,0"
-                        AutomationId="7"
+                        AutomationId="9"
                         HeightRequest="200"
                         Text="{Binding Description}" />
                     <StackLayout
                         Grid.Row="28"
                         Grid.Column="1"
                         Margin="10,0,10,0"
-                        AutomationId="7">
+                        AutomationId="9">
                         <local:TitledEntryField Title="Ort des Unfalls" Text="{Binding AccidentLocation}" />
                         <local:TitledEntryField Title="Genauer Zeitpunkt des Unfalls" Text="{Binding AccidentTimestamp}" />
                     </StackLayout>
                     <StackLayout
                         Grid.Row="31"
                         Margin="10,0,10,0"
-                        AutomationId="7"
+                        AutomationId="9"
                         Orientation="Horizontal">
                         <Label Text="Polizeibereicht vorhanden?" VerticalOptions="Center" />
                         <CheckBox
-                            AutomationId="7"
+                            AutomationId="9"
                             CheckedChanged="HandleSpecialFields"
                             IsChecked="{Binding IsPoliceReport, Mode=TwoWay}" />
                     </StackLayout>
@@ -1050,24 +1187,24 @@
                         Grid.Row="31"
                         Grid.Column="1"
                         Margin="10,0,10,0"
-                        AutomationId="7"
+                        AutomationId="9"
                         ImagePath="{Binding PoliceReportPhotoPath}" />
                     <StackLayout
                         Grid.Row="33"
                         Margin="10,0,10,150"
-                        AutomationId="7"
+                        AutomationId="9"
                         Orientation="Horizontal">
                         <Label Margin="0,26,0,0" Text="Anwalt erwünscht:" />
                         <CheckBox
                             Margin="0,15,0,0"
-                            AutomationId="7"
+                            AutomationId="9"
                             CheckedChanged="HandleSpecialFields"
                             IsChecked="{Binding WantAdvocate}"
                             VerticalOptions="Start" />
                         <Label Margin="0,26,0,0" Text="Unser Anwalt" />
                         <CheckBox
                             Margin="0,15,0,0"
-                            AutomationId="7"
+                            AutomationId="9"
                             CheckedChanged="HandleSpecialFields"
                             IsChecked="{Binding IsRecommendedAdvocate}"
                             VerticalOptions="Start" />
@@ -1078,7 +1215,7 @@
                         Grid.Row="33"
                         Grid.Column="1"
                         Margin="10,0,10,0"
-                        AutomationId="7"
+                        AutomationId="9"
                         Text="{Binding RecommendedAdvocate}" />
                     <local:TitledEntryField
                         x:Name="CustomersAdvocate"
@@ -1086,7 +1223,7 @@
                         Grid.Row="33"
                         Grid.Column="1"
                         Margin="10,0,10,0"
-                        AutomationId="7"
+                        AutomationId="9"
                         Text="{Binding CustomersAdvocate}" />
                     <!--#endregion-->
                     <!--#region Additional Data-->
@@ -1095,40 +1232,43 @@
                         Grid.Row="36"
                         Grid.Column="0"
                         Margin="10,-200,10,0"
-                        AutomationId="8"
+                        AutomationId="10"
                         Text="{Binding Phone}" />
                     <local:TitledEntryField
                         Title="Email"
                         Grid.Row="36"
                         Grid.Column="1"
                         Margin="10,-200,10,0"
-                        AutomationId="8"
+                        AutomationId="10"
                         Text="{Binding Email}" />
                     <local:TitledEntryField
                         Title="Schadensnummer"
                         Grid.Row="37"
                         Grid.Column="0"
                         Margin="10,-140,10,0"
-                        AutomationId="8"
+                        AutomationId="10"
                         Text="{Binding DamageId}" />
                     <local:TitledEntryField
                         Title="Versicherungsnummer"
                         Grid.Row="37"
                         Grid.Column="1"
                         Margin="10,-140,10,0"
-                        AutomationId="8"
+                        AutomationId="10"
                         Text="{Binding InsuranceId}" />
                     <local:TitledEditorField
                         Title="Sonstiges"
                         Grid.Row="38"
                         Grid.ColumnSpan="2"
                         Margin="10,-80,10,180"
-                        AutomationId="8"
+                        AutomationId="10"
                         Text="{Binding Miscellanious}" />
+                    <!--#endregion-->
+                    <!--#region Signature-->
                     <StackLayout
                         Grid.Row="39"
                         Grid.ColumnSpan="2"
-                        AutomationId="9"
+                        Margin="0,-20,0,0"
+                        AutomationId="11"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal"
                         VerticalOptions="Center">
@@ -1142,6 +1282,7 @@
                             HeightRequest="150"
                             WidthRequest="500" />
                     </StackLayout>
+                    <!--#endregion-->
                 </Grid>
             </ScrollView>
             <StackLayout

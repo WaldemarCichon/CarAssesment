@@ -20,11 +20,6 @@ namespace CarAssessment.Views {
         private static LayoutController LayoutController { get; set; }
 
         public Item Item { get; set; }
-		class Damage {
-			String x;
-			int y;
-			String z;
-		}
 
 		public Command TitleClicked { get; } = new Command((param) => LayoutController.DisplayedGroup = int.Parse(param as string));
 
@@ -39,6 +34,8 @@ namespace CarAssessment.Views {
 			InitializeComponent();
 			InitializeContext(assessment);
 			LayoutController = new LayoutController(this);
+			PrevArrowButton.BindingContext = LayoutController;
+			NextArrowButton.BindingContext = LayoutController;
 			var grid = this.Content as Grid;
 			var stackLayout = grid.Children[0] as StackLayout;
 			foreach (var view in stackLayout.Children) {
@@ -61,6 +58,7 @@ namespace CarAssessment.Views {
 			}
 			Assessment = assessment;
 			BindingContext = assessment;
+
 			DamagePhotos.SourceList = new ImageList(assessment.DamagePhotos);
 			NearbyPhotos.SourceList = new ImageList(assessment.NearbyPhotos);
 			DetailPhotos.SourceList = new ImageList(assessment.DetailPhotos);
@@ -72,9 +70,7 @@ namespace CarAssessment.Views {
 			RearRightPhoto.ImagePath = assessment.RearRightPhotoPath;
 
 			DamageDescriptions.ItemsSource = assessment.DamageDescriptions;
-			var l = new List<Damage>();
-			l.Add(new Damage());
-			l.Add(new Damage());
+			PreDamageDescriptions.ItemsSource = assessment.PreDamages;
 		}
 
 		async void AddNewPreDamageImage_Clicked(System.Object sender, System.EventArgs e) {
@@ -141,6 +137,12 @@ namespace CarAssessment.Views {
 			Assessment.DamageDescriptions.Add(new DamageDescription());
 			DamageDescriptions.ItemsSource = null;
 			DamageDescriptions.ItemsSource = Assessment.DamageDescriptions;
+		}
+
+		void NewPreDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {
+			Assessment.PreDamages.Add(new PreDamage());
+			PreDamageDescriptions.ItemsSource = null;
+			PreDamageDescriptions.ItemsSource = Assessment.PreDamages;
 		}
 	}
 }
