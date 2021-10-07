@@ -179,7 +179,7 @@
                     Color="LightGray" />
                 <Label
                     Margin="0,-65,0,10"
-                    AutomationId="6"
+                    AutomationId="0"
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
@@ -706,6 +706,7 @@
                         x:Name="DamageDescriptions"
                         Grid.Row="12"
                         Grid.ColumnSpan="2"
+                        Margin="0,-100,0,0"
                         AutomationId="4"
                         ItemsSource="{Binding DamageDescriptions}"
                         SelectionMode="None">
@@ -767,7 +768,10 @@
                                         Text="{Binding Hours}"
                                         WidthRequest="100" />
                                     <Button
+                                        x:Name="DeleteDamageDescriptionButton"
                                         Grid.Column="5"
+                                        Clicked="DeleteDamageDescriptionButton_Clicked"
+                                        CommandParameter="{Binding .}"
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         FontSize="Large"
                                         Text="" />
@@ -937,6 +941,7 @@
                         x:Name="PreDamageDescriptions"
                         Grid.Row="17"
                         Grid.ColumnSpan="2"
+                        Margin="0,-100,0,0"
                         AutomationId="7">
                         <CollectionView.Header>
                             <Grid>
@@ -977,7 +982,10 @@
                                     <Editor Text="{Binding Description}" />
                                     <local:PhotoField Grid.Column="1" ImagePath="{Binding ImagePath}" />
                                     <Button
+                                        x:Name="DeletePreDamageDescriptionButton"
                                         Grid.Column="2"
+                                        Clicked="DeletePreDamageDescriptionButton_Clicked"
+                                        CommandParameter="{Binding .}"
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         FontSize="Large"
                                         Text="" />

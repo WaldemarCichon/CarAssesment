@@ -6,11 +6,11 @@
     xmlns:local="clr-namespace:CarAssessment.ViewModels"
     xmlns:model="clr-namespace:CarAssessment.Models.Row"
     x:Name="BrowseItemsPage"
-    Title="{Binding Title}"
+    Title="Liste Gutachten"
     BackgroundColor="DarkGray">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding AddItemCommand}" Text="Add" />
+        <ToolbarItem Command="{Binding AddItemCommand}" Text="Neues Gutachten" />
     </ContentPage.ToolbarItems>
     <!--
         x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
@@ -26,24 +26,74 @@
             SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Assessment">
+                    <Grid Padding="15,7" x:DataType="model:Assessment">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <BoxView
+                            Grid.RowSpan="2"
+                            Grid.ColumnSpan="4"
+                            Margin="-5"
+                            BackgroundColor="Blue"
+                            CornerRadius="2" />
+                        <BoxView
+                            Grid.RowSpan="2"
+                            Grid.ColumnSpan="4"
+                            Margin="-3"
+                            BackgroundColor="Bisque"
+                            CornerRadius="2" />
                         <Label
-                            FontSize="16"
+                            FontSize="20"
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemTextStyle}"
                             Text="{Binding Line1}" />
                         <Label
-                            FontSize="13"
+                            Grid.Row="1"
+                            FontSize="18"
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             Text="{Binding Line2}" />
-                        <StackLayout.GestureRecognizers>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Created, StringFormat='{0:dd.MM.yyyy}'}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Sent, StringFormat='{0:dd.MM.yyyy}'}" />
+                        <Button
+                            x:Name="SendAssessementButton"
+                            Grid.RowSpan="2"
+                            Grid.Column="2"
+                            Clicked="SendAssessementButton_Clicked"
+                            CommandParameter="{Binding .}"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Text=""
+                            VerticalOptions="Center" />
+                        <Button
+                            x:Name="DeleteAssessmentButton"
+                            Grid.RowSpan="2"
+                            Grid.Column="3"
+                            AutomationId="{Binding Id}"
+                            Clicked="DeleteAssessmentButton_Clicked"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Text=""
+                            VerticalOptions="Center" />
+
+                        <Grid.GestureRecognizers>
                             <TapGestureRecognizer
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"
                                 CommandParameter="{Binding .}"
                                 NumberOfTapsRequired="1" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                        </Grid.GestureRecognizers>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

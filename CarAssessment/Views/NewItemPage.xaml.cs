@@ -144,5 +144,26 @@ namespace CarAssessment.Views {
 			PreDamageDescriptions.ItemsSource = null;
 			PreDamageDescriptions.ItemsSource = Assessment.PreDamages;
 		}
+
+		async void DeleteDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {
+			if (!await DisplayAlert("Schaden löschen", "Wollen Sie die Beschreibung des Schadens löschen?", "Ja", "Nein")) {
+				return;
+			}
+			var damageDescription = (sender as Button).CommandParameter as DamageDescription;
+			Assessment.DamageDescriptions.Remove(damageDescription);
+			DamageDescriptions.ItemsSource = null;
+			DamageDescriptions.ItemsSource = Assessment.DamageDescriptions;
+		}
+
+		async void DeletePreDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) { 
+			if (!await DisplayAlert("Vorschaden löschen","Wollen Sie die Beschreibung des Vorschaden löschen?","Ja","Nein")) {
+				return;
+			}
+			var preDamageDescription = (sender as Button).CommandParameter as PreDamage;
+			Assessment.PreDamages.Remove(preDamageDescription);
+			PreDamageDescriptions.ItemsSource = null;
+			PreDamageDescriptions.ItemsSource = Assessment.PreDamages;
+		}
+
 	}
 }

@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using CarAssessment.Models;
 using CarAssessment.Views;
 using CarAssessment.Models.Row;
+using System.Collections.Generic;
 
 namespace CarAssessment.ViewModels {
 	public class ItemsViewModel : BaseViewModel {
@@ -34,14 +35,23 @@ namespace CarAssessment.ViewModels {
 			try {
 				Assessments.Clear();
 				var items = await DataStore.GetItemsAsync(true);
+				var assessments = new List<Assessment>();
 				foreach (var item in items) {
-					Assessments.Add(item);
+					assessments.Add(item);
+				}
+				assessments.Sort((assessment1, assessment2) => assessment2.Id - assessment1.Id); 
+				foreach(var assessment in assessments) {
+					Assessments.Add(assessment);
 				}
 			} catch (Exception ex) {
 				Debug.WriteLine(ex);
 			} finally {
 				IsBusy = false;
 			}
+		}
+
+		internal async void Refresh() {
+			await ExecuteLoadItemsCommand();
 		}
 
 		public void OnAppearing() {
