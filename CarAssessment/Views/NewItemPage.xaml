@@ -26,7 +26,14 @@
                     Text="Kfz-Gutachten Version 0.1" />
                 <!--#region Title List-->
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="8,-2,8,-22"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    Color="Blue" />
+                <BoxView
+                    Margin="10,-65,10,0"
                     AutomationId="0"
                     CornerRadius="30"
                     HeightRequest="60"
