@@ -17,11 +17,16 @@ using CarAssessment.REST;
 // Page is used as well for the new item but also for the editing
 namespace CarAssessment.Views {
 	public partial class NewItemPage : ContentPage {
-        private static LayoutController LayoutController { get; set; }
+		private static LayoutController LayoutController { get; set; }
+		private static BoxView dialogOuterBox {get;set;}
 
         public Item Item { get; set; }
 
-		public Command TitleClicked { get; } = new Command((param) => LayoutController.DisplayedGroup = int.Parse(param as string));
+		public Command TitleClicked { get; } = new Command((param) => {
+			LayoutController.DisplayedGroup = int.Parse(param as string);
+			dialogOuterBox.IsVisible = true;
+		});
+			
 
 		IDataStore<Assessment> DataStore => DependencyService.Get<IDataStore<Assessment>>();
 		Assessment Assessment { get; set; }
@@ -33,6 +38,7 @@ namespace CarAssessment.Views {
 		public NewItemPage(Assessment assessment) {
 			InitializeComponent();
 			InitializeContext(assessment);
+			dialogOuterBox = DialogOuterBox;
 			LayoutController = new LayoutController(this);
 			PrevArrowButton.BindingContext = LayoutController;
 			NextArrowButton.BindingContext = LayoutController;
@@ -123,6 +129,7 @@ namespace CarAssessment.Views {
 
 		void Up(Object sender, EventArgs e) {
 			LayoutController.Up();
+			DialogOuterBox.IsVisible = false;
 		}
 
 		void Previous(Object sender, EventArgs e) {

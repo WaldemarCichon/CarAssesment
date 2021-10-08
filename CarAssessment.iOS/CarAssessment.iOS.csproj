@@ -124,22 +124,12 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <BundleResource Include="Resources\IMG_2194.HEIC" />
-    <BundleResource Include="Resources\IMG_2193.HEIC" />
-    <BundleResource Include="Resources\IMG_2195.HEIC" />
-    <BundleResource Include="Resources\IMG_2196.HEIC" />
-    <BundleResource Include="Resources\IMG_2197.HEIC" />
-    <BundleResource Include="Resources\IMG_2198.HEIC" />
-    <BundleResource Include="Resources\IMG_2199.HEIC" />
-    <BundleResource Include="Resources\IMG_2200.HEIC" />
-    <BundleResource Include="Resources\IMG_2201.HEIC" />
-    <BundleResource Include="Resources\IMG_2202.HEIC" />
-    <BundleResource Include="Resources\IMG_2203 2.HEIC" />
     <BundleResource Include="Resources\camera.png" />
     <BundleResource Include="Resources\trash.png" />
     <BundleResource Include="Resources\camera64.png" />
     <BundleResource Include="Resources\FontAwesomeRegular.otf" />
     <BundleResource Include="Resources\FontAwesome6Solid.otf" />
+    <BundleResource Include="Resources\kfz-logo.gif" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

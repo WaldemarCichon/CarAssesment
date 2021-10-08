@@ -10,7 +10,7 @@
     BackgroundColor="DarkGray">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding AddItemCommand}" Text="Neues Gutachten" />
+        <ToolbarItem Command="{Binding AddItemCommand}" Text="+" />
     </ContentPage.ToolbarItems>
     <!--
         x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
@@ -26,7 +26,7 @@
             SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="15,7" x:DataType="model:Assessment">
+                    <Grid Padding="15,15" x:DataType="model:Assessment">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="150" />
@@ -47,7 +47,7 @@
                             Grid.RowSpan="2"
                             Grid.ColumnSpan="4"
                             Margin="-3"
-                            BackgroundColor="Bisque"
+                            BackgroundColor="#f0f0f0"
                             CornerRadius="2" />
                         <Label
                             FontSize="20"

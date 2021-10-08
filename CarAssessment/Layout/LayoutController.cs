@@ -77,6 +77,8 @@ namespace CarAssessment.Layout
                 displayedGroup = value;
                 allViews.ForEach((view) => view.IsVisible = int.Parse(view.AutomationId) == displayedGroup);
 				((NewItemPage)contentPage).HandleSpecialFields(displayedGroup);
+                ((NewItemPage)contentPage).PrevArrowButton.IsVisible = displayedGroup != 1;
+                ((NewItemPage)contentPage).NextArrowButton.IsVisible = displayedGroup != 11;
             }
         }
 

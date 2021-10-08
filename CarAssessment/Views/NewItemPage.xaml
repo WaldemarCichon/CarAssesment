@@ -7,7 +7,8 @@
     xmlns:local="clr-namespace:CarAssessment.Components"
     xmlns:sig="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
     Title="New Item"
-    ios:Page.UseSafeArea="true">
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="DarkGray">
     <!--  Shell.PresentationMode="ModalAnimated"  -->
     <ContentPage.Content>
         <Grid>
@@ -30,7 +31,7 @@
                     CornerRadius="30"
                     HeightRequest="60"
                     HorizontalOptions="FillAndExpand"
-                    Color="GreenYellow" />
+                    Color="LightGray" />
                 <Label
                     Margin="0,-65,0,10"
                     AutomationId="0"
@@ -261,7 +262,7 @@
                     CornerRadius="30"
                     HeightRequest="100"
                     HorizontalOptions="FillAndExpand"
-                    Color="GreenYellow" />
+                    Color="LightGray" />
                 <Label
                     Margin="0,-110,0,50"
                     AutomationId="1"
@@ -514,14 +515,24 @@
                     </Grid.RowDefinitions>
                     <!--#region Main Data-->
                     <BoxView
+                        x:Name="DialogOuterBox"
+                        Grid.Row="0"
+                        Grid.RowSpan="41"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="3,0,3,158"
+                        CornerRadius="0"
+                        Color="Blue" />
+                    <BoxView
                         x:Name="DialogBox"
                         Grid.Row="0"
                         Grid.RowSpan="41"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
-                        Margin="2,0,2,160"
+                        Margin="5,2,5,160"
                         CornerRadius="0"
-                        Color="Aqua" />
+                        Color="LightGray" />
+
                     <local:TitledEntryField
                         Title="Fahrzeughalter"
                         Grid.Row="0"
