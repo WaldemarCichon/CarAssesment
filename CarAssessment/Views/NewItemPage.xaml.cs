@@ -97,7 +97,7 @@ namespace CarAssessment.Views {
 				NavigationButtons.IsVisible = true;
 				DialogBox.IsVisible = true;
 			}
-			if (displayedGroup == 7) {
+			if (displayedGroup == 9) {
 				PoliceReport.IsVisible = Assessment.IsPoliceReport == true;
 				RecommendedAdvocate.IsVisible = Assessment.WantAdvocate == true && Assessment.IsRecommendedAdvocate==true;
 				CustomersAdvocate.IsVisible = Assessment.WantAdvocate == true && Assessment.IsRecommendedAdvocate == false;

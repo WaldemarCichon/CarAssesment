@@ -55,14 +55,14 @@ namespace CarAssessment.Models.Row {
 		public String InspectionLocation { get; set; }
 		public String InspectionAttendees { get; set; }
 		public String PreviousDamage { get; set; }
-		public Boolean? PreviousDamageFixed { get; set; }
+		public Boolean PreviousDamageFixed { get; set; }
 		public String PreviousDamageNotFixed { get; set; }
 		public Tire FrontLeft { get; set; }
 		public Tire FrontRight { get; set; }
 		public Tire RearLeft { get; set; }
 		public Tire RearRight { get; set; }
-		public Boolean? RoadWorthy { get; set; }
-		public Boolean? ReadyToDrive { get; set; }
+		public Boolean IsRoadWorthy { get; set; }
+		public Boolean IsReadyToDrive { get; set; }
 		public Boolean Repair { get; set; }
 		public String WhereToRepair { get; set; }
 		public decimal HourlyRateBody { get; set; }
@@ -73,24 +73,26 @@ namespace CarAssessment.Models.Row {
 		public decimal HourlyRatePaintPoint { get; set; }
 		public decimal UPESurcharge { get; set; }
 		public decimal Transport { get; set; }
+		public decimal TimedRateTransport { get; set; }
+		public decimal FlatrateTransport { get; set; }
 		public decimal SmallPartsSurcharge { get; set; }
-		public Boolean? RentalCar { get; set; }
-		public Boolean? IsEligible { get; set; }
+		public Boolean RentalCar { get; set; }
+		public Boolean IsEligible { get; set; }
 		public String Description { get; set; }
-		public Boolean? MustSlowDown { get; set; }
-		public Boolean? WasDriving { get; set; }
-		public Boolean? DroveAgainst { get; set; }
-		public Boolean? CameFromMinorStreet { get; set; }
-		public Boolean? DroveBackwards { get; set; }
-		public Boolean? AgainstParkingCar { get; set; }
-		public Boolean? AgainstStoppedCustomer { get; set; }
-		public Boolean? AgainstDrivingCustomer { get; set; }
-		public Boolean? TooFast { get; set; }
-		public Boolean? OverRedLight { get; set; }
-		public Boolean? OverStop { get; set; }
-		public Boolean? ChangedLane { get; set; }
-		public Boolean? DisobeyingRightLeft { get; set; }
-		public Boolean? OverlookedCustomer { get; set; }
+		public Boolean MustSlowDown { get; set; }
+		public Boolean WasDriving { get; set; }
+		public Boolean DroveAgainst { get; set; }
+		public Boolean CameFromMinorStreet { get; set; }
+		public Boolean DroveBackwards { get; set; }
+		public Boolean AgainstParkingCar { get; set; }
+		public Boolean AgainstStoppedCustomer { get; set; }
+		public Boolean AgainstDrivingCustomer { get; set; }
+		public Boolean TooFast { get; set; }
+		public Boolean OverRedLight { get; set; }
+		public Boolean OverStop { get; set; }
+		public Boolean ChangedLane { get; set; }
+		public Boolean DisobeyingRightLeft { get; set; }
+		public Boolean OverlookedCustomer { get; set; }
 		public String AccidentLocation { get; set; }
 		public DateTime AccidentTimestamp { get; set; }
 		public String Miscellanious { get; set; }
@@ -98,9 +100,9 @@ namespace CarAssessment.Models.Row {
 		public String DamageId { get; set; }
 		public String Email { get; set; }
 		public String Phone { get; set; }
-		public Boolean? IsPoliceReport { get; set; }
-		public Boolean? WantAdvocate { get; set; }
-		public Boolean? IsRecommendedAdvocate { get; set; }
+		public Boolean IsPoliceReport { get; set; }
+		public Boolean WantAdvocate { get; set; }
+		public Boolean IsRecommendedAdvocate { get; set; }
 		public String RecommendedAdvocate { get; set; }
 		public String CustomersAdvocate { get; set; }
 		public Boolean IsServiceRecordBook { get; set; }

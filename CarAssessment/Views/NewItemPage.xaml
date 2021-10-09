@@ -5,9 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:local="clr-namespace:CarAssessment.Components"
+    xmlns:model="clr-namespace:CarAssessment.Models.Row"
     xmlns:sig="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
     Title="New Item"
     ios:Page.UseSafeArea="true"
+    x:DataType="model:Assessment"
     BackgroundColor="DarkGray">
     <!--  Shell.PresentationMode="ModalAnimated"  -->
     <ContentPage.Content>
@@ -19,12 +21,13 @@
             </Grid.RowDefinitions>
             <StackLayout>
                 <Label
-                    Margin="0,5,0,0"
+                    Margin="0,5,0,5"
                     FontAttributes="Bold"
                     FontSize="40"
                     HorizontalOptions="Center"
                     Text="Kfz-Gutachten Version 0.1" />
                 <!--#region Title List-->
+                <!--
                 <BoxView
                     Margin="8,-2,8,-22"
                     AutomationId="0"
@@ -32,8 +35,9 @@
                     HeightRequest="60"
                     HorizontalOptions="FillAndExpand"
                     Color="Blue" />
+                -->
                 <BoxView
-                    Margin="10,-65,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="0"
                     CornerRadius="30"
                     HeightRequest="60"
@@ -264,7 +268,13 @@
                 <!--#endregion-->
                 <!--#region Single Titles-->
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="8,0,8,0"
+                    CornerRadius="30"
+                    HeightRequest="104"
+                    HorizontalOptions="FillAndExpand"
+                    Color="Blue" />
+                <BoxView
+                    Margin="10,-108,10,0"
                     AutomationId="1"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -277,7 +287,7 @@
                     HorizontalOptions="Center"
                     Text="Grunddaten" />
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="10,-108,10,0"
                     AutomationId="2"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -292,7 +302,7 @@
                     IsVisible="false"
                     Text="Fahrzeugbilder" />
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="10,-108,10,0"
                     AutomationId="3"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -307,7 +317,7 @@
                     IsVisible="false"
                     Text="Schadensbilder" />
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="10,-108,10,0"
                     AutomationId="4"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -322,7 +332,7 @@
                     IsVisible="false"
                     Text="Schadensbeschreibungen" />
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="10,-108,10,0"
                     AutomationId="5"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -337,7 +347,7 @@
                     IsVisible="false"
                     Text="Reifen" />
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="10,-108,10,0"
                     AutomationId="6"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -352,7 +362,7 @@
                     IsVisible="false"
                     Text="Fahrzeugdaten" />
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="10,-108,10,0"
                     AutomationId="7"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -367,7 +377,7 @@
                     IsVisible="false"
                     Text="Vorschäden" />
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="10,-108,10,0"
                     AutomationId="8"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -382,7 +392,7 @@
                     IsVisible="false"
                     Text="Reparatur" />
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="10,-108,10,0"
                     AutomationId="9"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -397,7 +407,7 @@
                     IsVisible="false"
                     Text="Schaden" />
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="10,-108,10,0"
                     AutomationId="10"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -412,7 +422,7 @@
                     IsVisible="false"
                     Text="Weitere Daten" />
                 <BoxView
-                    Margin="10,0,10,0"
+                    Margin="10,-108,10,0"
                     AutomationId="11"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -724,7 +734,7 @@
                         x:Name="DamageDescriptions"
                         Grid.Row="12"
                         Grid.ColumnSpan="2"
-                        Margin="0,-100,0,0"
+                        Margin="0,-60,0,0"
                         AutomationId="4"
                         ItemsSource="{Binding DamageDescriptions}"
                         SelectionMode="None">
@@ -744,7 +754,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Button
                                     x:Name="NewDamageDescriptionButton"
-                                    Grid.ColumnSpan="5"
+                                    Grid.ColumnSpan="6"
                                     Clicked="NewDamageDescriptionButton_Clicked"
                                     Text="Neue Zeile" />
                                 <Label Grid.Row="1" Text="Beschreibung" />
@@ -767,7 +777,7 @@
                             </Grid>
                         </CollectionView.Header>
                         <CollectionView.ItemTemplate>
-                            <DataTemplate>
+                            <DataTemplate x:DataType="model:DamageDescription">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -911,47 +921,45 @@
                         Margin="10,0,10,0"
                         AutomationId="6"
                         Text="{Binding Mileage}" />
-                    <Label
+                    <StackLayout
                         Grid.Row="15"
-                        Margin="10,-50,10,30"
                         AutomationId="6"
-                        Text="Scheckheft vorhanden?"
-                        VerticalOptions="Center" />
-                    <CheckBox
-                        Grid.Row="15"
-                        Margin="210,-75,0,0"
-                        AutomationId="6"
-                        HeightRequest="100"
-                        IsChecked="{Binding IsServiceRecordBook}" />
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Label Text="Scheckheft vorhanden?" VerticalOptions="Center" />
+                        <CheckBox IsChecked="{Binding IsServiceRecordBook}" />
+                    </StackLayout>
+
                     <local:PhotoField
                         x:Name="Scheckheft"
                         Title="Scheckheft"
                         Grid.Row="15"
                         Grid.Column="1"
-                        Margin="10,-50,10,0"
+                        Margin="10,-25,10,0"
                         AutomationId="6"
                         HeightRequest="200"
                         HorizontalOptions="Center"
-                        ImagePath="{Binding ServiceRecordsPhotoPath, Mode=TwoWay}" />
+                        ImagePath="{Binding ServiceRecordBookPhotoPath, Mode=TwoWay}" />
                     <StackLayout
                         Grid.Row="16"
                         Grid.Column="0"
-                        Margin="10,0,10,30"
+                        Margin="10,80,10,40"
                         AutomationId="6"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
                         <Label Text="Kfz verkehrssicher?" VerticalOptions="Center" />
-                        <CheckBox />
+                        <CheckBox IsChecked="{Binding RoadWorthy}" />
                         <Label Text="Kfz fahrbereit?" VerticalOptions="Center" />
-                        <CheckBox />
+                        <CheckBox IsChecked="{Binding IsReadyToDrive}" />
                     </StackLayout>
                     <local:PhotoField
                         x:Name="CarDocument"
                         Title="Fahrzeugschein"
                         Grid.Row="16"
                         Grid.Column="1"
-                        Margin="10,0,10,30"
+                        Margin="10,80,10,40"
                         AutomationId="6"
-                        HorizontalOptions="FillAndExpand"
+                        HorizontalOptions="Center"
                         ImagePath="{Binding CarDocumentPhotoPath, Mode=TwoWay}" />
                     <!--#endregion-->
                     <!--#region PreDamage-->
@@ -959,7 +967,7 @@
                         x:Name="PreDamageDescriptions"
                         Grid.Row="17"
                         Grid.ColumnSpan="2"
-                        Margin="0,-100,0,0"
+                        Margin="0,-80,0,0"
                         AutomationId="7">
                         <CollectionView.Header>
                             <Grid>
@@ -990,7 +998,7 @@
 
                         </CollectionView.Header>
                         <CollectionView.ItemTemplate>
-                            <DataTemplate>
+                            <DataTemplate x:DataType="model:PreDamage">
                                 <Grid Padding="10">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -1066,7 +1074,7 @@
                         <local:TitledEntryField
                             Title="Kleinteile-Aufschlag"
                             Grid.Column="3"
-                            Text="{Binding SmallPartsS}" />
+                            Text="{Binding SmallPartsSurcharge}" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="0"
@@ -1086,7 +1094,7 @@
                             Title="Lackpunkt"
                             Grid.Row="1"
                             Grid.Column="3"
-                            Text="{Binding HourlyRatePaintingPoint}" />
+                            Text="{Binding HourlyRatePaintPoint}" />
                         <Label
                             Grid.Row="2"
                             Grid.Column="0"
@@ -1101,7 +1109,7 @@
                             Title="Pauschal"
                             Grid.Row="2"
                             Grid.Column="2"
-                            Text="{Binding FlatRateTransport}" />
+                            Text="{Binding FlatrateTransport}" />
 
                     </Grid>
                     <StackLayout
@@ -1227,6 +1235,7 @@
                             CheckedChanged="HandleSpecialFields"
                             IsChecked="{Binding WantAdvocate}"
                             VerticalOptions="Start" />
+
                         <Label Margin="0,26,0,0" Text="Unser Anwalt" />
                         <CheckBox
                             Margin="0,15,0,0"
@@ -1242,6 +1251,7 @@
                         Grid.Column="1"
                         Margin="10,0,10,0"
                         AutomationId="9"
+                        IsVisible="False"
                         Text="{Binding RecommendedAdvocate}" />
                     <local:TitledEntryField
                         x:Name="CustomersAdvocate"
@@ -1250,6 +1260,7 @@
                         Grid.Column="1"
                         Margin="10,0,10,0"
                         AutomationId="9"
+                        IsVisible="false"
                         Text="{Binding CustomersAdvocate}" />
                     <!--#endregion-->
                     <!--#region Additional Data-->
@@ -1293,20 +1304,23 @@
                     <StackLayout
                         Grid.Row="39"
                         Grid.ColumnSpan="2"
-                        Margin="0,-20,0,0"
                         AutomationId="11"
                         HorizontalOptions="FillAndExpand"
-                        Orientation="Horizontal"
+                        Orientation="Vertical"
                         VerticalOptions="Center">
-                        <Label
-                            Margin="0,0,0,25"
-                            Text="Braunschweig, den 23.08.2021"
-                            VerticalOptions="End" />
-                        <sig:SignaturePadView
-                            CaptionText="Bitte oberhalb unterschreiben"
-                            ClearText="Löschen"
-                            HeightRequest="150"
-                            WidthRequest="500" />
+                        <StackLayout
+                            Margin="0,-175,0,0"
+                            HeightRequest="300"
+                            Orientation="Horizontal">
+                            <Label Margin="25,150,25,25" Text="Braunschweig, den 23.08.2021" />
+                            <sig:SignaturePadView
+                                Margin="0,0,0,100"
+                                CaptionText="Bitte oberhalb unterschreiben"
+                                ClearText="Löschen"
+                                HeightRequest="200"
+                                WidthRequest="500" />
+                        </StackLayout>
+                        <BoxView HeightRequest="100" />
                     </StackLayout>
                     <!--#endregion-->
                 </Grid>
