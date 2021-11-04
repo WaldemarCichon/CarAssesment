@@ -52,22 +52,24 @@
                         <Label
                             FontSize="20"
                             LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemTextStyle}"
-                            Text="{Binding Line1}" />
+                            Text="{Binding Line1}"
+                            TextColor="Blue" />
                         <Label
                             Grid.Row="1"
                             FontSize="18"
                             LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            Text="{Binding Line2}" />
+                            Text="{Binding Line2}"
+                            TextColor="Blue" />
                         <Label
                             Grid.Row="0"
                             Grid.Column="1"
-                            Text="{Binding Created, StringFormat='{0:dd.MM.yyyy}'}" />
+                            Text="{Binding Created, StringFormat='{0:dd.MM.yyyy}'}"
+                            TextColor="Blue" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
-                            Text="{Binding Sent, StringFormat='{0:dd.MM.yyyy}'}" />
+                            Text="{Binding Sent, StringFormat='{0:dd.MM.yyyy}'}"
+                            TextColor="Blue" />
                         <Button
                             x:Name="SendAssessementButton"
                             Grid.RowSpan="2"

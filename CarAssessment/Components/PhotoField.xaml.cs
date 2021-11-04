@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using CarAssessment.DataHandling;
 using CarAssessment.Views;
 using Xamarin.Forms;
@@ -69,7 +70,12 @@ namespace CarAssessment.Components {
 			}
 
 			if (propertyName == ImagePathProperty.PropertyName) {
-				Image.Source = ImagePath;
+				if (ImagePath != null) {
+					var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+					Image.Source = Path.Combine(documents, Path.GetFileName(ImagePath));
+				} else {
+					Image.Source = null;
+				}
 				if (ImagePath == null) {
 					Image.IsVisible = false;
 					MakePhotoButton.IsVisible = true;
@@ -80,7 +86,18 @@ namespace CarAssessment.Components {
 			}
 
 			if (propertyName == SourceProperty.PropertyName) {
-				Image.Source = Source;
+				var source = Source;
+				if (Source != null) {
+					if (Source.GetType() == typeof(FileImageSource)) {
+						var path = (Source as FileImageSource).File;
+						if (path != null) {
+							var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+							source = new FileImageSource();
+							(source as FileImageSource).File = Path.Combine(documents, Path.GetFileName(path));
+						}
+					}
+				}
+				Image.Source = source;
 				if (Source == null) {
 					Image.IsVisible = false;
 					MakePhotoButton.IsVisible = true;

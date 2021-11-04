@@ -4,7 +4,6 @@ using System.Text.Json;
 namespace CarAssessment.Models.Row {
 	public abstract class AbstractRow {
 		public AbstractRow() {
-			Created = DateTime.Now;
 			InitRow();
 		}
 
@@ -18,7 +17,7 @@ namespace CarAssessment.Models.Row {
 		public DateTime LastSaved { get; set; }
 		public DateTime Sent { get; set; }
 
-		public bool IsNewRow { get => Created > LastSaved; }
+		public bool IsNewRow { get => LastSaved > new DateTime(); }
 
 		public virtual void Persist() {
 			// Persisted = DateTime.Now;

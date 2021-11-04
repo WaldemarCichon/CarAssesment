@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using CarAssessment.Models.Collection;
 using CarAssessment.Layout;
 using CarAssessment.REST;
+using System.IO;
 
 // Page is used as well for the new item but also for the editing
 namespace CarAssessment.Views {
@@ -30,6 +31,7 @@ namespace CarAssessment.Views {
 
 		IDataStore<Assessment> DataStore => DependencyService.Get<IDataStore<Assessment>>();
 		Assessment Assessment { get; set; }
+		public static Assessment CurrentAssessment { get; internal set; }
 
 		public NewItemPage(): this(null) {
 
@@ -63,24 +65,42 @@ namespace CarAssessment.Views {
 				assessment = await DataStore.CreateItemAsync();
 			}
 			Assessment = assessment;
+			CurrentAssessment = assessment;
 			BindingContext = assessment;
 
 			DamagePhotos.SourceList = new ImageList(assessment.DamagePhotos);
 			NearbyPhotos.SourceList = new ImageList(assessment.NearbyPhotos);
 			DetailPhotos.SourceList = new ImageList(assessment.DetailPhotos);
 			OtherPhotos.SourceList = new ImageList(assessment.OtherPhotos);
+			Device.BeginInvokeOnMainThread(() => {
+				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-			FrontLeftPhoto.ImagePath = assessment.FrontLeftPhotoPath;
-			FrontRightPhoto.ImagePath = assessment.FrontRightPhotoPath;
-			RearLeftPhoto.ImagePath = assessment.RearLeftPhotoPath;
-			RearRightPhoto.ImagePath = assessment.RearRightPhotoPath;
+				FrontLeftPhoto.ImagePath = assessment.FrontLeftPhotoPath;
+				FrontRightPhoto.ImagePath = assessment.FrontRightPhotoPath;
+				RearLeftPhoto.Source = assessment.RearLeftPhotoPath;
+				RearRightPhoto.Source = assessment.RearRightPhotoPath;
+				CarDocument.Source = assessment.CarDocumentPhotoPath;
+				ServiceRecordBook.Source = assessment.ServiceRecordBookPhotoPath;
+				PoliceReport.Source = assessment.PoliceReportPhotoPath;
 
-			DamageDescriptions.ItemsSource = assessment.DamageDescriptions;
-			PreDamageDescriptions.ItemsSource = assessment.PreDamages;
+
+				DamageDescriptions.ItemsSource = assessment.DamageDescriptions;
+				PreDamageDescriptions.ItemsSource = assessment.PreDamages;
+			});
+			/*
+			foreach (var preDamage in assessment.PreDamages) {
+				var imagePath = preDamage.ImagePath;
+				preDamage.ImagePath = null;
+				preDamage.ImagePath = imagePath;
+			}*/
 		}
 
 		async void AddNewPreDamageImage_Clicked(System.Object sender, System.EventArgs e) {
 			await Shell.Current.GoToAsync(nameof(CameraPage));
+		}
+
+		protected override bool OnBackButtonPressed() {
+			return DisplayAlert("Abbrechen?", "Wollen Sie die Eingabe wirklich ohne Speichern abbrechen?", "Ja", "Nein").Result;
 		}
 
 		async void CancelButton_Clicked(System.Object sender, System.EventArgs e) {
@@ -108,7 +128,23 @@ namespace CarAssessment.Views {
 			HandleSpecialFields(int.Parse(((View)sender).AutomationId));
 		}
 
+		async void checkAndPersistSignature() {
+			if (Signature.IsBlank) {
+				return;
+			}
+			var signatureImgStream = await Signature.GetImageStreamAsync(SignaturePad.Forms.SignatureImageFormat.Jpeg);
+			using (MemoryStream ms = new MemoryStream()) {
+				await (signatureImgStream as Stream).CopyToAsync(ms);
+				var bytes = ms.ToArray();
+				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+				var path = Path.Combine(documents, $"signature_{Assessment.Id}");
+				System.IO.File.WriteAllBytes(path, bytes);
+				await HttpRepository.Instance.PostPicture(path);
+			}
+		}
+
 		async void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
+			checkAndPersistSignature();
 			if (Assessment.IsNewRow) {
 				Assessment.LastSaved = DateTime.Now;
 				await DataStore.AddItemAsync(Assessment);
@@ -116,6 +152,7 @@ namespace CarAssessment.Views {
 				await DataStore.UpdateItemAsync(Assessment);
 			}
 			await DataStore.Commit();
+			
 			if (await DisplayAlert("Senden", "Soll der Datensatz auch gesendet werden?", "Ja", "Nein")) { 
 				if (Assessment.ObjectId < 1) {
 					await HttpRepository.Instance.PostAssessment(Assessment);
@@ -172,5 +209,8 @@ namespace CarAssessment.Views {
 			PreDamageDescriptions.ItemsSource = Assessment.PreDamages;
 		}
 
+		void SignaturePadView_Cleared(System.Object sender, System.EventArgs e) {
+			
+		}
 	}
 }

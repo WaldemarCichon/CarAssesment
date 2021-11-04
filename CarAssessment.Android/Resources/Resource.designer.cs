@@ -124,7 +124,6 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Animator.mtrl_btn_unelevated_state_list_anim = global::CarAssessment.Droid.Resource.Animator.mtrl_btn_unelevated_state_list_anim;
 			global::Xamarin.CommunityToolkit.Resource.Animator.mtrl_card_state_list_anim = global::CarAssessment.Droid.Resource.Animator.mtrl_card_state_list_anim;
 			global::Xamarin.CommunityToolkit.Resource.Animator.mtrl_chip_state_list_anim = global::CarAssessment.Droid.Resource.Animator.mtrl_chip_state_list_anim;
-			global::Xamarin.CommunityToolkit.Resource.Animator.mtrl_extended_fab_change_size_motion_spec = global::CarAssessment.Droid.Resource.Animator.mtrl_extended_fab_change_size_motion_spec;
 			global::Xamarin.CommunityToolkit.Resource.Animator.mtrl_extended_fab_hide_motion_spec = global::CarAssessment.Droid.Resource.Animator.mtrl_extended_fab_hide_motion_spec;
 			global::Xamarin.CommunityToolkit.Resource.Animator.mtrl_extended_fab_show_motion_spec = global::CarAssessment.Droid.Resource.Animator.mtrl_extended_fab_show_motion_spec;
 			global::Xamarin.CommunityToolkit.Resource.Animator.mtrl_extended_fab_state_list_animator = global::CarAssessment.Droid.Resource.Animator.mtrl_extended_fab_state_list_animator;
@@ -871,7 +870,6 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Attribute.yearStyle = global::CarAssessment.Droid.Resource.Attribute.yearStyle;
 			global::Xamarin.CommunityToolkit.Resource.Attribute.yearTodayStyle = global::CarAssessment.Droid.Resource.Attribute.yearTodayStyle;
 			global::Xamarin.CommunityToolkit.Resource.Boolean.abc_action_bar_embed_tabs = global::CarAssessment.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
-			global::Xamarin.CommunityToolkit.Resource.Boolean.abc_allow_stacked_button_bar = global::CarAssessment.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
 			global::Xamarin.CommunityToolkit.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::CarAssessment.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
 			global::Xamarin.CommunityToolkit.Resource.Boolean.config_materialPreferenceIconSpaceReserved = global::CarAssessment.Droid.Resource.Boolean.config_materialPreferenceIconSpaceReserved;
 			global::Xamarin.CommunityToolkit.Resource.Boolean.mtrl_btn_textappearance_all_caps = global::CarAssessment.Droid.Resource.Boolean.mtrl_btn_textappearance_all_caps;
@@ -1001,10 +999,6 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Color.material_slider_inactive_tick_marks_color = global::CarAssessment.Droid.Resource.Color.material_slider_inactive_tick_marks_color;
 			global::Xamarin.CommunityToolkit.Resource.Color.material_slider_inactive_track_color = global::CarAssessment.Droid.Resource.Color.material_slider_inactive_track_color;
 			global::Xamarin.CommunityToolkit.Resource.Color.material_slider_thumb_color = global::CarAssessment.Droid.Resource.Color.material_slider_thumb_color;
-			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_bottom_nav_colored_item_tint = global::CarAssessment.Droid.Resource.Color.mtrl_bottom_nav_colored_item_tint;
-			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_bottom_nav_colored_ripple_color = global::CarAssessment.Droid.Resource.Color.mtrl_bottom_nav_colored_ripple_color;
-			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_bottom_nav_item_tint = global::CarAssessment.Droid.Resource.Color.mtrl_bottom_nav_item_tint;
-			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_bottom_nav_ripple_color = global::CarAssessment.Droid.Resource.Color.mtrl_bottom_nav_ripple_color;
 			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_btn_bg_color_selector = global::CarAssessment.Droid.Resource.Color.mtrl_btn_bg_color_selector;
 			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_btn_ripple_color = global::CarAssessment.Droid.Resource.Color.mtrl_btn_ripple_color;
 			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_btn_stroke_color_selector = global::CarAssessment.Droid.Resource.Color.mtrl_btn_stroke_color_selector;
@@ -1019,7 +1013,6 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_card_view_ripple = global::CarAssessment.Droid.Resource.Color.mtrl_card_view_ripple;
 			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_chip_background_color = global::CarAssessment.Droid.Resource.Color.mtrl_chip_background_color;
 			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_chip_close_icon_tint = global::CarAssessment.Droid.Resource.Color.mtrl_chip_close_icon_tint;
-			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_chip_ripple_color = global::CarAssessment.Droid.Resource.Color.mtrl_chip_ripple_color;
 			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_chip_surface_color = global::CarAssessment.Droid.Resource.Color.mtrl_chip_surface_color;
 			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_chip_text_color = global::CarAssessment.Droid.Resource.Color.mtrl_chip_text_color;
 			global::Xamarin.CommunityToolkit.Resource.Color.mtrl_choice_chip_background_color = global::CarAssessment.Droid.Resource.Color.mtrl_choice_chip_background_color;
@@ -1466,12 +1459,6 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::CarAssessment.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::CarAssessment.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_ic_search_api_material = global::CarAssessment.Droid.Resource.Drawable.abc_ic_search_api_material;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_ic_star_black_16dp = global::CarAssessment.Droid.Resource.Drawable.abc_ic_star_black_16dp;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_ic_star_black_36dp = global::CarAssessment.Droid.Resource.Drawable.abc_ic_star_black_36dp;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_ic_star_black_48dp = global::CarAssessment.Droid.Resource.Drawable.abc_ic_star_black_48dp;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_ic_star_half_black_16dp = global::CarAssessment.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_ic_star_half_black_36dp = global::CarAssessment.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_ic_star_half_black_48dp = global::CarAssessment.Droid.Resource.Drawable.abc_ic_star_half_black_48dp;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_ic_voice_search_api_material = global::CarAssessment.Droid.Resource.Drawable.abc_ic_voice_search_api_material;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_item_background_holo_dark = global::CarAssessment.Droid.Resource.Drawable.abc_item_background_holo_dark;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_item_background_holo_light = global::CarAssessment.Droid.Resource.Drawable.abc_item_background_holo_light;
@@ -1512,12 +1499,6 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::CarAssessment.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_textfield_search_material = global::CarAssessment.Droid.Resource.Drawable.abc_textfield_search_material;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_text_cursor_material = global::CarAssessment.Droid.Resource.Drawable.abc_text_cursor_material;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::CarAssessment.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::CarAssessment.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark = global::CarAssessment.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::CarAssessment.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::CarAssessment.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::CarAssessment.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.abc_vector_test = global::CarAssessment.Droid.Resource.Drawable.abc_vector_test;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.avd_hide_password = global::CarAssessment.Droid.Resource.Drawable.avd_hide_password;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.avd_show_password = global::CarAssessment.Droid.Resource.Drawable.avd_show_password;
@@ -1529,7 +1510,6 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Drawable.btn_radio_off_to_on_mtrl_animation = global::CarAssessment.Droid.Resource.Drawable.btn_radio_off_to_on_mtrl_animation;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.btn_radio_on_mtrl = global::CarAssessment.Droid.Resource.Drawable.btn_radio_on_mtrl;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.btn_radio_on_to_off_mtrl_animation = global::CarAssessment.Droid.Resource.Drawable.btn_radio_on_to_off_mtrl_animation;
-			global::Xamarin.CommunityToolkit.Resource.Drawable.design_bottom_navigation_item_background = global::CarAssessment.Droid.Resource.Drawable.design_bottom_navigation_item_background;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.design_fab_background = global::CarAssessment.Droid.Resource.Drawable.design_fab_background;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.design_ic_visibility = global::CarAssessment.Droid.Resource.Drawable.design_ic_visibility;
 			global::Xamarin.CommunityToolkit.Resource.Drawable.design_ic_visibility_off = global::CarAssessment.Droid.Resource.Drawable.design_ic_visibility_off;
@@ -1720,7 +1700,6 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Id.italic = global::CarAssessment.Droid.Resource.Id.italic;
 			global::Xamarin.CommunityToolkit.Resource.Id.item_touch_helper_previous_elevation = global::CarAssessment.Droid.Resource.Id.item_touch_helper_previous_elevation;
 			global::Xamarin.CommunityToolkit.Resource.Id.labeled = global::CarAssessment.Droid.Resource.Id.labeled;
-			global::Xamarin.CommunityToolkit.Resource.Id.largeLabel = global::CarAssessment.Droid.Resource.Id.largeLabel;
 			global::Xamarin.CommunityToolkit.Resource.Id.left = global::CarAssessment.Droid.Resource.Id.left;
 			global::Xamarin.CommunityToolkit.Resource.Id.line1 = global::CarAssessment.Droid.Resource.Id.line1;
 			global::Xamarin.CommunityToolkit.Resource.Id.line3 = global::CarAssessment.Droid.Resource.Id.line3;
@@ -1825,7 +1804,6 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Id.skipCollapsed = global::CarAssessment.Droid.Resource.Id.skipCollapsed;
 			global::Xamarin.CommunityToolkit.Resource.Id.slide = global::CarAssessment.Droid.Resource.Id.slide;
 			global::Xamarin.CommunityToolkit.Resource.Id.sliding_tabs = global::CarAssessment.Droid.Resource.Id.sliding_tabs;
-			global::Xamarin.CommunityToolkit.Resource.Id.smallLabel = global::CarAssessment.Droid.Resource.Id.smallLabel;
 			global::Xamarin.CommunityToolkit.Resource.Id.snackbar_action = global::CarAssessment.Droid.Resource.Id.snackbar_action;
 			global::Xamarin.CommunityToolkit.Resource.Id.snackbar_text = global::CarAssessment.Droid.Resource.Id.snackbar_text;
 			global::Xamarin.CommunityToolkit.Resource.Id.snap = global::CarAssessment.Droid.Resource.Id.snap;
@@ -2624,7 +2602,6 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert = global::CarAssessment.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert;
 			global::Xamarin.CommunityToolkit.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert_Framework = global::CarAssessment.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert_Framework;
 			global::Xamarin.CommunityToolkit.Resource.Style.ThemeOverlay_MaterialComponents_Light = global::CarAssessment.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Light;
-			global::Xamarin.CommunityToolkit.Resource.Style.ThemeOverlay_MaterialComponents_Light_BottomSheetDialog = global::CarAssessment.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Light_BottomSheetDialog;
 			global::Xamarin.CommunityToolkit.Resource.Style.ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework = global::CarAssessment.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework;
 			global::Xamarin.CommunityToolkit.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog = global::CarAssessment.Droid.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog;
 			global::Xamarin.CommunityToolkit.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Centered = global::CarAssessment.Droid.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Centered;
@@ -3184,18 +3161,7 @@ namespace CarAssessment.Droid
 			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomAppBar_paddingLeftSystemWindowInsets = global::CarAssessment.Droid.Resource.Styleable.BottomAppBar_paddingLeftSystemWindowInsets;
 			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomAppBar_paddingRightSystemWindowInsets = global::CarAssessment.Droid.Resource.Styleable.BottomAppBar_paddingRightSystemWindowInsets;
 			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_backgroundTint = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_backgroundTint;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_elevation = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_elevation;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_itemBackground = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_itemBackground;
 			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_itemHorizontalTranslationEnabled = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_itemHorizontalTranslationEnabled;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_itemIconSize = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_itemIconSize;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_itemIconTint = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_itemIconTint;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_itemRippleColor = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_itemRippleColor;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_itemTextAppearanceActive = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceActive;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_itemTextAppearanceInactive = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceInactive;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_itemTextColor = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_itemTextColor;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_labelVisibilityMode = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_labelVisibilityMode;
-			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomNavigationView_menu = global::CarAssessment.Droid.Resource.Styleable.BottomNavigationView_menu;
 			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomSheetBehavior_Layout = global::CarAssessment.Droid.Resource.Styleable.BottomSheetBehavior_Layout;
 			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomSheetBehavior_Layout_android_elevation = global::CarAssessment.Droid.Resource.Styleable.BottomSheetBehavior_Layout_android_elevation;
 			global::Xamarin.CommunityToolkit.Resource.Styleable.BottomSheetBehavior_Layout_backgroundTint = global::CarAssessment.Droid.Resource.Styleable.BottomSheetBehavior_Layout_backgroundTint;

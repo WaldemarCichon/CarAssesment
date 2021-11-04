@@ -36,6 +36,15 @@ namespace CarAssessment.Components {
 			}
 		}
 
+		public static readonly BindableProperty KeyboardProperty = BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(TitledEntryField), default(string), BindingMode.OneWay);
+		public Keyboard Keyboard {
+			get {
+				return (Keyboard)GetValue(KeyboardProperty); 
+			}
+			set {
+				SetValue(KeyboardProperty, value); 
+			}
+		}
 
 		protected override void OnPropertyChanged(string propertyName = null) {
 			base.OnPropertyChanged(propertyName);
@@ -47,6 +56,9 @@ namespace CarAssessment.Components {
 				TextEntry.Text = Text;
 			}
 
+			if (propertyName == KeyboardProperty.PropertyName) {
+				TextEntry.Keyboard = Keyboard;
+			}
 		}
 
 		void TextEntry_PropertyChanged(System.Object sender, System.ComponentModel.PropertyChangedEventArgs e) {

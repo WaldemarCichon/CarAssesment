@@ -90,5 +90,10 @@ namespace CarAssessment.Services {
 			Users.Insert(user);
 			return await Task.FromResult(true);
 		}
+
+		public async Task<bool> DeleteUser() {
+			Users.DeleteAll();
+			return await Task.FromResult(true);
+		}
 	}
 }

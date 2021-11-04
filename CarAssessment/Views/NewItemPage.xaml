@@ -25,7 +25,7 @@
                     FontAttributes="Bold"
                     FontSize="40"
                     HorizontalOptions="Center"
-                    Text="Kfz-Gutachten Version 0.1" />
+                    Text="Kfz-Gutachten Version 0.2" />
                 <!--#region Title List-->
                 <!--
                 <BoxView
@@ -598,14 +598,16 @@
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="1"
-                        Text="{Binding AdmissionDate}" />
+                        Keyboard="Numeric"
+                        Text="{Binding AdmissionDate, StringFormat=dd.MM.yyyy}" />
                     <local:TitledEntryField
                         Title="Unfalldatum"
                         Grid.Row="3"
                         Grid.Column="1"
                         Margin="10,4"
                         AutomationId="1"
-                        Text="{Binding AccidentDate}" />
+                        Keyboard="Numeric"
+                        Text="{Binding AccidentDate, StringFormat=dd.MM.yyyy}" />
                     <local:TitledEditorField
                         Title="Besichtigungsort"
                         Grid.Row="4"
@@ -920,7 +922,8 @@
                         Grid.Column="1"
                         Margin="10,0,10,0"
                         AutomationId="6"
-                        Text="{Binding Mileage}" />
+                        Keyboard="Numeric"
+                        Text="{Binding Mileage, StringFormat='#.##0'}" />
                     <StackLayout
                         Grid.Row="15"
                         AutomationId="6"
@@ -931,7 +934,7 @@
                     </StackLayout>
 
                     <local:PhotoField
-                        x:Name="Scheckheft"
+                        x:Name="ServiceRecordBook"
                         Title="Scheckheft"
                         Grid.Row="15"
                         Grid.Column="1"
@@ -948,7 +951,7 @@
                         Orientation="Horizontal"
                         VerticalOptions="Center">
                         <Label Text="Kfz verkehrssicher?" VerticalOptions="Center" />
-                        <CheckBox IsChecked="{Binding RoadWorthy}" />
+                        <CheckBox IsChecked="{Binding IsRoadWorthy}" />
                         <Label Text="Kfz fahrbereit?" VerticalOptions="Center" />
                         <CheckBox IsChecked="{Binding IsReadyToDrive}" />
                     </StackLayout>
@@ -1006,7 +1009,10 @@
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Editor Text="{Binding Description}" />
-                                    <local:PhotoField Grid.Column="1" ImagePath="{Binding ImagePath}" />
+                                    <local:PhotoField
+                                        Grid.Column="1"
+                                        ImagePath="Binding ImagePath, Mode=TwoWay}"
+                                        Source="{Binding ImagePath, Mode=TwoWay}" />
                                     <Button
                                         x:Name="DeletePreDamageDescriptionButton"
                                         Grid.Column="2"
@@ -1066,15 +1072,18 @@
                         <local:TitledEntryField
                             Title="Karosserie"
                             Grid.Column="1"
-                            Text="{Binding HourlyRateBody}" />
+                            Keyboard="Numeric"
+                            Text="{Binding HourlyRateBody, StringFormat=0.00}" />
                         <local:TitledEntryField
                             Title="UPE-Aufschläge"
                             Grid.Column="2"
-                            Text="{Binding UPESurcharge}" />
+                            Keyboard="Numeric"
+                            Text="{Binding UPESurcharge, StringFormat=0.00}" />
                         <local:TitledEntryField
                             Title="Kleinteile-Aufschlag"
                             Grid.Column="3"
-                            Text="{Binding SmallPartsSurcharge}" />
+                            Keyboard="Numeric"
+                            Text="{Binding SmallPartsSurcharge, StringFormat=0.00}" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="0"
@@ -1084,12 +1093,14 @@
                             Title="Pauschal"
                             Grid.Row="1"
                             Grid.Column="1"
-                            Text="{Binding FlatRatePainting}" />
+                            Keyboard="Numeric"
+                            Text="{Binding FlatRatePainting, StringFormat=0.00}" />
                         <local:TitledEntryField
                             Title="Lackzuschlag %"
                             Grid.Row="1"
                             Grid.Column="2"
-                            Text="{Binding HourlyRatePaintingSurcharge}" />
+                            Keyboard="Numeric"
+                            Text="{Binding HourlyRatePaintingSurcharge, StringFormat=0.00}" />
                         <local:TitledEntryField
                             Title="Lackpunkt"
                             Grid.Row="1"
@@ -1302,26 +1313,29 @@
                     <!--#endregion-->
                     <!--#region Signature-->
                     <StackLayout
-                        Grid.Row="39"
+                        Grid.Row="0"
                         Grid.ColumnSpan="2"
+                        Margin="0,0,0,-200"
                         AutomationId="11"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Vertical"
                         VerticalOptions="Center">
-                        <StackLayout
-                            Margin="0,-175,0,0"
-                            HeightRequest="300"
-                            Orientation="Horizontal">
+
+                        <StackLayout HeightRequest="300" Orientation="Horizontal">
                             <Label Margin="25,150,25,25" Text="Braunschweig, den 23.08.2021" />
                             <sig:SignaturePadView
+                                x:Name="Signature"
                                 Margin="0,0,0,100"
                                 CaptionText="Bitte oberhalb unterschreiben"
                                 ClearText="Löschen"
+                                Cleared="SignaturePadView_Cleared"
                                 HeightRequest="200"
+                                IsEnabled="True"
                                 WidthRequest="500" />
                         </StackLayout>
-                        <BoxView HeightRequest="100" />
+
                     </StackLayout>
+
                     <!--#endregion-->
                 </Grid>
             </ScrollView>

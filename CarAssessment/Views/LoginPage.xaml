@@ -24,12 +24,18 @@
                 HorizontalOptions="Center"
                 Text="Login name"
                 TextColor="AliceBlue" />
-            <Entry Margin="50" Text="{Binding UserName}" />
+            <Entry
+                Margin="50"
+                Keyboard="Plain"
+                Text="{Binding UserName}" />
             <Label
                 HorizontalOptions="Center"
                 Text="Passwort"
                 TextColor="AliceBlue" />
-            <Entry Margin="50" Text="{Binding Password}" />
+            <Entry
+                Margin="50"
+                Keyboard="Plain"
+                Text="{Binding Password}" />
 
             <Button
                 x:Name="LoginButton"
