@@ -35,10 +35,16 @@ namespace CarAssessment.REST {
             await httpClient.PostAsJsonAsync($"{BaseUrl}picture/{User.Id}/{fileName}", content);
         }
 
-        public async Task PostPicture(string path, int assessmentId) {
+        public async Task<int> PostPicture(string path, int assessmentId) {
             var content = File.ReadAllBytes(path);
             var fileName = Path.GetFileName(path);
-            await httpClient.PostAsJsonAsync($"{BaseUrl}picture/{User.Id}/{assessmentId}/{fileName}", content);
+            var response = await httpClient.PostAsJsonAsync($"{BaseUrl}picture/{User.Id}/{assessmentId}/{fileName}", content);
+            var retVal = response.Content;
+            if (retVal == null) {
+                var length = await retVal.ReadFromJsonAsync<int>();
+                return length;
+            }
+            return 0;
         }
 
         public async Task PostAssessment(Assessment assessment) {
