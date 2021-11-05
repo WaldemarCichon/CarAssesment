@@ -20,6 +20,7 @@ namespace CarAssessment.Components {
 
 			set {
 				SetValue(SourceListProperty, value);
+
 			}
 		}
 

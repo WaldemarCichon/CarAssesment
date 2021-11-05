@@ -1009,10 +1009,7 @@
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Editor Text="{Binding Description}" />
-                                    <local:PhotoField
-                                        Grid.Column="1"
-                                        ImagePath="Binding ImagePath, Mode=TwoWay}"
-                                        Source="{Binding ImagePath, Mode=TwoWay}" />
+                                    <local:PhotoField Grid.Column="1" Source="{Binding ImagePath, Mode=TwoWay}" />
                                     <Button
                                         x:Name="DeletePreDamageDescriptionButton"
                                         Grid.Column="2"

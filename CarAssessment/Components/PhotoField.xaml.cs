@@ -11,6 +11,10 @@ namespace CarAssessment.Components {
 			InitializeComponent();
 		}
 
+		public ImageSource ImageSource {
+			get => Image.Source;
+		}
+
 		public static readonly BindableProperty SourceProperty = BindableProperty.Create(nameof(Source), typeof(ImageSource), typeof(PhotoField), null, BindingMode.TwoWay);
 		public ImageSource Source {
 			get {
@@ -57,7 +61,8 @@ namespace CarAssessment.Components {
 				SetValue(ImagePathProperty, value);
 				if (value != ImagePath) {
 					SetValue(SourceProperty, value);
-					Image.Source = value;
+					var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+					Image.Source = Path.Combine(documents, Path.GetFileName(value));
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Xamarin.Forms;
 
 namespace CarAssessment.Models.Collection {
@@ -8,7 +9,9 @@ namespace CarAssessment.Models.Collection {
 		public List<String> PathList { get; }
 
 		public ImageList(List<String> pathList) {
-			pathList.ForEach((path) => { var image = new Image(); image.Source = path; base.Add(image); });
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			pathList.ForEach((path) => { var image = new Image(); image.Source = Path.Combine(documents, Path.GetFileName(path))
+				; base.Add(image); });
 			PathList = pathList;
 		}
 

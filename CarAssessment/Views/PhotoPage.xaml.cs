@@ -8,12 +8,13 @@ namespace CarAssessment.Views {
 	public partial class PhotoPage : ContentPage {
 		public PhotoPage() {
 			InitializeComponent();
-			DisplayedImage.Source = EntityRepository.Instance.CurrentPhotoField.Source;
+			// var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			DisplayedImage.Source = EntityRepository.Instance.CurrentPhotoField.ImageSource;
 
 			EntityRepository.Instance.CurrentPhotoField.PropertyChanged += (sender, args) => {
-				if (args.PropertyName == "Source") {
+				if (args.PropertyName == "ImagePath") {
 					MainThread.BeginInvokeOnMainThread(() => {
-						this.DisplayedImage.Source = EntityRepository.Instance.CurrentPhotoField.Source;
+						this.DisplayedImage.Source = EntityRepository.Instance.CurrentPhotoField.ImageSource;
 					});
 				}
 			};

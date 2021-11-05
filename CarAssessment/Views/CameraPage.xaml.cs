@@ -31,7 +31,7 @@ namespace CarAssessment.Views {
 
 		private string getNewFileName() {
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			var files = Directory.GetFiles(documents, "Image." + NewItemPage.CurrentAssessment.Id + ".*.HEIC");
+			var files = Directory.GetFiles(documents, "Pic." + NewItemPage.CurrentAssessment.Id + ".*.HEIC");
 			var max = "";
 			foreach (var file in files) {
 				if (string.Compare(file, max) > 0) {
