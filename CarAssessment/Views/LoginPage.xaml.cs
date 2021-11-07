@@ -26,7 +26,7 @@ namespace CarAssessment.Views {
 			if (user.UserName == "" || user.Password == "") {
 				await DisplayAlert("Bitte ergänzen", "Login name oder Passwort fehlen", "OK");
 			}
-			if (await HttpRepository.Instance.Login(user.UserName.ToLower(), user.Password)) {
+			if (await HttpRepository.Instance.Login(user.UserName.ToLower().Trim(), user.Password.Trim())) {
 				user = HttpRepository.Instance.User;
 				Shell.LoginSuccessed();
 			} else {
