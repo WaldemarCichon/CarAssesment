@@ -7,7 +7,7 @@
 
     <Label
         x:Name="TitleLabel"
-        TextColor="DarkGray"
+        TextColor="#111"
         WidthRequest="1000" />
     <Entry
         x:Name="TextEntry"

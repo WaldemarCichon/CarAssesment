@@ -556,7 +556,15 @@
                         Grid.Column="0"
                         Margin="10,10,10,4"
                         AutomationId="1"
-                        Text="{Binding OwnerName}" />
+                        Text="{Binding OwnerName}">
+                        <local:TitledEntryField.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </local:TitledEntryField.Keyboard>
+                    </local:TitledEntryField>
                     <local:TitledEntryField
                         Title="Straße"
                         Grid.Row="0"
@@ -570,6 +578,7 @@
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="1"
+                        Keyboard="Numeric"
                         Text="{Binding ZipCode}" />
                     <local:TitledEntryField
                         Title="Ort"
@@ -584,14 +593,30 @@
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="1"
-                        Text="{Binding LicensePlateClient}" />
+                        Text="{Binding LicensePlateClient}">
+                        <local:TitledEntryField.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeCharacter</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </local:TitledEntryField.Keyboard>
+                    </local:TitledEntryField>
                     <local:TitledEntryField
                         Title="Kfz-Kennzeichen Unfallgegner"
                         Grid.Row="2"
                         Grid.Column="1"
                         Margin="10,4"
                         AutomationId="1"
-                        Text="{Binding LicensePlateOponent}" />
+                        Text="{Binding LicensePlateOponent}">
+                        <local:TitledEntryField.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeCharacter</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </local:TitledEntryField.Keyboard>
+                    </local:TitledEntryField>
                     <local:TitledEntryField
                         Title="Aufnahmedatum"
                         Grid.Row="3"
@@ -599,7 +624,7 @@
                         Margin="10,4"
                         AutomationId="1"
                         Keyboard="Numeric"
-                        Text="{Binding AdmissionDate, StringFormat=dd.MM.yyyy}" />
+                        Text="{Binding AdmissionDate, StringFormat='{0:dd.MM.yyyy}'}" />
                     <local:TitledEntryField
                         Title="Unfalldatum"
                         Grid.Row="3"
@@ -607,7 +632,7 @@
                         Margin="10,4"
                         AutomationId="1"
                         Keyboard="Numeric"
-                        Text="{Binding AccidentDate, StringFormat=dd.MM.yyyy}" />
+                        Text="{Binding AccidentDate, StringFormat='{0:dd.MM.yyyy}'}" />
                     <local:TitledEditorField
                         Title="Besichtigungsort"
                         Grid.Row="4"
@@ -834,6 +859,7 @@
                         <local:TitledEntryField
                             Title="Profiltiefe"
                             Grid.Column="2"
+                            Keyboard="Numeric"
                             Text="{Binding FrontLeft.TreadDepth}" />
                     </Grid>
                     <Grid
@@ -854,6 +880,7 @@
                         <local:TitledEntryField
                             Title="Hersteller"
                             Grid.Column="1"
+                            Keyboard="Numeric"
                             Text="{Binding FrontRight.Manufacturer}" />
                         <local:TitledEntryField
                             Title="Profiltiefe"
@@ -881,6 +908,7 @@
                         <local:TitledEntryField
                             Title="Profiltiefe"
                             Grid.Column="2"
+                            Keyboard="Numeric"
                             Text="{Binding RearLeft.TreadDepth}" />
                     </Grid>
                     <Grid
@@ -905,6 +933,7 @@
                         <local:TitledEntryField
                             Title="Profiltiefe"
                             Grid.Column="2"
+                            Keyboard="Numeric"
                             Text="{Binding RearRight.TreadDepth}" />
                     </Grid>
                     <!--#endregion-->
@@ -923,7 +952,7 @@
                         Margin="10,0,10,0"
                         AutomationId="6"
                         Keyboard="Numeric"
-                        Text="{Binding Mileage, StringFormat='#.##0'}" />
+                        Text="{Binding Mileage, StringFormat='{0:#.##0}'}" />
                     <StackLayout
                         Grid.Row="15"
                         AutomationId="6"
@@ -1065,22 +1094,22 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <local:TitledEntryField Title="Elektrik" Text="{Binding HourlyRateElectric}" />
+                        <local:TitledEntryField Title="Elektrik" Text="{Binding HourlyRateElectric, StringFormat='{0:0.00}'}" />
                         <local:TitledEntryField
                             Title="Karosserie"
                             Grid.Column="1"
                             Keyboard="Numeric"
-                            Text="{Binding HourlyRateBody, StringFormat=0.00}" />
+                            Text="{Binding HourlyRateBody, StringFormat='{0:0.00}'}" />
                         <local:TitledEntryField
                             Title="UPE-Aufschläge"
                             Grid.Column="2"
                             Keyboard="Numeric"
-                            Text="{Binding UPESurcharge, StringFormat=0.00}" />
+                            Text="{Binding UPESurcharge, StringFormat='{0:0.00}'}" />
                         <local:TitledEntryField
                             Title="Kleinteile-Aufschlag"
                             Grid.Column="3"
                             Keyboard="Numeric"
-                            Text="{Binding SmallPartsSurcharge, StringFormat=0.00}" />
+                            Text="{Binding SmallPartsSurcharge, StringFormat='{0:0.00}'}" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="0"
@@ -1091,18 +1120,18 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             Keyboard="Numeric"
-                            Text="{Binding FlatRatePainting, StringFormat=0.00}" />
+                            Text="{Binding FlatRatePainting, StringFormat='{0:0.00}'}" />
                         <local:TitledEntryField
                             Title="Lackzuschlag %"
                             Grid.Row="1"
                             Grid.Column="2"
                             Keyboard="Numeric"
-                            Text="{Binding HourlyRatePaintingSurcharge, StringFormat=0.00}" />
+                            Text="{Binding HourlyRatePaintingSurcharge, StringFormat='{0:0.00}'}" />
                         <local:TitledEntryField
                             Title="Lackpunkt"
                             Grid.Row="1"
                             Grid.Column="3"
-                            Text="{Binding HourlyRatePaintPoint}" />
+                            Text="{Binding HourlyRatePaintPoint, StringFormat='{0:0.00}'}" />
                         <Label
                             Grid.Row="2"
                             Grid.Column="0"
@@ -1112,12 +1141,12 @@
                             Title="Zeit"
                             Grid.Row="2"
                             Grid.Column="1"
-                            Text="{Binding TimedRateTransport}" />
+                            Text="{Binding TimedRateTransport, StringFormat='{0:0.00}'}" />
                         <local:TitledEntryField
                             Title="Pauschal"
                             Grid.Row="2"
                             Grid.Column="2"
-                            Text="{Binding FlatrateTransport}" />
+                            Text="{Binding FlatrateTransport, StringFormat='{0:0.00}'}" />
 
                     </Grid>
                     <StackLayout
@@ -1211,7 +1240,7 @@
                         Margin="10,0,10,0"
                         AutomationId="9">
                         <local:TitledEntryField Title="Ort des Unfalls" Text="{Binding AccidentLocation}" />
-                        <local:TitledEntryField Title="Genauer Zeitpunkt des Unfalls" Text="{Binding AccidentTimestamp}" />
+                        <local:TitledEntryField Title="Genauer Zeitpunkt des Unfalls" Text="{Binding AccidentTimestamp, StringFormat='{0:dd.MM.yyyy hh:mm}'}" />
                     </StackLayout>
                     <StackLayout
                         Grid.Row="31"

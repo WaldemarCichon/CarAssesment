@@ -77,11 +77,11 @@ namespace CarAssessment.Views {
 
 				FrontLeftPhoto.ImagePath = assessment.FrontLeftPhotoPath;
 				FrontRightPhoto.ImagePath = assessment.FrontRightPhotoPath;
-				RearLeftPhoto.Source = assessment.RearLeftPhotoPath;
-				RearRightPhoto.Source = assessment.RearRightPhotoPath;
-				CarDocument.Source = assessment.CarDocumentPhotoPath;
-				ServiceRecordBook.Source = assessment.ServiceRecordBookPhotoPath;
-				PoliceReport.Source = assessment.PoliceReportPhotoPath;
+				RearLeftPhoto.ImagePath = assessment.RearLeftPhotoPath;
+				RearRightPhoto.ImagePath = assessment.RearRightPhotoPath;
+				CarDocument.ImagePath = assessment.CarDocumentPhotoPath;
+				ServiceRecordBook.ImagePath = assessment.ServiceRecordBookPhotoPath;
+				PoliceReport.ImagePath = assessment.PoliceReportPhotoPath;
 
 
 				DamageDescriptions.ItemsSource = assessment.DamageDescriptions;
