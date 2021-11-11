@@ -87,12 +87,15 @@ namespace CarAssessment.Views {
 				DamageDescriptions.ItemsSource = assessment.DamageDescriptions;
 				PreDamageDescriptions.ItemsSource = assessment.PreDamages;
 			});
-			/*
+			
 			foreach (var preDamage in assessment.PreDamages) {
 				var imagePath = preDamage.ImagePath;
-				preDamage.ImagePath = null;
+				if (imagePath == null || imagePath == "") {
+					continue;
+				}
+				imagePath = Path.GetFileName(imagePath);
 				preDamage.ImagePath = imagePath;
-			}*/
+			}
 		}
 
 		async void AddNewPreDamageImage_Clicked(System.Object sender, System.EventArgs e) {
@@ -145,12 +148,18 @@ namespace CarAssessment.Views {
 
 		async void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
 			checkAndPersistSignature();
+			foreach (var preDamage in Assessment.PreDamages) {
+				if (preDamage.TempImagePath != null) {
+					preDamage.ImagePath = preDamage.TempImagePath;
+				}
+			}
 			if (Assessment.IsNewRow) {
 				Assessment.LastSaved = DateTime.Now;
 				await DataStore.AddItemAsync(Assessment);
 			} else {
 				await DataStore.UpdateItemAsync(Assessment);
 			}
+
 			await DataStore.Commit();
 			
 			if (await DisplayAlert("Senden", "Soll der Datensatz auch gesendet werden?", "Ja", "Nein")) { 

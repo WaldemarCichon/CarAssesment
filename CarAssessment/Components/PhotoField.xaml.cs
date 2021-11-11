@@ -18,7 +18,13 @@ namespace CarAssessment.Components {
 		public static readonly BindableProperty SourceProperty = BindableProperty.Create(nameof(Source), typeof(ImageSource), typeof(PhotoField), null, BindingMode.TwoWay);
 		public ImageSource Source {
 			get {
-				return (ImageSource)GetValue(SourceProperty);
+				/*
+				if (GetValue(SourceProperty) == null ) {
+					return null;
+				}
+				return Image.Source;
+				*/
+				return (ImageSource) GetValue(SourceProperty);
 			}
 
 			set {
@@ -60,9 +66,16 @@ namespace CarAssessment.Components {
 			set {
 				SetValue(ImagePathProperty, value);
 				if (value != ImagePath) {
+					if (value == null) {
+						Image.IsVisible = false;
+						MakePhotoButton.IsVisible = true;
+					} else {
+						Image.IsVisible = true;
+						MakePhotoButton.IsVisible = false;
+					}
 					SetValue(SourceProperty, value);
 					var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-					Image.Source = Path.Combine(documents, Path.GetFileName(value));
+					Image.Source = value == null ? null : Path.Combine(documents, Path.GetFileName(value));
 				}
 			}
 		}
