@@ -7,6 +7,8 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace CarAssessment.Models.Row {
 	public class Assessment : AbstractRow {
+		private static readonly DateTime EmptyDateTime = new DateTime(); 
+
 		public Assessment() {
 			
 		}
@@ -40,6 +42,13 @@ namespace CarAssessment.Models.Row {
 			}
 		}
 
+		private DateTime tryParseDate(string dateString)
+        {
+			var result = EmptyDateTime;
+			DateTime.TryParse(dateString, out result);
+			return result;
+        }
+
 		public int UserId { get; set; }
 		public String OwnerName { get; set; }
 		public String Address { get; set; }
@@ -51,7 +60,17 @@ namespace CarAssessment.Models.Row {
 		public String ChassisNumber { get; set; }
 		public decimal Mileage { get; set; }
 		public DateTime AdmissionDate { get; set; }
+		public String AdmissionDateS
+        {
+			get => AdmissionDate == EmptyDateTime ? "" : AdmissionDate.ToString("dd.MM.yyyy");
+			set => AdmissionDate = value == "" || value == null ? EmptyDateTime : tryParseDate(value); 
+        }
 		public DateTime AccidentDate { get; set; }
+		public String AccidentDateS
+		{
+			get => AccidentDate == EmptyDateTime ? "" : AccidentDate.ToString("dd.MM.yyyy");
+			set => AccidentDate = value == "" || value == null ? EmptyDateTime : tryParseDate(value);
+		}
 		public String InspectionLocation { get; set; }
 		public String InspectionAttendees { get; set; }
 		public String PreviousDamage { get; set; }
@@ -127,7 +146,7 @@ namespace CarAssessment.Models.Row {
 		public List<PreDamage> PreDamages { get; set; }
 
 		public String Line1 => OwnerName + " " + LicensePlateClient + " gegen " + LicensePlateOponent;
-		public String Line2 => "Unfalldatum: " + AccidentDate.ToString("dd.MM.yyyy") + ", Aufnahmnedatum: " + AdmissionDate.ToString("dd.MM.yyyy");
+		public String Line2 => "Unfalldatum: " + AccidentDateS + ", Aufnahmnedatum: " + AdmissionDateS;
 
 		private void addIfNotEmpty(List<string> list, string entry) {
 			if (entry != null && entry.Length>0) {

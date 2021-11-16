@@ -624,7 +624,7 @@
                         Margin="10,4"
                         AutomationId="1"
                         Keyboard="Numeric"
-                        Text="{Binding AdmissionDate, StringFormat='{0:dd.MM.yyyy}'}" />
+                        Text="{Binding AdmissionDateS}" />
                     <local:TitledEntryField
                         Title="Unfalldatum"
                         Grid.Row="3"
@@ -632,7 +632,7 @@
                         Margin="10,4"
                         AutomationId="1"
                         Keyboard="Numeric"
-                        Text="{Binding AccidentDate, StringFormat='{0:dd.MM.yyyy}'}" />
+                        Text="{Binding AccidentDateS}" />
                     <local:TitledEditorField
                         Title="Besichtigungsort"
                         Grid.Row="4"
@@ -693,14 +693,14 @@
                         Grid.Row="7"
                         Grid.Column="0"
                         Margin="10,0,10,0"
-                        AutomationId="6"
+                        AutomationId="2"
                         Text="{Binding ChassisNumber}" />
                     <local:TitledEntryField
                         Title="Kilometerstand"
                         Grid.Row="7"
                         Grid.Column="1"
                         Margin="10,0,10,0"
-                        AutomationId="6"
+                        AutomationId="2"
                         Keyboard="Numeric"
                         Text="{Binding Mileage}" />
                     <local:PhotoField

@@ -82,7 +82,8 @@ namespace CarAssessment.Views {
 				CarDocument.ImagePath = assessment.CarDocumentPhotoPath;
 				ServiceRecordBook.ImagePath = assessment.ServiceRecordBookPhotoPath;
 				PoliceReport.ImagePath = assessment.PoliceReportPhotoPath;
-
+				SpeedometerPhoto.ImagePath = assessment.SpeedometerPhotoPath;
+				ChassisNumberPhoto.ImagePath = assessment.ChassisNumberPhotoPath;
 
 				DamageDescriptions.ItemsSource = assessment.DamageDescriptions;
 				PreDamageDescriptions.ItemsSource = assessment.PreDamages;
