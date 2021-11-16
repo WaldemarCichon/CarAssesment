@@ -688,6 +688,37 @@
                         HorizontalOptions="FillAndExpand"
                         ImagePath="{Binding RearRightPhotoPath, Mode=TwoWay}" />
 
+                    <local:TitledEntryField
+                        Title="Fahrgestellnummer"
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Margin="10,0,10,0"
+                        AutomationId="6"
+                        Text="{Binding ChassisNumber}" />
+                    <local:TitledEntryField
+                        Title="Kilometerstand"
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Margin="10,0,10,0"
+                        AutomationId="6"
+                        Keyboard="Numeric"
+                        Text="{Binding Mileage}" />
+                    <local:PhotoField
+                        x:Name="ChassisNumberPhoto"
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding ChassisNumberPhotoPath, Mode=TwoWay}"/>
+                    <local:PhotoField
+                        x:Name="SpeedometerPhoto"
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding SpeedometerPhotoPath, Mode=TwoWay}"/>
                     <!--#endregion-->
 
                     <!--#region Damage Photos-->
@@ -845,6 +876,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Label
@@ -857,8 +889,12 @@
                             Grid.Column="1"
                             Text="{Binding FrontLeft.Manufacturer}" />
                         <local:TitledEntryField
-                            Title="Profiltiefe"
+                            Title="Größe"
                             Grid.Column="2"
+                            Text="{Binding FrontLeft.Size}"/>
+                        <local:TitledEntryField
+                            Title="Profiltiefe"
+                            Grid.Column="3"
                             Keyboard="Numeric"
                             Text="{Binding FrontLeft.TreadDepth}" />
                     </Grid>
@@ -871,6 +907,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Label
                             Margin="2,17,2,0"
@@ -880,11 +917,15 @@
                         <local:TitledEntryField
                             Title="Hersteller"
                             Grid.Column="1"
-                            Keyboard="Numeric"
                             Text="{Binding FrontRight.Manufacturer}" />
                         <local:TitledEntryField
-                            Title="Profiltiefe"
+                            Title="Größe"
                             Grid.Column="2"
+                            Text="{Binding FrontRight.Size}"/>
+                        <local:TitledEntryField
+                            Title="Profiltiefe"
+                            Grid.Column="3"
+                            Keyboard="Numeric"
                             Text="{Binding FrontRight.TreadDepth}" />
                     </Grid>
                     <Grid
@@ -894,6 +935,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Label
@@ -906,8 +948,12 @@
                             Grid.Column="1"
                             Text="{Binding RearLeft.Manufacturer}" />
                         <local:TitledEntryField
-                            Title="Profiltiefe"
+                            Title="Größe"
                             Grid.Column="2"
+                            Text="{Binding RearLeft.Size}"/>
+                        <local:TitledEntryField
+                            Title="Profiltiefe"
+                            Grid.Column="3"
                             Keyboard="Numeric"
                             Text="{Binding RearLeft.TreadDepth}" />
                     </Grid>
@@ -920,6 +966,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="2*" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Label
                             Margin="2,17,2,0"
@@ -931,28 +978,17 @@
                             Grid.Column="1"
                             Text="{Binding RearRight.Manufacturer}" />
                         <local:TitledEntryField
-                            Title="Profiltiefe"
+                            Title="Größe"
                             Grid.Column="2"
+                            Text="{Binding RearRight.Size}"/>
+                        <local:TitledEntryField
+                            Title="Profiltiefe"
+                            Grid.Column="3"
                             Keyboard="Numeric"
                             Text="{Binding RearRight.TreadDepth}" />
                     </Grid>
                     <!--#endregion-->
                     <!--#region Car Data-->
-                    <local:TitledEntryField
-                        Title="Fahrgestellnummer"
-                        Grid.Row="7"
-                        Grid.Column="0"
-                        Margin="10,0,10,0"
-                        AutomationId="6"
-                        Text="{Binding ChassisNumber}" />
-                    <local:TitledEntryField
-                        Title="Kilometerstand"
-                        Grid.Row="7"
-                        Grid.Column="1"
-                        Margin="10,0,10,0"
-                        AutomationId="6"
-                        Keyboard="Numeric"
-                        Text="{Binding Mileage, StringFormat='{0:#.##0}'}" />
                     <StackLayout
                         Grid.Row="15"
                         AutomationId="6"

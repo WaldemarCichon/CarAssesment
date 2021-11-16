@@ -6,6 +6,8 @@ namespace CarAssessment.Models.Parts {
 		}
 
 		public String Manufacturer { get; set; }
-		public decimal TreadDepth { get; set; } 
+		public String Size { get; set; }
+		public decimal TreadDepth { get; set; }
+
 	}
 }

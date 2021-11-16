@@ -120,6 +120,8 @@ namespace CarAssessment.Models.Row {
 		public String PoliceReportPhotoPath { get; set; }
 		public String ServiceRecordBookPhotoPath { get; set; }
 		public String CarDocumentPhotoPath { get; set; }
+		public String SpeedometerPhotoPath { get; set; }
+		public String ChassisNumberPhotoPath { get; set; }
 
 		public List<DamageDescription> DamageDescriptions { get; set; }
 		public List<PreDamage> PreDamages { get; set; }
