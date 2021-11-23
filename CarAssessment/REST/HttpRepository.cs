@@ -52,10 +52,12 @@ namespace CarAssessment.REST {
             var responseMessage = await httpClient.PostAsJsonAsync($"{BaseUrl}assessment", assessment);
             var content = responseMessage.Content;
             assessment.ObjectId = await content.ReadFromJsonAsync<int>();
+            assessment.Sent = DateTime.Now;
         }
 
         public async Task PutAssessment(Assessment assessment) {
             await httpClient.PutAsJsonAsync($"{BaseUrl}assessment", assessment);
+            assessment.Sent = DateTime.Now;
         }
 
 

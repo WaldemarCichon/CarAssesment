@@ -8,8 +8,10 @@
         <Grid>
             <xct:CameraView
                 x:Name="Camera"
+                HorizontalOptions="FillAndExpand"
                 MediaCaptured="Camera_MediaCaptured"
-                OnAvailable="Camera_OnAvailable" />
+                OnAvailable="Camera_OnAvailable"
+                VerticalOptions="FillAndExpand" />
             <ImageButton
                 x:Name="MakePhotoButton"
                 Margin="0,10,0,10"

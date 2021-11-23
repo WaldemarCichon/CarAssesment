@@ -14,24 +14,22 @@ using CarAssessment.Models.Collection;
 using CarAssessment.Layout;
 using CarAssessment.REST;
 using System.IO;
+using System.Resources;
 
+[assembly: NeutralResourcesLanguage("de-DE")]
 // Page is used as well for the new item but also for the editing
 namespace CarAssessment.Views {
 	public partial class NewItemPage : ContentPage {
 		private static LayoutController LayoutController { get; set; }
 		private static BoxView dialogOuterBox {get;set;}
 
-        public Item Item { get; set; }
-
-		public Command TitleClicked { get; } = new Command((param) => {
-			LayoutController.DisplayedGroup = int.Parse(param as string);
-			dialogOuterBox.IsVisible = true;
-		});
-			
+		public Item Item { get; set; }
 
 		IDataStore<Assessment> DataStore => DependencyService.Get<IDataStore<Assessment>>();
 		Assessment Assessment { get; set; }
 		public static Assessment CurrentAssessment { get; internal set; }
+
+		private TitledEntryField[] numericFieldsToUpdate;
 
 		public NewItemPage(): this(null) {
 
@@ -39,11 +37,12 @@ namespace CarAssessment.Views {
 
 		public NewItemPage(Assessment assessment) {
 			InitializeComponent();
+			InitializeComponentInternal();
 			InitializeContext(assessment);
 			dialogOuterBox = DialogOuterBox;
 			LayoutController = new LayoutController(this);
-			PrevArrowButton.BindingContext = LayoutController;
-			NextArrowButton.BindingContext = LayoutController;
+			//PrevArrowButton.BindingContext = LayoutController;
+			//NextArrowButton.BindingContext = LayoutController;
 			var grid = this.Content as Grid;
 			var stackLayout = grid.Children[0] as StackLayout;
 			foreach (var view in stackLayout.Children) {
@@ -57,6 +56,21 @@ namespace CarAssessment.Views {
 					}
 				}
 			}
+		}
+
+		private void InitializeComponentInternal() {
+			numericFieldsToUpdate = new TitledEntryField[] {
+				HourlyRateBodyField,
+				HourlyRateElectricField,
+				UPESurchargeField,
+				SmallPartsSurchargeField,
+				FlatRatePaintingField,
+				HourlyRatePaintingSurchargeField,
+				HourlyRatePaintPoinField,
+				TimedRateTransportField,
+				FlatrateTransportField,
+				MileageField
+			};
 		}
 
 		private async void InitializeContext(Assessment assessment) {
@@ -98,6 +112,16 @@ namespace CarAssessment.Views {
 				preDamage.ImagePath = imagePath;
 			}
 		}
+
+		public Command TitleClicked { get; } = new Command((param) => {
+			int group = int.Parse(param as string);
+
+			LayoutController.DisplayedGroup = group;
+
+			Device.BeginInvokeOnMainThread(() => {
+				dialogOuterBox.IsVisible = true;
+			});
+		});
 
 		async void AddNewPreDamageImage_Clicked(System.Object sender, System.EventArgs e) {
 			await Shell.Current.GoToAsync(nameof(CameraPage));
@@ -147,8 +171,18 @@ namespace CarAssessment.Views {
 			}
 		}
 
+		private void workAroundForDecimalComma() {
+			foreach(var field in numericFieldsToUpdate) {
+				var text = field.Text;
+				text = text.Replace(".", "");
+				text = text.Replace(',', '.');
+				field.Text = text;
+			}
+		}
+
 		async void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
 			checkAndPersistSignature();
+			workAroundForDecimalComma();
 			foreach (var preDamage in Assessment.PreDamages) {
 				if (preDamage.TempImagePath != null) {
 					preDamage.ImagePath = preDamage.TempImagePath;
@@ -160,17 +194,16 @@ namespace CarAssessment.Views {
 			} else {
 				await DataStore.UpdateItemAsync(Assessment);
 			}
-
-			await DataStore.Commit();
 			
 			if (await DisplayAlert("Senden", "Soll der Datensatz auch gesendet werden?", "Ja", "Nein")) { 
 				if (Assessment.ObjectId < 1) {
 					await HttpRepository.Instance.PostAssessment(Assessment);
-					await DataStore.UpdateItemAsync(Assessment);
 				} else {
 					await HttpRepository.Instance.PutAssessment(Assessment);
 				}
+				await DataStore.UpdateItemAsync(Assessment);
 			}
+			await DataStore.Commit();
 			await Shell.Current.GoToAsync("..");
 		}
 

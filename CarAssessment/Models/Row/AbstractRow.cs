@@ -18,6 +18,7 @@ namespace CarAssessment.Models.Row {
 		public DateTime Sent { get; set; }
 
 		public bool IsNewRow { get => LastSaved == new DateTime(); }
+		public bool ShouldSend { get => (Sent + TimeSpan.FromSeconds(5)) < LastSaved; }
 
 		public virtual void Persist() {
 			// Persisted = DateTime.Now;

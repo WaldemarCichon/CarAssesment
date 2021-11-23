@@ -18,6 +18,23 @@ namespace CarAssessment.Models.Row {
 
 		protected override void InitRow() {
 			base.InitRow();
+
+			if (FrontLeft == null) {
+				FrontLeft = new Tire();
+			}
+
+			if (FrontRight == null) {
+				FrontRight = new Tire();
+			}
+
+			if (RearLeft == null) {
+				RearLeft = new Tire();
+			}
+
+			if (RearRight == null) {
+				RearRight = new Tire();
+			}
+
 			if (DamagePhotos == null) {
 				DamagePhotos = new List<string>();
 			}

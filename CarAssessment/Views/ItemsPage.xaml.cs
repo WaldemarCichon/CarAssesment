@@ -46,10 +46,12 @@ namespace CarAssessment.Views {
 			var assessment = (sender as Button).CommandParameter as Assessment;
 			if (assessment.ObjectId < 1) {
 				await HttpRepository.Instance.PostAssessment(assessment);
-				await DataStore.UpdateItemAsync(assessment);
 			} else {
 				await HttpRepository.Instance.PutAssessment(assessment);
 			}
+			await DataStore.UpdateItemAsync(assessment);
+			await DataStore.Commit();
+			_viewModel.Refresh();
 		}
 	}
 }
