@@ -30,6 +30,7 @@
     <None Remove="REST\" />
     <None Remove="System.Net.Http.Json" />
     <None Remove="Xamarin.Essentials" />
+    <None Remove="Tooling\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Row\" />
@@ -40,5 +41,6 @@
     <Folder Include="DataHandling\" />
     <Folder Include="Layout\" />
     <Folder Include="REST\" />
+    <Folder Include="Tooling\" />
   </ItemGroup>
 </Project>

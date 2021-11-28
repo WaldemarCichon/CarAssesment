@@ -15,6 +15,8 @@ using CarAssessment.Layout;
 using CarAssessment.REST;
 using System.IO;
 using System.Resources;
+using CarAssessment.Tooling;
+using SignaturePad.Forms;
 
 [assembly: NeutralResourcesLanguage("de-DE")]
 // Page is used as well for the new item but also for the editing
@@ -23,16 +25,15 @@ namespace CarAssessment.Views {
 		private static LayoutController LayoutController { get; set; }
 		private static BoxView dialogOuterBox {get;set;}
 
-		public Item Item { get; set; }
-
 		IDataStore<Assessment> DataStore => DependencyService.Get<IDataStore<Assessment>>();
 		Assessment Assessment { get; set; }
 		public static Assessment CurrentAssessment { get; internal set; }
 
 		private TitledEntryField[] numericFieldsToUpdate;
+		private bool newAssessment = false;
 
 		public NewItemPage(): this(null) {
-
+			this.newAssessment = true;
 		}
 
 		public NewItemPage(Assessment assessment) {
@@ -40,7 +41,7 @@ namespace CarAssessment.Views {
 			InitializeComponentInternal();
 			InitializeContext(assessment);
 			dialogOuterBox = DialogOuterBox;
-			LayoutController = new LayoutController(this);
+			LayoutController = new LayoutController(this, newAssessment);
 			//PrevArrowButton.BindingContext = LayoutController;
 			//NextArrowButton.BindingContext = LayoutController;
 			var grid = this.Content as Grid;
@@ -71,6 +72,8 @@ namespace CarAssessment.Views {
 				FlatrateTransportField,
 				MileageField
 			};
+			DeclarationOfAssignmentLabel.Text = TextTemplates.DeclarationOfAssignmentText;
+			AdvocateAssignmentLabel.Text = TextTemplates.AdvocateAssignmentText;
 		}
 
 		private async void InitializeContext(Assessment assessment) {
@@ -110,6 +113,19 @@ namespace CarAssessment.Views {
 				}
 				imagePath = Path.GetFileName(imagePath);
 				preDamage.ImagePath = imagePath;
+			}
+
+			fillSignature(Signature, "assignment");
+			fillSignature(Signature1, "advocate");
+		}
+
+		public void fillSignature(SignaturePadView signature, string kind) {
+			
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			var path = Path.Combine(documents, $"signature_{kind}_{Assessment.Id}.jpg");
+			if (File.Exists(path)) {
+				signature.BackgroundImage = path;
+				signature.IsEnabled = false;
 			}
 		}
 
@@ -156,17 +172,18 @@ namespace CarAssessment.Views {
 			HandleSpecialFields(int.Parse(((View)sender).AutomationId));
 		}
 
-		async void checkAndPersistSignature() {
-			if (Signature.IsBlank) {
+		async void checkAndPersistSignature(SignaturePadView signature, string kind) {
+			if (signature.IsBlank) {
 				return;
 			}
-			var signatureImgStream = await Signature.GetImageStreamAsync(SignaturePad.Forms.SignatureImageFormat.Jpeg);
+			var signatureImgStream = await signature.GetImageStreamAsync(SignaturePad.Forms.SignatureImageFormat.Jpeg);
+			var mmm = new MemoryStream();
 			using (MemoryStream ms = new MemoryStream()) {
 				await (signatureImgStream as Stream).CopyToAsync(ms);
 				var bytes = ms.ToArray();
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-				var path = Path.Combine(documents, $"signature_{Assessment.Id}");
-				System.IO.File.WriteAllBytes(path, bytes);
+				var path = Path.Combine(documents, $"signature_{kind}_{Assessment.Id}.jpg");
+				File.WriteAllBytes(path, bytes);
 				await HttpRepository.Instance.PostPicture(path);
 			}
 		}
@@ -181,7 +198,8 @@ namespace CarAssessment.Views {
 		}
 
 		async void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
-			checkAndPersistSignature();
+			checkAndPersistSignature(Signature, "assignment");
+			checkAndPersistSignature(Signature1, "advocate");
 			workAroundForDecimalComma();
 			foreach (var preDamage in Assessment.PreDamages) {
 				if (preDamage.TempImagePath != null) {
@@ -254,6 +272,24 @@ namespace CarAssessment.Views {
 
 		void SignaturePadView_Cleared(System.Object sender, System.EventArgs e) {
 			
+		}
+
+		public void EnterDeclarationOfAssignment() {
+			Owner.Text = Assessment.OwnerName;
+			PlateOwner.Text = Assessment.LicensePlateClient;
+			PlateOpponent.Text = Assessment.LicensePlateOponent;
+			Address.Text = Assessment.Street + "\n" + Assessment.City;
+			AdmissionDate.Text = Assessment.AdmissionDate.ToString("dd.MM.yyyy");
+			AccidentDate.Text = Assessment.AccidentDate.ToString("dd.MM.yyyy");
+			CityAndDate.Text = Assessment.City + ", den " + Assessment.AdmissionDate.ToString("dd.MM.yy");
+		}
+
+		public void EnterAdvocateAssignment() {
+			Accident.Text = "Schadenfall vom " + Assessment.AccidentDate.ToString("dd.MM.yyyy") + ", Kfz-Kennzeichen: " + Assessment.LicensePlateClient;
+			Advocate.Text = "Rechtsanwalt: "+ Assessment.RecommendedAdvocate;
+			Advocate1.Text = "dem Rechtsanwalt: " + Assessment.RecommendedAdvocate;
+			Client.Text = "Hiermit erteile ich " + Assessment.OwnerName + " " + Assessment.Street + ", " + Assessment.City;
+			CityAndDate1.Text = Assessment.City + ", den " + Assessment.AdmissionDate.ToString("dd.MM.yy");
 		}
 	}
 }

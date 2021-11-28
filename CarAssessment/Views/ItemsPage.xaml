@@ -10,7 +10,7 @@
     BackgroundColor="DarkGray">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding AddItemCommand}" Text="+" />
+        <ToolbarItem Command="{Binding AddItemCommand}" Text="Neues Gutachten erfassen" />
     </ContentPage.ToolbarItems>
     <!--
         x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
@@ -26,7 +26,10 @@
             SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="15,15" x:DataType="model:Assessment">
+                    <Grid
+                        Padding="15,15"
+                        x:DataType="model:Assessment"
+                        Background="{Binding BackgroundColor}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="150" />
@@ -37,6 +40,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
+                        <!--
                         <BoxView
                             Grid.RowSpan="2"
                             Grid.ColumnSpan="4"
@@ -49,6 +53,8 @@
                             Margin="-3"
                             BackgroundColor="#f0f0f0"
                             CornerRadius="2" />
+                        -->
+
                         <Label
                             FontSize="20"
                             LineBreakMode="NoWrap"
@@ -63,12 +69,12 @@
                         <Label
                             Grid.Row="0"
                             Grid.Column="1"
-                            Text="{Binding Created, StringFormat='{0:dd.MM.yyyy}'}"
+                            Text="{Binding AccidentDate, StringFormat='{0:dd.MM.yyyy}'}"
                             TextColor="Blue" />
                         <Label
                             Grid.Row="1"
                             Grid.Column="1"
-                            Text="{Binding Sent, StringFormat='{0:dd.MM.yyyy}'}"
+                            Text="{Binding AdmissionDate, StringFormat='{0:dd.MM.yyyy}'}"
                             TextColor="Blue" />
                         <Button
                             x:Name="SendAssessementButton"

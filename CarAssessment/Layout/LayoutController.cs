@@ -13,17 +13,17 @@ namespace CarAssessment.Layout
         private ContentPage contentPage;
         private int displayedGroup;
 
-        public LayoutController(ContentPage contentPage)
+        public LayoutController(ContentPage contentPage, bool newAssessment)
         {
             allViews = new List<View>();
             this.contentPage = contentPage;
-            init();
+            init(newAssessment);
         }
 
-        private void init()
+        private void init(bool newAssessment)
         {
             iterate(contentPage.Content);
-            DisplayedGroup = 1;
+            DisplayedGroup = newAssessment ? 1 : 0;
         }
 
         private void display(View view) {
@@ -75,10 +75,15 @@ namespace CarAssessment.Layout
             get => displayedGroup;
             set {
                 displayedGroup = value;
-                allViews.ForEach((view) => view.IsVisible = int.Parse(view.AutomationId) == displayedGroup);
+                allViews.ForEach((view) => view.IsVisible = int.Parse(view.AutomationId) == displayedGroup || displayedGroup > 0 && view.AutomationId=="99");
 				((NewItemPage)contentPage).HandleSpecialFields(displayedGroup);
                 ((NewItemPage)contentPage).PrevArrowButton.IsVisible = displayedGroup > 1;
-                ((NewItemPage)contentPage).NextArrowButton.IsVisible = displayedGroup < 11;
+                ((NewItemPage)contentPage).NextArrowButton.IsVisible = displayedGroup < 12;
+                if (value == 11) {
+                    ((NewItemPage)contentPage).EnterDeclarationOfAssignment();
+				} else if (value == 12) {
+                    ((NewItemPage)contentPage).EnterAdvocateAssignment();
+				}
             }
         }
 
@@ -91,7 +96,7 @@ namespace CarAssessment.Layout
             ((NewItemPage)contentPage).PrevArrowButton.IsVisible = true;
             if (DisplayedGroup < 11) {
                 DisplayedGroup++;
-                if (DisplayedGroup == 11) {
+                if (DisplayedGroup == 12) {
                     ((NewItemPage)contentPage).NextArrowButton.IsVisible = false;
                 }
             }

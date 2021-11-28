@@ -27,7 +27,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>de.cisoft.CarAssessment</string>
 	<key>CFBundleVersion</key>
-	<string>1.05</string>
+	<string>1.06</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -35,7 +35,7 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Ich muss Fotos machen</string>
+	<string>Bilder sind für die Funktionalität unerlässlich</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>FontAwesomeRegular.otf</string>

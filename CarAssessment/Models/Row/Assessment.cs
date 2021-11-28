@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using CarAssessment.Models.Parts;
 using LiteDB;
+using Xamarin.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace CarAssessment.Models.Row {
@@ -193,6 +194,10 @@ namespace CarAssessment.Models.Row {
 			}
 		}
 
+
+		[JsonIgnore]
+		[BsonIgnore]
+		public Color BackgroundColor { get; set; } = Color.Beige;
 
 		public override void Persist() {
 			throw new NotImplementedException();

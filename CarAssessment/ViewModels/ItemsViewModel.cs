@@ -35,18 +35,29 @@ namespace CarAssessment.ViewModels {
 			try {
 				Assessments.Clear();
 				var items = await DataStore.GetItemsAsync(true);
-				var assessments = new List<Assessment>();
-				foreach (var item in items) {
-					assessments.Add(item);
-				}
-				assessments.Sort((assessment1, assessment2) => assessment2.Id - assessment1.Id); 
-				foreach(var assessment in assessments) {
-					Assessments.Add(assessment);
-				}
+				sortAndColor(items);
+
 			} catch (Exception ex) {
 				Debug.WriteLine(ex);
 			} finally {
 				IsBusy = false;
+			}
+		}
+
+		private Color color1 = new Color(0.85, .85, .85);
+		private Color color2 = new Color(0.8, 0.8, 0.8);
+
+		private void sortAndColor(IEnumerable<Assessment> items) {
+			var assessments = new List<Assessment>();
+			foreach (var item in items) {
+				assessments.Add(item);
+			}
+			assessments.Sort((assessment1, assessment2) => assessment2.Id - assessment1.Id);
+			int index = 0;
+			foreach (var assessment in assessments) {
+				assessment.BackgroundColor = index % 2 == 0 ? color1 : color2;
+				index++;
+				Assessments.Add(assessment);
 			}
 		}
 
