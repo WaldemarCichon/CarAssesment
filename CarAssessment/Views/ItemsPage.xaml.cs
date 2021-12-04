@@ -83,8 +83,8 @@ namespace CarAssessment.Views {
 			}
 			var assessment = (sender as Button).CommandParameter as Assessment;
 
-			await sendSignature(assessment, NewItemPage.Assignment);
-			await sendSignature(assessment, NewItemPage.Advocate);
+			await sendSignature(assessment, NewItemPage.AssignmentLetter);
+			await sendSignature(assessment, NewItemPage.AdvocateLetter);
 
 			await sendPictures(assessment);
 

@@ -25,7 +25,7 @@
             FontAttributes="Bold"
             FontSize="40"
             HorizontalOptions="CenterAndExpand"
-            Text="Kfz-Gutachten Version 0.7" />
+            Text="Kfz-Gutachten Version 0.8" />
         <Label
             Margin="0,20,0,0"
             FontSize="30"

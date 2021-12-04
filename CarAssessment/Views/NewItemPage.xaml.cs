@@ -19,7 +19,7 @@ using CarAssessment.Tooling;
 using SignaturePad.Forms;
 
 [assembly: NeutralResourcesLanguage("de-DE")]
-// Page is used as well for the new item but also for the editing
+// Page is used as well for the new item but also for the editiƒadng
 namespace CarAssessment.Views {
 	public partial class NewItemPage : ContentPage {
 		private static LayoutController LayoutController { get; set; }
@@ -30,8 +30,8 @@ namespace CarAssessment.Views {
 		public static Assessment CurrentAssessment { get; internal set; }
 		public static CreationMode CreationMode { get; internal set; }
 
-		public const string Assignment = "assignment";
-		public const string Advocate = "advocate";
+		public const string AssignmentLetter = "assignment";
+		public const string AdvocateLetter = "advocate";
 		private TitledEntryField[] numericFieldsToUpdate;
 		private bool newAssessment = false;
 
@@ -121,8 +121,8 @@ namespace CarAssessment.Views {
 				preDamage.ImagePath = imagePath;
 			}
 
-			fillSignature(Signature, Assignment);
-			fillSignature(Signature1, Advocate);
+			fillSignature(Signature, AssignmentLetter);
+			fillSignature(Signature1, AdvocateLetter);
 			emptyNumericFields();
 		}
 
@@ -228,8 +228,8 @@ namespace CarAssessment.Views {
 		}
 
 		async void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
-			var assignmentSignature = await checkAndPersistSignature(Signature, Assignment);
-			var advocateSignature = await checkAndPersistSignature(Signature1, Advocate);
+			var assignmentSignature = await checkAndPersistSignature(Signature, AssignmentLetter);
+			var advocateSignature = await checkAndPersistSignature(Signature1, AdvocateLetter);
 			workAroundForDecimalComma();
 			foreach (var preDamage in Assessment.PreDamages) {
 				if (preDamage.TempImagePath != null) {
