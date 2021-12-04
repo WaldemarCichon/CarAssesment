@@ -32,6 +32,13 @@
 
     <TabBar x:Name="TabBar">
         <ShellContent
+            x:Name="StartTab"
+            Title="Guten Tag"
+            x:FieldModifier="public"
+            ContentTemplate="{DataTemplate local:StartPage}"
+            Icon="icon_feed.png"
+            IsVisible="False" />
+        <ShellContent
             x:Name="LoginTab"
             Title="Login"
             ChildAdded="LoginTab_ChildAdded"
@@ -40,12 +47,14 @@
         <ShellContent
             x:Name="AssessmentTab"
             Title="Gutachten"
+            x:FieldModifier="public"
             ContentTemplate="{DataTemplate local:ItemsPage}"
             Icon="icon_feed.png"
             IsVisible="False" />
         <ShellContent
             x:Name="AboutTab"
             Title="Über"
+            x:FieldModifier="public"
             ContentTemplate="{DataTemplate local:AboutPage}"
             Icon="icon_about.png"
             IsVisible="True"

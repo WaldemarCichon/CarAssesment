@@ -29,6 +29,10 @@ namespace CarAssessment.REST {
             // httpClient.BaseAddress = uri;
         }
 
+        public async Task<String> GetCredits() {
+            return await httpClient.GetStringAsync($"{BaseUrl}main");
+		}
+
         public async Task PostPicture(string path) {
             var content = File.ReadAllBytes(path);
             var fileName = Path.GetFileName(path);

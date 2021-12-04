@@ -13,17 +13,17 @@ namespace CarAssessment.Layout
         private ContentPage contentPage;
         private int displayedGroup;
 
-        public LayoutController(ContentPage contentPage, bool newAssessment)
+        public LayoutController(ContentPage contentPage, CreationMode creationMode)
         {
             allViews = new List<View>();
             this.contentPage = contentPage;
-            init(newAssessment);
+            init(creationMode);
         }
 
-        private void init(bool newAssessment)
+        private void init(CreationMode creationMode)
         {
             iterate(contentPage.Content);
-            DisplayedGroup = newAssessment ? 1 : 0;
+            DisplayedGroup = creationMode == CreationMode.Direct ? 1 : 0;
         }
 
         private void display(View view) {
@@ -94,7 +94,7 @@ namespace CarAssessment.Layout
         public void Next() {
             Validate(DisplayedGroup);
             ((NewItemPage)contentPage).PrevArrowButton.IsVisible = true;
-            if (DisplayedGroup < 11) {
+            if (DisplayedGroup < 12) {
                 DisplayedGroup++;
                 if (DisplayedGroup == 12) {
                     ((NewItemPage)contentPage).NextArrowButton.IsVisible = false;

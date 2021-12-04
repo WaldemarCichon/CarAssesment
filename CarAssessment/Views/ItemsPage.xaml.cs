@@ -13,17 +13,29 @@ using CarAssessment.ViewModels;
 using CarAssessment.REST;
 using CarAssessment.Models.Row;
 using CarAssessment.Services;
+using CarAssessment.Tooling;
+using System.IO;
 
 namespace CarAssessment.Views {
+	public enum CreationMode {
+		None,
+		Overview,
+		Direct
+	}
+
 	public partial class ItemsPage : ContentPage {
 		ItemsViewModel _viewModel;
 		IDataStore<Assessment> DataStore = DependencyService.Get<IDataStore<Assessment>>();
 
+		public static CreationMode NewAssessmentMode { get; internal set; }
 
 		public ItemsPage() {
 			InitializeComponent();
 
 			BindingContext = _viewModel = new ItemsViewModel();
+			if (NewAssessmentMode != CreationMode.None) {
+				_viewModel.OnAddItem(NewAssessmentMode);
+			}
 		}
 
 		protected override void OnAppearing() {
@@ -42,9 +54,41 @@ namespace CarAssessment.Views {
 			//BindingContext = _viewModel;
 		}
 
+		internal void NewAssessment(bool directMode) {
+			_viewModel.OnAddItem(directMode);
+		}
+
+		async Task sendPictures(Assessment assessment) {
+			var httpRepository = HttpRepository.Instance;
+			var imageList = new ImagePathList(assessment);
+			var assessmentId = assessment.Id;
+			foreach (var imagePath in imageList.ActiveImageList) {
+				await httpRepository.PostPicture(imagePath, assessmentId);
+			}
+		}
+
+		async Task sendSignature (Assessment assessment, string kind) {
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			var path = Path.Combine(documents, $"signature_{kind}_{assessment.Id}.jpg");
+			if (File.Exists(path)) {
+				await HttpRepository.Instance.PostPicture(path);
+			}
+		}
+
 		async void SendAssessementButton_Clicked(System.Object sender, System.EventArgs e) {
+			var response = await HttpRepository.Instance.GetCredits();
+			if (response == null || !response.StartsWith("CarAssessment")) {
+				await DisplayAlert("Fehler", "Senden nicht gelungen, bitte ggf. später versuchen", "OK");
+				return;
+			}
 			var assessment = (sender as Button).CommandParameter as Assessment;
-			if (assessment.ObjectId < 1) {
+
+			await sendSignature(assessment, NewItemPage.Assignment);
+			await sendSignature(assessment, NewItemPage.Advocate);
+
+			await sendPictures(assessment);
+
+			if (assessment.ObjectId < 1) {                  
 				await HttpRepository.Instance.PostAssessment(assessment);
 			} else {
 				await HttpRepository.Instance.PutAssessment(assessment);

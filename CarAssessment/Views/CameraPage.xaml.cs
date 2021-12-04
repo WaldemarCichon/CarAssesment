@@ -57,7 +57,7 @@ namespace CarAssessment.Views {
 			if (!ImmediatelyCloseAfterShutterClick) {
 				await Shell.Current.Navigation.PopAsync();
 			}
-			_ = HttpRepository.Instance.PostPicture(filename, NewItemPage.CurrentAssessment.Id);
+			// _ = HttpRepository.Instance.PostPicture(filename, NewItemPage.CurrentAssessment.Id);
 		}
 	}
 }

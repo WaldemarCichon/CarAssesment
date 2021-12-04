@@ -78,11 +78,18 @@ namespace CarAssessment.ViewModels {
 			}
 		}
 
-		private async void OnAddItem(object obj) {
+		internal async void OnAddItem(object obj) {
+			if (obj.GetType() == typeof (CreationMode)) {
+				NewItemPage.CreationMode = (CreationMode)obj;
+			} else {
+				NewItemPage.CreationMode = CreationMode.None;
+			}
+
+
 			await Shell.Current.GoToAsync(nameof(NewItemPage));
 		}
 
-		async void OnItemSelected(Assessment item) {
+		public async void OnItemSelected(Assessment item) {
 			if (item == null)
 				return;
 

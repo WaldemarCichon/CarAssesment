@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="CarAssessment.Views.AboutPage"
+    x:Class="CarAssessment.Views.StartPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:CarAssessment.ViewModels"
@@ -35,17 +35,31 @@
             Margin="0,10,0,0"
             FontSize="30"
             HorizontalOptions="CenterAndExpand"
-            Text="Nordstraße 28" />
+            Text="Norstraße 28" />
         <Label
             Margin="0,10,0,0"
             FontSize="30"
             HorizontalOptions="CenterAndExpand"
             Text="46535 Dinslaken" />
-        <Button
-            x:Name="LogoutButton"
-            Margin="10,30,10,0"
-            Clicked="LogoutButton_Clicked"
-            Text="Ausloggen" />
-
+        <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+            <Button
+                x:Name="ShowListButton"
+                Margin="10,30,10,0"
+                Padding="10,0"
+                Clicked="ShowListButton_Clicked"
+                Text="Liste der Gutachten" />
+            <Button
+                x:Name="CreateNewButton"
+                Margin="10,30,10,0"
+                Padding="10,0"
+                Clicked="CreateNewButton_Clicked"
+                Text="Neues Gutachten (Übersicht)" />
+            <Button
+                x:Name="CreateNewButton_direct"
+                Margin="10,30,10,0"
+                Padding="10,0"
+                Clicked="CreateNewButton_direct_Clicked"
+                Text="Neues Gutachten (Direkteinstieg)" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

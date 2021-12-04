@@ -14,7 +14,10 @@ namespace CarAssessment {
 			Routing.RegisterRoute(nameof(CameraPage), typeof(CameraPage));
 			Routing.RegisterRoute(nameof(PhotoPage), typeof(PhotoPage));
 			Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-
+			Routing.RegisterRoute(nameof(StartPage), typeof(StartPage));
+			if (HttpRepository.Instance.User != null) {
+				LoginSuccessed();
+			}
 		}
 
 		
@@ -22,16 +25,13 @@ namespace CarAssessment {
 		public void LoginSuccessed() {
 			Device.BeginInvokeOnMainThread(() => {
 				LoginTab.IsVisible = false;
-				AssessmentTab.IsVisible = true;
-				TabBar.CurrentItem = AssessmentTab;
+				StartTab.IsVisible = true;
+				TabBar.CurrentItem = StartTab;
 			});
 		}
 
 		void LoginTab_ChildAdded(System.Object sender, Xamarin.Forms.ElementEventArgs e) {
 			(e.Element as LoginPage).Shell = this;
-			if (HttpRepository.Instance.User != null) {
-				LoginSuccessed();
-			}
 		}
 	}
 }

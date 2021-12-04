@@ -28,12 +28,14 @@ namespace CarAssessment.Views {
 		IDataStore<Assessment> DataStore => DependencyService.Get<IDataStore<Assessment>>();
 		Assessment Assessment { get; set; }
 		public static Assessment CurrentAssessment { get; internal set; }
+		public static CreationMode CreationMode { get; internal set; }
 
+		public const string Assignment = "assignment";
+		public const string Advocate = "advocate";
 		private TitledEntryField[] numericFieldsToUpdate;
 		private bool newAssessment = false;
 
 		public NewItemPage(): this(null) {
-			this.newAssessment = true;
 		}
 
 		public NewItemPage(Assessment assessment) {
@@ -41,7 +43,7 @@ namespace CarAssessment.Views {
 			InitializeComponentInternal();
 			InitializeContext(assessment);
 			dialogOuterBox = DialogOuterBox;
-			LayoutController = new LayoutController(this, newAssessment);
+			LayoutController = new LayoutController(this, CreationMode);
 			//PrevArrowButton.BindingContext = LayoutController;
 			//NextArrowButton.BindingContext = LayoutController;
 			var grid = this.Content as Grid;
@@ -70,7 +72,11 @@ namespace CarAssessment.Views {
 				HourlyRatePaintPoinField,
 				TimedRateTransportField,
 				FlatrateTransportField,
-				MileageField
+				MileageField,
+				FrontLeftTireThreadDepth,
+				FrontRightTireThreadDepth,
+				RearLeftTireThreadDepth,
+				RearRightTireThreadDepth
 			};
 			DeclarationOfAssignmentLabel.Text = TextTemplates.DeclarationOfAssignmentText;
 			AdvocateAssignmentLabel.Text = TextTemplates.AdvocateAssignmentText;
@@ -115,8 +121,23 @@ namespace CarAssessment.Views {
 				preDamage.ImagePath = imagePath;
 			}
 
-			fillSignature(Signature, "assignment");
-			fillSignature(Signature1, "advocate");
+			fillSignature(Signature, Assignment);
+			fillSignature(Signature1, Advocate);
+			emptyNumericFields();
+		}
+
+		private bool isZero(String text) {
+			var result = 0f;
+			float.TryParse(text, out result);
+			return result == 0f;
+		}
+
+		private void emptyNumericFields() {
+			foreach (var field in numericFieldsToUpdate) {
+				if (isZero(field.Text)) {
+					field.Text = "";
+				}
+			}
 		}
 
 		public void fillSignature(SignaturePadView signature, string kind) {
@@ -172,9 +193,9 @@ namespace CarAssessment.Views {
 			HandleSpecialFields(int.Parse(((View)sender).AutomationId));
 		}
 
-		async void checkAndPersistSignature(SignaturePadView signature, string kind) {
+		async Task<string> checkAndPersistSignature(SignaturePadView signature, string kind) {
 			if (signature.IsBlank) {
-				return;
+				return null;
 			}
 			var signatureImgStream = await signature.GetImageStreamAsync(SignaturePad.Forms.SignatureImageFormat.Jpeg);
 			var mmm = new MemoryStream();
@@ -184,7 +205,7 @@ namespace CarAssessment.Views {
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 				var path = Path.Combine(documents, $"signature_{kind}_{Assessment.Id}.jpg");
 				File.WriteAllBytes(path, bytes);
-				await HttpRepository.Instance.PostPicture(path);
+				return path;
 			}
 		}
 
@@ -197,9 +218,18 @@ namespace CarAssessment.Views {
 			}
 		}
 
+		async Task sendPictures() {
+			var httpRepository = HttpRepository.Instance;
+			var imageList = new ImagePathList(Assessment);
+			var assessmentId = Assessment.Id;
+			foreach (var imagePath in imageList.ActiveImageList) {
+				await httpRepository.PostPicture(imagePath,assessmentId);
+			}
+		}
+
 		async void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
-			checkAndPersistSignature(Signature, "assignment");
-			checkAndPersistSignature(Signature1, "advocate");
+			var assignmentSignature = await checkAndPersistSignature(Signature, Assignment);
+			var advocateSignature = await checkAndPersistSignature(Signature1, Advocate);
 			workAroundForDecimalComma();
 			foreach (var preDamage in Assessment.PreDamages) {
 				if (preDamage.TempImagePath != null) {
@@ -213,7 +243,22 @@ namespace CarAssessment.Views {
 				await DataStore.UpdateItemAsync(Assessment);
 			}
 			
-			if (await DisplayAlert("Senden", "Soll der Datensatz auch gesendet werden?", "Ja", "Nein")) { 
+			if (await DisplayAlert("Senden", "Soll der Datensatz auch gesendet werden?", "Ja", "Nein")) {
+				var response = await HttpRepository.Instance.GetCredits();
+				if (response == null || !response.StartsWith("CarAssessment")) {
+					await DisplayAlert("Fehler", "Senden nicht gelungen, bitte ggf. später bei besserer Verbindung versuchen", "OK");
+					return;
+				}
+
+				if (assignmentSignature != null) {
+					await HttpRepository.Instance.PostPicture(assignmentSignature);
+				}
+
+				if (advocateSignature != null) {
+					await HttpRepository.Instance.PostPicture(advocateSignature);
+				}
+
+				await sendPictures();
 				if (Assessment.ObjectId < 1) {
 					await HttpRepository.Instance.PostAssessment(Assessment);
 				} else {
@@ -224,6 +269,7 @@ namespace CarAssessment.Views {
 			await DataStore.Commit();
 			await Shell.Current.GoToAsync("..");
 		}
+
 
 		void Up(Object sender, EventArgs e) {
 			LayoutController.Up();

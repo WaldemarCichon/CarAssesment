@@ -826,7 +826,7 @@
                         ItemsSource="{Binding DamageDescriptions}"
                         SelectionMode="None">
                         <CollectionView.Header>
-                            <Grid>
+                            <Grid Padding="10,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
@@ -865,7 +865,7 @@
                         </CollectionView.Header>
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="model:DamageDescription">
-                                <Grid>
+                                <Grid Padding="10,0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="80" />
@@ -875,21 +875,36 @@
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Entry Text="{Binding Description}" />
-                                    <RadioButton Grid.Column="1" IsChecked="{Binding Paint}" />
-                                    <RadioButton Grid.Column="2" IsChecked="{Binding Replace}" />
-                                    <RadioButton Grid.Column="3" IsChecked="{Binding Repair}" />
+                                    <RadioButton
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        IsChecked="{Binding Paint}"
+                                        VerticalOptions="Center" />
+                                    <RadioButton
+                                        Grid.Column="2"
+                                        BackgroundColor="Transparent"
+                                        IsChecked="{Binding Replace}"
+                                        VerticalOptions="Center" />
+                                    <RadioButton
+                                        Grid.Column="3"
+                                        BackgroundColor="Transparent"
+                                        IsChecked="{Binding Repair}"
+                                        VerticalOptions="Center" />
                                     <Entry
                                         Grid.Column="4"
                                         Text="{Binding Hours}"
+                                        VerticalOptions="Center"
                                         WidthRequest="100" />
                                     <Button
                                         x:Name="DeleteDamageDescriptionButton"
                                         Grid.Column="5"
+                                        BackgroundColor="White"
                                         Clicked="DeleteDamageDescriptionButton_Clicked"
                                         CommandParameter="{Binding .}"
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         FontSize="Large"
-                                        Text="" />
+                                        Text=""
+                                        TextColor="Black" />
                                 </Grid>
 
 
@@ -922,6 +937,7 @@
                             Grid.Column="2"
                             Text="{Binding FrontLeft.Size}" />
                         <local:TitledEntryField
+                            x:Name="FrontLeftTireThreadDepth"
                             Title="Profil"
                             Grid.Column="3"
                             Keyboard="Numeric"
@@ -952,6 +968,7 @@
                             Grid.Column="2"
                             Text="{Binding FrontRight.Size}" />
                         <local:TitledEntryField
+                            x:Name="FrontRightTireThreadDepth"
                             Title="Profil"
                             Grid.Column="3"
                             Keyboard="Numeric"
@@ -981,6 +998,7 @@
                             Grid.Column="2"
                             Text="{Binding RearLeft.Size}" />
                         <local:TitledEntryField
+                            x:Name="RearLeftTireThreadDepth"
                             Title="Profil"
                             Grid.Column="3"
                             Keyboard="Numeric"
@@ -1011,6 +1029,7 @@
                             Grid.Column="2"
                             Text="{Binding RearRight.Size}" />
                         <local:TitledEntryField
+                            x:Name="RearRightTireThreadDepth"
                             Title="Profil"
                             Grid.Column="3"
                             Keyboard="Numeric"
@@ -1102,13 +1121,28 @@
                                         <ColumnDefinition Width="400" />
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
                                     <Editor Text="{Binding Description}" />
+                                    <StackLayout Grid.Row="1" Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsRepaired}" />
+                                        <Label Text="Wurde repariert" VerticalOptions="Center" />
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="2" Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsOldDamage}" />
+                                        <Label Text="Altschaden" VerticalOptions="Center" />
+                                    </StackLayout>
                                     <local:PhotoField
+                                        Grid.RowSpan="3"
                                         Grid.Column="1"
                                         ImagePath="{Binding TempImagePath, Mode=OneWayToSource}"
                                         Source="{Binding ImagePath, Mode=TwoWay}" />
                                     <Button
                                         x:Name="DeletePreDamageDescriptionButton"
+                                        Grid.RowSpan="3"
                                         Grid.Column="2"
                                         Clicked="DeletePreDamageDescriptionButton_Clicked"
                                         CommandParameter="{Binding .}"
