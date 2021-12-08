@@ -80,9 +80,9 @@ namespace CarAssessment.ViewModels {
 
 		internal async void OnAddItem(object obj) {
 			if (obj.GetType() == typeof (CreationMode)) {
-				NewItemPage.CreationMode = (CreationMode)obj;
+				NewItemPage.CreationMode = NewItemPagePhone.CreationMode = (CreationMode)obj;
 			} else {
-				NewItemPage.CreationMode = CreationMode.None;
+				NewItemPage.CreationMode = NewItemPagePhone.CreationMode = CreationMode.None;
 			}
 
 

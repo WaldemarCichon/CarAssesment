@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using CarAssessment.Components;
 
-using CarAssessment.Models;
-using CarAssessment.ViewModels;
 using CarAssessment.Models.Row;
 using CarAssessment.Services;
 using System.Threading.Tasks;
@@ -17,11 +11,13 @@ using System.IO;
 using System.Resources;
 using CarAssessment.Tooling;
 using SignaturePad.Forms;
+using Xamarin.Forms;
+using CarAssessment.Views.AbstractViews;
 
 [assembly: NeutralResourcesLanguage("de-DE")]
 // Page is used as well for the new item but also for the editiƒadng
 namespace CarAssessment.Views {
-	public partial class NewItemPage : ContentPage {
+	public partial class NewItemPage : NewItemPageBase {
 		private static LayoutController LayoutController { get; set; }
 		private static BoxView dialogOuterBox {get;set;}
 
@@ -159,6 +155,8 @@ namespace CarAssessment.Views {
 				dialogOuterBox.IsVisible = true;
 			});
 		});
+		public override bool PrevArrowButtonVisiblity { get => PrevArrowButton.IsVisible; set => PrevArrowButton.IsVisible = value; }
+		public override bool NextArrowButtonVisiblity { get => NextArrowButton.IsVisible; set => NextArrowButton.IsVisible = value; }
 
 		async void AddNewPreDamageImage_Clicked(System.Object sender, System.EventArgs e) {
 			await Shell.Current.GoToAsync(nameof(CameraPage));
@@ -174,7 +172,7 @@ namespace CarAssessment.Views {
 			}
 		}
 
-		internal void HandleSpecialFields(int displayedGroup) {
+		internal override void HandleSpecialFields(int displayedGroup) {
 			if (displayedGroup == 0) {
 				NavigationButtons.IsVisible = false;
 				DialogBox.IsVisible = false;
@@ -320,7 +318,7 @@ namespace CarAssessment.Views {
 			
 		}
 
-		public void EnterDeclarationOfAssignment() {
+		internal override void EnterDeclarationOfAssignment() {
 			Owner.Text = Assessment.OwnerName;
 			PlateOwner.Text = Assessment.LicensePlateClient;
 			PlateOpponent.Text = Assessment.LicensePlateOponent;
@@ -330,7 +328,7 @@ namespace CarAssessment.Views {
 			CityAndDate.Text = Assessment.City + ", den " + Assessment.AdmissionDate.ToString("dd.MM.yy");
 		}
 
-		public void EnterAdvocateAssignment() {
+		internal override void EnterAdvocateAssignment() {
 			Accident.Text = "Schadenfall vom " + Assessment.AccidentDate.ToString("dd.MM.yyyy") + ", Kfz-Kennzeichen: " + Assessment.LicensePlateClient;
 			Advocate.Text = "Rechtsanwalt: "+ Assessment.RecommendedAdvocate;
 			Advocate1.Text = "dem Rechtsanwalt: " + Assessment.RecommendedAdvocate;

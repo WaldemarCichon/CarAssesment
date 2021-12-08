@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CarAssessment.Views;
+using CarAssessment.Views.AbstractViews;
 using Xamarin.Forms;
 
 // Class allows switch on and off groups and colouring the headers
@@ -10,10 +11,10 @@ namespace CarAssessment.Layout
     public class LayoutController
     {
         private readonly List<View> allViews;
-        private ContentPage contentPage;
+        private NewItemPageBase contentPage;
         private int displayedGroup;
 
-        public LayoutController(ContentPage contentPage, CreationMode creationMode)
+        public LayoutController(NewItemPageBase contentPage, CreationMode creationMode)
         {
             allViews = new List<View>();
             this.contentPage = contentPage;
@@ -76,13 +77,13 @@ namespace CarAssessment.Layout
             set {
                 displayedGroup = value;
                 allViews.ForEach((view) => view.IsVisible = int.Parse(view.AutomationId) == displayedGroup || displayedGroup > 0 && view.AutomationId=="99");
-				((NewItemPage)contentPage).HandleSpecialFields(displayedGroup);
-                ((NewItemPage)contentPage).PrevArrowButton.IsVisible = displayedGroup > 1;
-                ((NewItemPage)contentPage).NextArrowButton.IsVisible = displayedGroup < 12;
+				contentPage.HandleSpecialFields(displayedGroup);
+                contentPage.PrevArrowButtonVisiblity = displayedGroup > 1;
+                contentPage.NextArrowButtonVisiblity = displayedGroup < 12;
                 if (value == 11) {
-                    ((NewItemPage)contentPage).EnterDeclarationOfAssignment();
+                    contentPage.EnterDeclarationOfAssignment();
 				} else if (value == 12) {
-                    ((NewItemPage)contentPage).EnterAdvocateAssignment();
+                    contentPage.EnterAdvocateAssignment();
 				}
             }
         }

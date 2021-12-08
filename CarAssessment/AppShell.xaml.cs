@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CarAssessment.REST;
 using CarAssessment.ViewModels;
 using CarAssessment.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace CarAssessment {
@@ -10,7 +11,7 @@ namespace CarAssessment {
 		public AppShell() {
 			InitializeComponent();
 			Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-			Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+			Routing.RegisterRoute(nameof(NewItemPage), DeviceInfo.Idiom == DeviceIdiom.Phone ? typeof(NewItemPagePhone) : typeof(NewItemPage));
 			Routing.RegisterRoute(nameof(CameraPage), typeof(CameraPage));
 			Routing.RegisterRoute(nameof(PhotoPage), typeof(PhotoPage));
 			Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
