@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using CarAssessment.REST;
 using CarAssessment.ViewModels;
 using CarAssessment.Views;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace CarAssessment {
 	public partial class AppShell : Xamarin.Forms.Shell {
-        public DevicePlatform PlatformKind { get; private set; }
-        public TargetIdiom DeviceKind { get; private set; }
-
-        public AppShell() {
+		public AppShell() {
 			InitializeComponent();
-			checkDeviceCapabilities();
 			Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
 			Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
 			Routing.RegisterRoute(nameof(CameraPage), typeof(CameraPage));
@@ -25,11 +20,7 @@ namespace CarAssessment {
 			}
 		}
 
-	    private void checkDeviceCapabilities()
-        {
-			PlatformKind = DeviceInfo.Platform;
-			DeviceKind = Device.Idiom;
-        }
+		
 
 		public void LoginSuccessed() {
 			Device.BeginInvokeOnMainThread(() => {

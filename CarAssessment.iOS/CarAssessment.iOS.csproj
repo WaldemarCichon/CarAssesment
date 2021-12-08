@@ -138,13 +138,6 @@
     <Reference Include="Xamarin.iOS" />
     <Reference Include="System.Numerics" />
   </ItemGroup>
-<<<<<<< Updated upstream
-=======
-  <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-  </ItemGroup>
->>>>>>> Stashed changes
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\CarAssessment\CarAssessment.csproj">
