@@ -1,0 +1,1609 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CarAssessment.Views.NewItemPagePhone"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:CarAssessment.Components"
+    xmlns:model="clr-namespace:CarAssessment.Models.Row"
+    xmlns:sig="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackLayout>
+                <Label
+                    Margin="0,5,0,5"
+                    FontAttributes="Bold"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="Kfz-Gutachten Version 0.8" />
+                <!--#region Title List-->
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="Grunddaten">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="1" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Fahrzeugbilder">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="2" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Schadensbilder">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="3" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Schadensbeschreibungen">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="4" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Reifen">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="5" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Fahrzeugdaten">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="6" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Vorschäden">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="7" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Reparatur">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="8" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Schaden">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="9" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Weitere Daten">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="10" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="AGBs/Unterschrift">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="11" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView
+                    Margin="10,0,10,0"
+                    AutomationId="0"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-65,0,10"
+                    AutomationId="0"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Anwalt/Unterschrift">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer CommandParameter="12" />
+                        <TapGestureRecognizer />
+
+                    </Label.GestureRecognizers>
+                </Label>
+                <!--#endregion-->
+                <!--#region Single Titles-->
+                <BoxView
+                    Margin="8,0,8,0"
+                    AutomationId="99"
+                    CornerRadius="30"
+                    HeightRequest="104"
+                    HorizontalOptions="FillAndExpand"
+                    Color="Blue" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="1"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="1"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    Text="Grunddaten" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="2"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="2"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Fahrzeugbilder" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="3"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="3"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Schadensbilder" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="4"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="4"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Schadensbeschreibungen" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="5"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="5"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Reifen" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="6"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="6"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Fahrzeugdaten" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="7"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="7"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Vorschäden" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="8"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="8"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Reparatur" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="9"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="9"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Schaden" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="10"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="10"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Weitere Daten" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="11"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="11"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="AGBs/Unterschrift" />
+                <BoxView
+                    Margin="10,-108,10,0"
+                    AutomationId="12"
+                    CornerRadius="30"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="false"
+                    Color="LightGray" />
+                <Label
+                    Margin="0,-110,0,50"
+                    AutomationId="12"
+                    FontSize="40"
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Text="Anwalt/Unterschrift" />
+                <!--#endregion-->
+                <!--#region Navigation Buttons-->
+                <Grid x:Name="NavigationButtons" Margin="0,-50,0,40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        x:Name="PrevArrowButton"
+                        x:FieldModifier="public"
+                        Clicked="Previous"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        HorizontalOptions="Center"
+                        Text="&#xf30a;"
+                        WidthRequest="50" />
+                    <Button
+                        Grid.Column="1"
+                        Clicked="Up"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        HorizontalOptions="Center"
+                        Text=""
+                        WidthRequest="50" />
+                    <Button
+                        x:Name="NextArrowButton"
+                        Grid.Column="2"
+                        x:FieldModifier="public"
+                        Clicked="Next"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        HorizontalOptions="Center"
+                        Text=""
+                        WidthRequest="50" />
+                </Grid>
+                <!--#endregion-->
+            </StackLayout>
+            <ScrollView Grid.Row="1">
+                <Grid
+                    Padding="2,0,2,0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!--#region Main Data-->
+                    <BoxView
+                        x:Name="DialogOuterBox"
+                        Grid.Row="0"
+                        Grid.RowSpan="41"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="3,0,3,158"
+                        AutomationId="99"
+                        CornerRadius="0"
+                        Color="Blue" />
+                    <BoxView
+                        x:Name="DialogBox"
+                        Grid.Row="0"
+                        Grid.RowSpan="41"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="5,2,5,160"
+                        CornerRadius="0"
+                        Color="LightGray" />
+
+                    <local:TitledEntryField
+                        Title="Fahrzeughalter"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,10,10,4"
+                        AutomationId="1"
+                        Text="{Binding OwnerName}">
+                        <local:TitledEntryField.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </local:TitledEntryField.Keyboard>
+                    </local:TitledEntryField>
+                    <local:TitledEntryField
+                        Title="Straße"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="1"
+                        Text="{Binding Street}" />
+                    <local:TitledEntryField
+                        Title="PLZ"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="1"
+                        Keyboard="Numeric"
+                        Text="{Binding ZipCode}" />
+                    <local:TitledEntryField
+                        Title="Ort"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="1"
+                        Text="{Binding City}" />
+                    <local:TitledEntryField
+                        Title="Kfz-Kennzeichen Mandant"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="1"
+                        Text="{Binding LicensePlateClient}">
+                        <local:TitledEntryField.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeCharacter</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </local:TitledEntryField.Keyboard>
+                    </local:TitledEntryField>
+                    <local:TitledEntryField
+                        Title="Kfz-Kennzeichen Unfallgegner"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="1"
+                        Text="{Binding LicensePlateOponent}">
+                        <local:TitledEntryField.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeCharacter</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </local:TitledEntryField.Keyboard>
+                    </local:TitledEntryField>
+                    <local:TitledEntryField
+                        Title="Aufnahmedatum"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="1"
+                        Keyboard="Numeric"
+                        Text="{Binding AdmissionDateS}" />
+                    <local:TitledEntryField
+                        Title="Unfalldatum"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="1"
+                        Keyboard="Numeric"
+                        Text="{Binding AccidentDateS}" />
+                    <local:TitledEditorField
+                        Title="Besichtigungsort"
+                        Grid.Row="4"
+                        Margin="10,4,10,0"
+                        AutomationId="1"
+                        Text="{Binding InspectionLocation}" />
+                    <local:TitledEditorField
+                        Title="Teilehmer Besichtigung"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="10,4,10,0"
+                        AutomationId="1"
+                        Text="{Binding InspectionAttendees}" />
+                    <!--#endregion-->
+                    <!--#region Total Photos-->
+                    <local:PhotoField
+                        x:Name="FrontLeftPhoto"
+                        Title="Vorne Links"
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding FrontLeftPhotoPath, Mode=TwoWay}" />
+                    <local:PhotoField
+                        x:Name="FrontRightPhoto"
+                        Title="Vorne Rechts"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding FrontRightPhotoPath, Mode=TwoWay}" />
+
+                    <local:PhotoField
+                        x:Name="RearLeftPhoto"
+                        Title="Hinten Links"
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding RearLeftPhotoPath, Mode=TwoWay}" />
+
+
+                    <local:PhotoField
+                        x:Name="RearRightPhoto"
+                        Title="Hinten Rechts"
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding RearRightPhotoPath, Mode=TwoWay}" />
+
+                    <local:TitledEntryField
+                        Title="Fahrgestellnummer"
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Margin="10,0,10,0"
+                        AutomationId="2"
+                        Text="{Binding ChassisNumber}" />
+                    <local:TitledEntryField
+                        x:Name="MileageField"
+                        Title="Kilometerstand"
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Margin="10,0,10,0"
+                        AutomationId="2"
+                        Keyboard="Numeric"
+                        Text="{Binding Mileage}" />
+                    <local:PhotoField
+                        x:Name="ChassisNumberPhoto"
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding ChassisNumberPhotoPath, Mode=TwoWay}" />
+                    <local:PhotoField
+                        x:Name="SpeedometerPhoto"
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="2"
+                        HorizontalOptions="FillAndExpand"
+                        ImagePath="{Binding SpeedometerPhotoPath, Mode=TwoWay}" />
+                    <!--#endregion-->
+
+                    <!--#region Damage Photos-->
+                    <Label
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="3"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Übersichtsfotos"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="3"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Nahaufnahme"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Row="10"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="3"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Detailsfotos"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Row="10"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="3"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Sonstige Aufnahmen"
+                        VerticalOptions="Center" />
+
+                    <local:PhotoCollectionField
+                        x:Name="DamagePhotos"
+                        Grid.Row="9"
+                        Margin="10,4"
+                        AutomationId="3" />
+                    <local:PhotoCollectionField
+                        x:Name="NearbyPhotos"
+                        Grid.Row="9"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="3" />
+                    <local:PhotoCollectionField
+                        x:Name="DetailPhotos"
+                        Grid.Row="11"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="3" />
+                    <local:PhotoCollectionField
+                        x:Name="OtherPhotos"
+                        Grid.Row="11"
+                        Grid.Column="1"
+                        Margin="10,4"
+                        AutomationId="3" />
+
+                    <!--#endregion-->
+                    <!--#region Damage Description-->
+                    <CollectionView
+                        x:Name="DamageDescriptions"
+                        Grid.Row="12"
+                        Grid.ColumnSpan="2"
+                        Margin="0,-60,0,0"
+                        AutomationId="4"
+                        ItemsSource="{Binding DamageDescriptions}"
+                        SelectionMode="None">
+                        <CollectionView.Header>
+                            <Grid Padding="10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+                                <Button
+                                    x:Name="NewDamageDescriptionButton"
+                                    Grid.ColumnSpan="6"
+                                    Clicked="NewDamageDescriptionButton_Clicked"
+                                    Text="Neue Zeile" />
+                                <Label Grid.Row="1" Text="Beschreibung" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="Lackieren" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Text="Ersetzen" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    Text="Instands." />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="4"
+                                    Text="Stunden" />
+                            </Grid>
+                        </CollectionView.Header>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:DamageDescription">
+                                <Grid Padding="10,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="50" />
+                                    </Grid.ColumnDefinitions>
+                                    <Entry Text="{Binding Description}" />
+                                    <RadioButton
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        IsChecked="{Binding Paint}"
+                                        VerticalOptions="Center" />
+                                    <RadioButton
+                                        Grid.Column="2"
+                                        BackgroundColor="Transparent"
+                                        IsChecked="{Binding Replace}"
+                                        VerticalOptions="Center" />
+                                    <RadioButton
+                                        Grid.Column="3"
+                                        BackgroundColor="Transparent"
+                                        IsChecked="{Binding Repair}"
+                                        VerticalOptions="Center" />
+                                    <Entry
+                                        Grid.Column="4"
+                                        Text="{Binding Hours}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="100" />
+                                    <Button
+                                        x:Name="DeleteDamageDescriptionButton"
+                                        Grid.Column="5"
+                                        BackgroundColor="White"
+                                        Clicked="DeleteDamageDescriptionButton_Clicked"
+                                        CommandParameter="{Binding .}"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        FontSize="Large"
+                                        Text=""
+                                        TextColor="Black" />
+                                </Grid>
+
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <!--#endregion-->
+                    <!--#region Tire-->
+                    <Grid
+                        Grid.Row="13"
+                        Margin="10,-50,10,20"
+                        AutomationId="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Margin="2,30,2,0"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Vorne Links"
+                            VerticalOptions="StartAndExpand" />
+                        <local:TitledEntryField
+                            Title="Hersteller"
+                            Grid.Column="1"
+                            Text="{Binding FrontLeft.Manufacturer}" />
+                        <local:TitledEntryField
+                            Title="Größe"
+                            Grid.Column="2"
+                            Text="{Binding FrontLeft.Size}" />
+                        <local:TitledEntryField
+                            x:Name="FrontLeftTireThreadDepth"
+                            Title="Profil"
+                            Grid.Column="3"
+                            Keyboard="Numeric"
+                            Text="{Binding FrontLeft.TreadDepth}" />
+                    </Grid>
+                    <Grid
+                        Grid.Row="13"
+                        Grid.Column="1"
+                        Margin="10,-50,10,20"
+                        AutomationId="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Margin="2,17,2,0"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Hinten Rechts"
+                            VerticalOptions="Center" />
+                        <local:TitledEntryField
+                            Title="Hersteller"
+                            Grid.Column="1"
+                            Text="{Binding FrontRight.Manufacturer}" />
+                        <local:TitledEntryField
+                            Title="Größe"
+                            Grid.Column="2"
+                            Text="{Binding FrontRight.Size}" />
+                        <local:TitledEntryField
+                            x:Name="FrontRightTireThreadDepth"
+                            Title="Profil"
+                            Grid.Column="3"
+                            Keyboard="Numeric"
+                            Text="{Binding FrontRight.TreadDepth}" />
+                    </Grid>
+                    <Grid
+                        Grid.Row="14"
+                        Margin="10,0,10,30"
+                        AutomationId="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Margin="2,17,2,0"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Hinten Links"
+                            VerticalOptions="Center" />
+                        <local:TitledEntryField
+                            Title="Hersteller"
+                            Grid.Column="1"
+                            Text="{Binding RearLeft.Manufacturer}" />
+                        <local:TitledEntryField
+                            Title="Größe"
+                            Grid.Column="2"
+                            Text="{Binding RearLeft.Size}" />
+                        <local:TitledEntryField
+                            x:Name="RearLeftTireThreadDepth"
+                            Title="Profil"
+                            Grid.Column="3"
+                            Keyboard="Numeric"
+                            Text="{Binding RearLeft.TreadDepth}" />
+                    </Grid>
+                    <Grid
+                        Grid.Row="14"
+                        Grid.Column="1"
+                        Margin="10,0,10,30"
+                        AutomationId="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Margin="2,17,2,0"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Hinten Rechts"
+                            VerticalOptions="Center" />
+                        <local:TitledEntryField
+                            Title="Hersteller"
+                            Grid.Column="1"
+                            Text="{Binding RearRight.Manufacturer}" />
+                        <local:TitledEntryField
+                            Title="Größe"
+                            Grid.Column="2"
+                            Text="{Binding RearRight.Size}" />
+                        <local:TitledEntryField
+                            x:Name="RearRightTireThreadDepth"
+                            Title="Profil"
+                            Grid.Column="3"
+                            Keyboard="Numeric"
+                            Text="{Binding RearRight.TreadDepth}" />
+                    </Grid>
+                    <!--#endregion-->
+                    <!--#region Car Data-->
+                    <StackLayout
+                        Grid.Row="15"
+                        AutomationId="6"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Label Text="Scheckheft vorhanden?" VerticalOptions="Center" />
+                        <CheckBox IsChecked="{Binding IsServiceRecordBook}" />
+                    </StackLayout>
+
+                    <local:PhotoField
+                        x:Name="ServiceRecordBook"
+                        Title="Scheckheft"
+                        Grid.Row="15"
+                        Grid.Column="1"
+                        Margin="10,-25,10,0"
+                        AutomationId="6"
+                        HeightRequest="200"
+                        HorizontalOptions="Center"
+                        ImagePath="{Binding ServiceRecordBookPhotoPath, Mode=TwoWay}" />
+                    <StackLayout
+                        Grid.Row="16"
+                        Grid.Column="0"
+                        Margin="10,80,10,40"
+                        AutomationId="6"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Label Text="Kfz verkehrssicher?" VerticalOptions="Center" />
+                        <CheckBox IsChecked="{Binding IsRoadWorthy}" />
+                        <Label Text="Kfz fahrbereit?" VerticalOptions="Center" />
+                        <CheckBox IsChecked="{Binding IsReadyToDrive}" />
+                    </StackLayout>
+                    <local:PhotoField
+                        x:Name="CarDocument"
+                        Title="Fahrzeugschein"
+                        Grid.Row="16"
+                        Grid.Column="1"
+                        Margin="10,80,10,40"
+                        AutomationId="6"
+                        HorizontalOptions="Center"
+                        ImagePath="{Binding CarDocumentPhotoPath, Mode=TwoWay}" />
+                    <!--#endregion-->
+                    <!--#region PreDamage-->
+                    <CollectionView
+                        x:Name="PreDamageDescriptions"
+                        Grid.Row="17"
+                        Grid.ColumnSpan="2"
+                        Margin="0,-80,0,0"
+                        AutomationId="7">
+                        <CollectionView.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="400" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Button
+                                    x:Name="NewPreDamageDescriptionButton"
+                                    Grid.ColumnSpan="3"
+                                    Clicked="NewPreDamageDescriptionButton_Clicked"
+                                    Text="Neue Zeile" />
+                                <Label
+                                    Grid.Row="1"
+                                    HorizontalOptions="Center"
+                                    Text="Beschreibung" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    HorizontalOptions="Center"
+                                    Text="Foto" />
+                            </Grid>
+
+                        </CollectionView.Header>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:PreDamage">
+                                <Grid Padding="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="400" />
+                                        <ColumnDefinition Width="50" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Editor Text="{Binding Description}" />
+                                    <StackLayout Grid.Row="1" Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsRepaired}" />
+                                        <Label Text="Wurde repariert" VerticalOptions="Center" />
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="2" Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsOldDamage}" />
+                                        <Label Text="Altschaden" VerticalOptions="Center" />
+                                    </StackLayout>
+                                    <local:PhotoField
+                                        Grid.RowSpan="3"
+                                        Grid.Column="1"
+                                        ImagePath="{Binding TempImagePath, Mode=OneWayToSource}"
+                                        Source="{Binding ImagePath, Mode=TwoWay}" />
+                                    <Button
+                                        x:Name="DeletePreDamageDescriptionButton"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="2"
+                                        Clicked="DeletePreDamageDescriptionButton_Clicked"
+                                        CommandParameter="{Binding .}"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        FontSize="Large"
+                                        Text="" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <!--#endregion-->
+                    <!--#region Repair-->
+                    <Label
+                        Grid.Row="18"
+                        Margin="10,-70,10,30"
+                        AutomationId="8"
+                        Text="Reparatur gewünscht?"
+                        VerticalOptions="Center" />
+                    <CheckBox
+                        Grid.Row="18"
+                        Margin="200,-100,0,0"
+                        AutomationId="8" />
+                    <local:TitledEntryField
+                        Title="Werkstatt"
+                        Grid.Row="18"
+                        Grid.Column="1"
+                        Margin="10,-80,10,30"
+                        AutomationId="8" />
+                    <Label
+                        Grid.Row="19"
+                        Grid.ColumnSpan="2"
+                        Margin="10,0,10,10"
+                        AutomationId="8"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        Text="Stundensätze" />
+                    <Grid
+                        Grid.Row="20"
+                        Grid.ColumnSpan="2"
+                        Margin="10,0,10,00"
+                        AutomationId="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <local:TitledEntryField
+                            x:Name="HourlyRateElectricField"
+                            Title="Elektrik"
+                            Keyboard="Numeric"
+                            Text="{Binding HourlyRateElectric, StringFormat='{0:0.00}'}" />
+                        <local:TitledEntryField
+                            x:Name="HourlyRateBodyField"
+                            Title="Karosserie"
+                            Grid.Column="1"
+                            Keyboard="Numeric"
+                            Text="{Binding HourlyRateBody, StringFormat='{0:0.00}'}" />
+                        <local:TitledEntryField
+                            x:Name="UPESurchargeField"
+                            Title="UPE-Aufschläge"
+                            Grid.Column="2"
+                            Keyboard="Numeric"
+                            Text="{Binding UPESurcharge, StringFormat='{0:0.00}'}" />
+                        <local:TitledEntryField
+                            x:Name="SmallPartsSurchargeField"
+                            Title="Kleinteile-Aufschlag"
+                            Grid.Column="3"
+                            Keyboard="Numeric"
+                            Text="{Binding SmallPartsSurcharge, StringFormat='{0:0.00}'}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Lackierung"
+                            VerticalOptions="Center" />
+                        <local:TitledEntryField
+                            x:Name="FlatRatePaintingField"
+                            Title="Pauschal"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Keyboard="Numeric"
+                            Text="{Binding FlatRatePainting, StringFormat='{0:F2}'}" />
+                        <local:TitledEntryField
+                            x:Name="HourlyRatePaintingSurchargeField"
+                            Title="Lackzuschlag %"
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Keyboard="Numeric"
+                            Text="{Binding HourlyRatePaintingSurcharge, StringFormat='{0:F1}'}" />
+                        <local:TitledEntryField
+                            x:Name="HourlyRatePaintPoinField"
+                            Title="Lackpunkt"
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            Keyboard="Numeric"
+                            Text="{Binding HourlyRatePaintPoint, StringFormat='{0:0.00}'}" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Text="Verbringung"
+                            VerticalOptions="Center" />
+                        <local:TitledEntryField
+                            x:Name="TimedRateTransportField"
+                            Title="Zeit"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Keyboard="Numeric"
+                            Text="{Binding TimedRateTransport, StringFormat='{0:0.00}'}" />
+                        <local:TitledEntryField
+                            x:Name="FlatrateTransportField"
+                            Title="Pauschal"
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Keyboard="Numeric"
+                            Text="{Binding FlatrateTransport, StringFormat='{0:0.00}'}" />
+
+                    </Grid>
+                    <StackLayout
+                        Grid.Row="21"
+                        Margin="10,0,10,60"
+                        AutomationId="8"
+                        Orientation="Horizontal">
+                        <Label Text="Mietwagen erwünscht?" VerticalOptions="Center" />
+                        <CheckBox IsChecked="{Binding RentalCar}" />
+                        <Label Text="Berechtigt" VerticalOptions="Center" />
+                        <CheckBox IsChecked="{Binding IsEligible}" />
+                    </StackLayout>
+                    <!--#endregion-->
+                    <!--#region Damage description-->
+                    <StackLayout
+                        Grid.Row="23"
+                        Grid.ColumnSpan="2"
+                        Margin="10,-160,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <Label Text="Unser Kunde" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding MustSlowDown}" />
+                        <Label Text="musste verkehrbedingt bremsen" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="24"
+                        Grid.ColumnSpan="2"
+                        Margin="10,-100,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <Label Text="Unfallgegner" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding WasDriving}" />
+                        <Label Text="fuhr" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveAgainst}" />
+                        <Label Text="fuhr auf" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding CameFromMinorStreet}" />
+                        <Label Text="kam aus untergeordneter Straße" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="25"
+                        Grid.ColumnSpan="2"
+                        Margin="10,-40,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveBackwards}" />
+                        <Label Text="fuhr rückwärts" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstParkingCar}" />
+                        <Label Text="gegen parkendes Kfz" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstStoppedCustomer}" />
+                        <Label Text="gegen stendenden Kunden" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="26"
+                        Grid.ColumnSpan="2"
+                        Margin="10,-10,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstDrivingCustomer}" />
+                        <Label Text="gegen vorbeifahrenden Kunden" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstDrivingCustomer}" />
+                        <Label Text="fuhr über Rot" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding OverStop}" />
+                        <Label Text="fuhr über Stoppschild" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="27"
+                        Grid.ColumnSpan="2"
+                        Margin="10,-10,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DisobeyingRightLeft}" />
+                        <Label Text="rechts vor links missachtet" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding TooFast}" />
+                        <Label Text="war zu schnell" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding ChangedLane}" />
+                        <Label Text="wechselte die Spur" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding OverlookedCustomer}" />
+                        <Label Text="übersah unseren Kunden" VerticalOptions="Center" />
+                    </StackLayout>
+                    <local:TitledEditorField
+                        Title="Schriftliche Schilderung"
+                        Grid.Row="28"
+                        Grid.RowSpan="2"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        HeightRequest="200"
+                        Text="{Binding Description}" />
+                    <StackLayout
+                        Grid.Row="28"
+                        Grid.Column="1"
+                        Margin="10,0,10,0"
+                        AutomationId="9">
+                        <local:TitledEntryField Title="Ort des Unfalls" Text="{Binding AccidentLocation}" />
+                        <local:TitledEntryField Title="Genauer Zeitpunkt des Unfalls" Text="{Binding AccidentTimestamp, StringFormat='{0:dd.MM.yyyy hh:mm}'}" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="31"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <Label Text="Polizeibereicht vorhanden?" VerticalOptions="Center" />
+                        <CheckBox
+                            AutomationId="9"
+                            CheckedChanged="HandleSpecialFields"
+                            IsChecked="{Binding IsPoliceReport, Mode=TwoWay}" />
+                    </StackLayout>
+                    <local:PhotoField
+                        x:Name="PoliceReport"
+                        Grid.Row="31"
+                        Grid.Column="1"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        ImagePath="{Binding PoliceReportPhotoPath}" />
+                    <StackLayout
+                        Grid.Row="33"
+                        Margin="10,0,10,150"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <Label Margin="0,26,0,0" Text="Anwalt erwünscht:" />
+                        <CheckBox
+                            Margin="0,15,0,0"
+                            AutomationId="9"
+                            CheckedChanged="HandleSpecialFields"
+                            IsChecked="{Binding WantAdvocate}"
+                            VerticalOptions="Start" />
+
+                        <Label Margin="0,26,0,0" Text="Unser Anwalt" />
+                        <CheckBox
+                            Margin="0,15,0,0"
+                            AutomationId="9"
+                            CheckedChanged="HandleSpecialFields"
+                            IsChecked="{Binding IsRecommendedAdvocate}"
+                            VerticalOptions="Start" />
+                    </StackLayout>
+                    <local:TitledEntryField
+                        x:Name="RecommendedAdvocate"
+                        Title="Empfohlener Anwalt"
+                        Grid.Row="33"
+                        Grid.Column="1"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        IsVisible="False"
+                        Text="{Binding RecommendedAdvocate}" />
+                    <local:TitledEntryField
+                        x:Name="CustomersAdvocate"
+                        Title="Anwalt des Kunden"
+                        Grid.Row="33"
+                        Grid.Column="1"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        IsVisible="false"
+                        Text="{Binding CustomersAdvocate}" />
+                    <!--#endregion-->
+                    <!--#region Additional Data-->
+                    <local:TitledEntryField
+                        Title="Telefon"
+                        Grid.Row="36"
+                        Grid.Column="0"
+                        Margin="10,-200,10,0"
+                        AutomationId="10"
+                        Text="{Binding Phone}" />
+                    <local:TitledEntryField
+                        Title="Email"
+                        Grid.Row="36"
+                        Grid.Column="1"
+                        Margin="10,-200,10,0"
+                        AutomationId="10"
+                        Text="{Binding Email}" />
+                    <local:TitledEntryField
+                        Title="Schadensnummer"
+                        Grid.Row="37"
+                        Grid.Column="0"
+                        Margin="10,-140,10,0"
+                        AutomationId="10"
+                        Text="{Binding DamageId}" />
+                    <local:TitledEntryField
+                        Title="Versicherungsnummer"
+                        Grid.Row="37"
+                        Grid.Column="1"
+                        Margin="10,-140,10,0"
+                        AutomationId="10"
+                        Text="{Binding InsuranceId}" />
+                    <local:TitledEditorField
+                        Title="Sonstiges"
+                        Grid.Row="38"
+                        Grid.ColumnSpan="2"
+                        Margin="10,-80,10,180"
+                        AutomationId="10"
+                        Text="{Binding Miscellanious}" />
+                    <!--#endregion-->
+                    <!--#region Signature-->
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,0,-200"
+                        AutomationId="11"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Vertical"
+                        VerticalOptions="Center">
+                        <Grid Padding="5,10" HorizontalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Fahrzeughalter:" />
+                            <Label x:Name="Owner" Grid.Column="1" />
+                            <Label Grid.Row="1" Text="Anschrift:" />
+                            <Label
+                                x:Name="Address"
+                                Grid.Row="1"
+                                Grid.Column="1" />
+                            <Label Grid.Row="2" Text="Kennzeichen Mandant:" />
+                            <Label
+                                x:Name="PlateOwner"
+                                Grid.Row="2"
+                                Grid.Column="1" />
+                            <Label Grid.Row="3" Text="Kennzeichen Gegner:" />
+                            <Label
+                                x:Name="PlateOpponent"
+                                Grid.Row="3"
+                                Grid.Column="1" />
+                            <Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                Text="Datum Aufnahme:" />
+                            <Label
+                                x:Name="AdmissionDate"
+                                Grid.Row="4"
+                                Grid.Column="1" />
+                            <Label Grid.Row="5" Text="Unfalldatum" />
+                            <Label
+                                x:Name="AccidentDate"
+                                Grid.Row="5"
+                                Grid.Column="1" />
+                        </Grid>
+                        <Label
+                            Padding="5,0,0,0"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="AUFTRAG UND SICHERUNGSABTRETUNGSERKLÄRUNG" />
+                        <Label
+                            x:Name="DeclarationOfAssignmentLabel"
+                            Margin="5,15"
+                            Padding="5,0"
+                            LineBreakMode="WordWrap" />
+                        <StackLayout
+                            Margin="0,0,0,30"
+                            HeightRequest="300"
+                            Orientation="Horizontal">
+                            <Label
+                                x:Name="CityAndDate"
+                                Margin="25,150,25,50"
+                                Text="Braunschweig, den 23.08.2021" />
+                            <sig:SignaturePadView
+                                x:Name="Signature"
+                                Margin="0,0,0,100"
+                                CaptionText="Bitte oberhalb unterschreiben"
+                                ClearText="Löschen"
+                                Cleared="SignaturePadView_Cleared"
+                                HeightRequest="200"
+                                IsEnabled="True"
+                                WidthRequest="500" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--#endregion-->
+                    <!--#region Advocate-->
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,0,-200"
+                        Padding="5,0"
+                        AutomationId="12"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Vertical"
+                        VerticalOptions="Center">
+                        <Label
+                            x:Name="Advocate"
+                            Grid.Column="1"
+                            Margin="0,0,0,20" />
+                        <Label x:Name="Client" />
+                        <Label x:Name="Advocate1" />
+                        <Label
+                            Margin="0,10,0,10"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="eine VOLLMACHT" />
+                        <Label
+                            x:Name="Accident"
+                            Padding="5,0,0,0"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HorizontalOptions="Center" />
+                        <Label
+                            x:Name="AdvocateAssignmentLabel"
+                            Margin="5,15"
+                            Padding="5,0"
+                            LineBreakMode="WordWrap" />
+                        <StackLayout
+                            Margin="0,0,0,30"
+                            HeightRequest="300"
+                            Orientation="Horizontal">
+                            <Label
+                                x:Name="CityAndDate1"
+                                Margin="25,150,25,50"
+                                Text="Braunschweig, den 23.08.2021" />
+                            <sig:SignaturePadView
+                                x:Name="Signature1"
+                                Margin="0,0,0,100"
+                                CaptionText="Bitte oberhalb unterschreiben"
+                                ClearText="Löschen"
+                                Cleared="SignaturePadView_Cleared"
+                                HeightRequest="200"
+                                IsEnabled="True"
+                                WidthRequest="500" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--#endregion-->
+                </Grid>
+            </ScrollView>
+            <StackLayout
+                x:Name="SaveCancelButtons"
+                Grid.Row="2"
+                Orientation="Horizontal"
+                VerticalOptions="End">
+                <Button
+                    x:Name="CancelButton"
+                    Clicked="CancelButton_Clicked"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Verlassen" />
+                <Button
+                    x:Name="SaveButton"
+                    Clicked="SaveButton_Clicked"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Speichern" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
