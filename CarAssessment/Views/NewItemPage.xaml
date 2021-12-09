@@ -958,7 +958,7 @@
                         <Label
                             Margin="2,17,2,0"
                             HorizontalOptions="StartAndExpand"
-                            Text="Hinten Rechts"
+                            Text="Vorne Rechts"
                             VerticalOptions="Center" />
                         <local:TitledEntryField
                             Title="Hersteller"

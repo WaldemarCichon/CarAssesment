@@ -59,5 +59,10 @@ namespace CarAssessment.Views {
 			}
 			// _ = HttpRepository.Instance.PostPicture(filename, NewItemPage.CurrentAssessment.Id);
 		}
+
+		void ZoomRangeSlider_ValueChanged(System.Object sender, Xamarin.Forms.ValueChangedEventArgs e) {
+			var zoom = e.NewValue * Camera.MaxZoom;
+			Camera.Zoom = zoom;
+		}
 	}
 }

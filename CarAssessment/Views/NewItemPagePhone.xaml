@@ -102,7 +102,7 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Schadensbeschreibungen">
+                    Text="Schäden">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer CommandParameter="4" />
                         <TapGestureRecognizer />
@@ -343,7 +343,7 @@
                     FontSize="40"
                     HorizontalOptions="Center"
                     IsVisible="false"
-                    Text="Schadensbeschreibungen" />
+                    Text="Schäden" />
                 <BoxView
                     Margin="10,-108,10,0"
                     AutomationId="5"
@@ -675,7 +675,7 @@
                     <local:PhotoField
                         x:Name="FrontLeftPhoto"
                         Title="Vorne Links"
-                        Grid.Row="5"
+                        Grid.Row="0"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="2"
@@ -684,8 +684,8 @@
                     <local:PhotoField
                         x:Name="FrontRightPhoto"
                         Title="Vorne Rechts"
-                        Grid.Row="5"
-                        Grid.Column="1"
+                        Grid.Row="1"
+                        Grid.Column="0"
                         Margin="10,4"
                         AutomationId="2"
                         HorizontalOptions="FillAndExpand"
@@ -694,7 +694,7 @@
                     <local:PhotoField
                         x:Name="RearLeftPhoto"
                         Title="Hinten Links"
-                        Grid.Row="6"
+                        Grid.Row="2"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="2"
@@ -705,8 +705,8 @@
                     <local:PhotoField
                         x:Name="RearRightPhoto"
                         Title="Hinten Rechts"
-                        Grid.Row="6"
-                        Grid.Column="1"
+                        Grid.Row="3"
+                        Grid.Column="0"
                         Margin="10,4"
                         AutomationId="2"
                         HorizontalOptions="FillAndExpand"
@@ -714,7 +714,7 @@
 
                     <local:TitledEntryField
                         Title="Fahrgestellnummer"
-                        Grid.Row="7"
+                        Grid.Row="4"
                         Grid.Column="0"
                         Margin="10,0,10,0"
                         AutomationId="2"
@@ -722,15 +722,15 @@
                     <local:TitledEntryField
                         x:Name="MileageField"
                         Title="Kilometerstand"
-                        Grid.Row="7"
-                        Grid.Column="1"
+                        Grid.Row="6"
+                        Grid.Column="0"
                         Margin="10,0,10,0"
                         AutomationId="2"
                         Keyboard="Numeric"
                         Text="{Binding Mileage}" />
                     <local:PhotoField
                         x:Name="ChassisNumberPhoto"
-                        Grid.Row="8"
+                        Grid.Row="5"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="2"
@@ -738,8 +738,8 @@
                         ImagePath="{Binding ChassisNumberPhotoPath, Mode=TwoWay}" />
                     <local:PhotoField
                         x:Name="SpeedometerPhoto"
-                        Grid.Row="8"
-                        Grid.Column="1"
+                        Grid.Row="7"
+                        Grid.Column="0"
                         Margin="10,4"
                         AutomationId="2"
                         HorizontalOptions="FillAndExpand"
@@ -748,7 +748,7 @@
 
                     <!--#region Damage Photos-->
                     <Label
-                        Grid.Row="8"
+                        Grid.Row="0"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="3"
@@ -758,8 +758,8 @@
                         VerticalOptions="Center" />
 
                     <Label
-                        Grid.Row="8"
-                        Grid.Column="1"
+                        Grid.Row="1"
+                        Grid.Column="0"
                         Margin="10,4"
                         AutomationId="3"
                         FontAttributes="Bold"
@@ -768,7 +768,7 @@
                         VerticalOptions="Center" />
 
                     <Label
-                        Grid.Row="10"
+                        Grid.Row="2"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="3"
@@ -778,10 +778,10 @@
                         VerticalOptions="Center" />
 
                     <Label
-                        Grid.Row="10"
-                        Grid.Column="1"
+                        Grid.Row="3"
+                        Grid.Column="0"
                         Margin="10,4"
-                        AutomationId="3"
+                        AutomationId="0"
                         FontAttributes="Bold"
                         HorizontalOptions="FillAndExpand"
                         Text="Sonstige Aufnahmen"
@@ -789,25 +789,25 @@
 
                     <local:PhotoCollectionField
                         x:Name="DamagePhotos"
-                        Grid.Row="9"
+                        Grid.Row="4"
                         Margin="10,4"
                         AutomationId="3" />
                     <local:PhotoCollectionField
                         x:Name="NearbyPhotos"
-                        Grid.Row="9"
-                        Grid.Column="1"
+                        Grid.Row="5"
+                        Grid.Column="0"
                         Margin="10,4"
                         AutomationId="3" />
                     <local:PhotoCollectionField
                         x:Name="DetailPhotos"
-                        Grid.Row="11"
+                        Grid.Row="6"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="3" />
                     <local:PhotoCollectionField
                         x:Name="OtherPhotos"
-                        Grid.Row="11"
-                        Grid.Column="1"
+                        Grid.Row="7"
+                        Grid.Column="0"
                         Margin="10,4"
                         AutomationId="3" />
 
@@ -815,48 +815,24 @@
                     <!--#region Damage Description-->
                     <CollectionView
                         x:Name="DamageDescriptions"
-                        Grid.Row="12"
-                        Grid.ColumnSpan="2"
-                        Margin="0,-60,0,0"
+                        Grid.Row="0"
                         AutomationId="4"
                         ItemsSource="{Binding DamageDescriptions}"
                         SelectionMode="None">
                         <CollectionView.Header>
-                            <Grid Padding="10,0">
+                            <Grid Padding="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="80" />
-                                    <ColumnDefinition Width="80" />
-                                    <ColumnDefinition Width="80" />
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Button
                                     x:Name="NewDamageDescriptionButton"
-                                    Grid.ColumnSpan="6"
                                     Clicked="NewDamageDescriptionButton_Clicked"
                                     Text="Neue Zeile" />
                                 <Label Grid.Row="1" Text="Beschreibung" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Text="Lackieren" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="2"
-                                    Text="Ersetzen" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="3"
-                                    Text="Instands." />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="4"
-                                    Text="Stunden" />
                             </Grid>
                         </CollectionView.Header>
                         <CollectionView.ItemTemplate>
@@ -864,36 +840,12 @@
                                 <Grid Padding="10,0">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="80" />
-                                        <ColumnDefinition Width="80" />
-                                        <ColumnDefinition Width="80" />
-                                        <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Entry Text="{Binding Description}" />
-                                    <RadioButton
-                                        Grid.Column="1"
-                                        BackgroundColor="Transparent"
-                                        IsChecked="{Binding Paint}"
-                                        VerticalOptions="Center" />
-                                    <RadioButton
-                                        Grid.Column="2"
-                                        BackgroundColor="Transparent"
-                                        IsChecked="{Binding Replace}"
-                                        VerticalOptions="Center" />
-                                    <RadioButton
-                                        Grid.Column="3"
-                                        BackgroundColor="Transparent"
-                                        IsChecked="{Binding Repair}"
-                                        VerticalOptions="Center" />
-                                    <Entry
-                                        Grid.Column="4"
-                                        Text="{Binding Hours}"
-                                        VerticalOptions="Center"
-                                        WidthRequest="100" />
                                     <Button
                                         x:Name="DeleteDamageDescriptionButton"
-                                        Grid.Column="5"
+                                        Grid.Column="1"
                                         BackgroundColor="White"
                                         Clicked="DeleteDamageDescriptionButton_Clicked"
                                         CommandParameter="{Binding .}"
@@ -910,15 +862,24 @@
                     <!--#endregion-->
                     <!--#region Tire-->
                     <Grid
-                        Grid.Row="13"
-                        Margin="10,-50,10,20"
+                        Grid.Row="0"
+                        Margin="10,0"
                         AutomationId="5">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="4*" />
                             <ColumnDefinition Width="3*" />
                             <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
                         <Label
                             Margin="2,30,2,0"
                             HorizontalOptions="StartAndExpand"
@@ -926,115 +887,95 @@
                             VerticalOptions="StartAndExpand" />
                         <local:TitledEntryField
                             Title="Hersteller"
-                            Grid.Column="1"
+                            Grid.Row="1"
+                            Grid.Column="0"
                             Text="{Binding FrontLeft.Manufacturer}" />
                         <local:TitledEntryField
                             Title="Größe"
-                            Grid.Column="2"
+                            Grid.Row="1"
+                            Grid.Column="1"
                             Text="{Binding FrontLeft.Size}" />
                         <local:TitledEntryField
                             x:Name="FrontLeftTireThreadDepth"
                             Title="Profil"
-                            Grid.Column="3"
+                            Grid.Row="1"
+                            Grid.Column="2"
                             Keyboard="Numeric"
                             Text="{Binding FrontLeft.TreadDepth}" />
-                    </Grid>
-                    <Grid
-                        Grid.Row="13"
-                        Grid.Column="1"
-                        Margin="10,-50,10,20"
-                        AutomationId="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="2*" />
-                        </Grid.ColumnDefinitions>
                         <Label
+                            Grid.Row="2"
                             Margin="2,17,2,0"
                             HorizontalOptions="StartAndExpand"
-                            Text="Hinten Rechts"
+                            Text="Vorne Rechts"
                             VerticalOptions="Center" />
                         <local:TitledEntryField
                             Title="Hersteller"
-                            Grid.Column="1"
+                            Grid.Row="3"
+                            Grid.Column="0"
                             Text="{Binding FrontRight.Manufacturer}" />
                         <local:TitledEntryField
                             Title="Größe"
-                            Grid.Column="2"
+                            Grid.Row="3"
+                            Grid.Column="1"
                             Text="{Binding FrontRight.Size}" />
                         <local:TitledEntryField
                             x:Name="FrontRightTireThreadDepth"
                             Title="Profil"
-                            Grid.Column="3"
+                            Grid.Row="3"
+                            Grid.Column="2"
                             Keyboard="Numeric"
                             Text="{Binding FrontRight.TreadDepth}" />
-                    </Grid>
-                    <Grid
-                        Grid.Row="14"
-                        Margin="10,0,10,30"
-                        AutomationId="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="2*" />
-                        </Grid.ColumnDefinitions>
                         <Label
+                            Grid.Row="4"
                             Margin="2,17,2,0"
                             HorizontalOptions="StartAndExpand"
                             Text="Hinten Links"
                             VerticalOptions="Center" />
                         <local:TitledEntryField
                             Title="Hersteller"
-                            Grid.Column="1"
+                            Grid.Row="5"
+                            Grid.Column="0"
                             Text="{Binding RearLeft.Manufacturer}" />
                         <local:TitledEntryField
                             Title="Größe"
-                            Grid.Column="2"
+                            Grid.Row="5"
+                            Grid.Column="1"
                             Text="{Binding RearLeft.Size}" />
                         <local:TitledEntryField
                             x:Name="RearLeftTireThreadDepth"
                             Title="Profil"
-                            Grid.Column="3"
+                            Grid.Row="5"
+                            Grid.Column="2"
                             Keyboard="Numeric"
                             Text="{Binding RearLeft.TreadDepth}" />
-                    </Grid>
-                    <Grid
-                        Grid.Row="14"
-                        Grid.Column="1"
-                        Margin="10,0,10,30"
-                        AutomationId="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="2*" />
-                        </Grid.ColumnDefinitions>
                         <Label
+                            Grid.Row="6"
                             Margin="2,17,2,0"
                             HorizontalOptions="StartAndExpand"
                             Text="Hinten Rechts"
                             VerticalOptions="Center" />
                         <local:TitledEntryField
                             Title="Hersteller"
-                            Grid.Column="1"
+                            Grid.Row="7"
+                            Grid.Column="0"
                             Text="{Binding RearRight.Manufacturer}" />
                         <local:TitledEntryField
                             Title="Größe"
-                            Grid.Column="2"
+                            Grid.Row="7"
+                            Grid.Column="1"
                             Text="{Binding RearRight.Size}" />
                         <local:TitledEntryField
                             x:Name="RearRightTireThreadDepth"
                             Title="Profil"
-                            Grid.Column="3"
+                            Grid.Row="8"
+                            Grid.Column="2"
                             Keyboard="Numeric"
                             Text="{Binding RearRight.TreadDepth}" />
                     </Grid>
                     <!--#endregion-->
                     <!--#region Car Data-->
                     <StackLayout
-                        Grid.Row="15"
+                        Grid.Row="0"
                         AutomationId="6"
                         Orientation="Horizontal"
                         VerticalOptions="Center">
@@ -1045,15 +986,15 @@
                     <local:PhotoField
                         x:Name="ServiceRecordBook"
                         Title="Scheckheft"
-                        Grid.Row="15"
-                        Grid.Column="1"
-                        Margin="10,-25,10,0"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="10,0,10,0"
                         AutomationId="6"
                         HeightRequest="200"
                         HorizontalOptions="Center"
                         ImagePath="{Binding ServiceRecordBookPhotoPath, Mode=TwoWay}" />
                     <StackLayout
-                        Grid.Row="16"
+                        Grid.Row="2"
                         Grid.Column="0"
                         Margin="10,80,10,40"
                         AutomationId="6"
@@ -1067,9 +1008,9 @@
                     <local:PhotoField
                         x:Name="CarDocument"
                         Title="Fahrzeugschein"
-                        Grid.Row="16"
-                        Grid.Column="1"
-                        Margin="10,80,10,40"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Margin="10,0,10,40"
                         AutomationId="6"
                         HorizontalOptions="Center"
                         ImagePath="{Binding CarDocumentPhotoPath, Mode=TwoWay}" />
@@ -1077,16 +1018,13 @@
                     <!--#region PreDamage-->
                     <CollectionView
                         x:Name="PreDamageDescriptions"
-                        Grid.Row="17"
-                        Grid.ColumnSpan="2"
-                        Margin="0,-80,0,0"
+                        Grid.Row="0"
+                        Margin="10,0,10,0"
                         AutomationId="7">
                         <CollectionView.Header>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="400" />
-                                    <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -1101,11 +1039,6 @@
                                     Grid.Row="1"
                                     HorizontalOptions="Center"
                                     Text="Beschreibung" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    HorizontalOptions="Center"
-                                    Text="Foto" />
                             </Grid>
 
                         </CollectionView.Header>
@@ -1114,32 +1047,15 @@
                                 <Grid Padding="10">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="400" />
-                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Editor Text="{Binding Description}" />
-                                    <StackLayout Grid.Row="1" Orientation="Horizontal">
-                                        <CheckBox IsChecked="{Binding IsRepaired}" />
-                                        <Label Text="Wurde repariert" VerticalOptions="Center" />
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="2" Orientation="Horizontal">
-                                        <CheckBox IsChecked="{Binding IsOldDamage}" />
-                                        <Label Text="Altschaden" VerticalOptions="Center" />
-                                    </StackLayout>
-                                    <local:PhotoField
-                                        Grid.RowSpan="3"
-                                        Grid.Column="1"
-                                        ImagePath="{Binding TempImagePath, Mode=OneWayToSource}"
-                                        Source="{Binding ImagePath, Mode=TwoWay}" />
                                     <Button
                                         x:Name="DeletePreDamageDescriptionButton"
-                                        Grid.RowSpan="3"
-                                        Grid.Column="2"
+                                        Grid.Column="1"
                                         Clicked="DeletePreDamageDescriptionButton_Clicked"
                                         CommandParameter="{Binding .}"
                                         FontFamily="{StaticResource FontAwesomeSolid}"
@@ -1152,42 +1068,40 @@
                     <!--#endregion-->
                     <!--#region Repair-->
                     <Label
-                        Grid.Row="18"
+                        Grid.Row="0"
                         Margin="10,-70,10,30"
                         AutomationId="8"
                         Text="Reparatur gewünscht?"
                         VerticalOptions="Center" />
                     <CheckBox
-                        Grid.Row="18"
+                        Grid.Row="0"
                         Margin="200,-100,0,0"
                         AutomationId="8" />
                     <local:TitledEntryField
                         Title="Werkstatt"
-                        Grid.Row="18"
-                        Grid.Column="1"
+                        Grid.Row="1"
+                        Grid.Column="0"
                         Margin="10,-80,10,30"
                         AutomationId="8" />
                     <Label
-                        Grid.Row="19"
-                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
                         Margin="10,0,10,10"
                         AutomationId="8"
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         Text="Stundensätze" />
                     <Grid
-                        Grid.Row="20"
-                        Grid.ColumnSpan="2"
+                        Grid.Row="3"
                         Margin="10,0,10,00"
                         AutomationId="8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
                             <RowDefinition />
@@ -1206,64 +1120,66 @@
                         <local:TitledEntryField
                             x:Name="UPESurchargeField"
                             Title="UPE-Aufschläge"
-                            Grid.Column="2"
+                            Grid.Row="1"
+                            Grid.Column="0"
                             Keyboard="Numeric"
                             Text="{Binding UPESurcharge, StringFormat='{0:0.00}'}" />
                         <local:TitledEntryField
                             x:Name="SmallPartsSurchargeField"
                             Title="Kleinteile-Aufschlag"
-                            Grid.Column="3"
+                            Grid.Row="1"
+                            Grid.Column="1"
                             Keyboard="Numeric"
                             Text="{Binding SmallPartsSurcharge, StringFormat='{0:0.00}'}" />
                         <Label
-                            Grid.Row="1"
+                            Grid.Row="2"
                             Grid.Column="0"
                             Text="Lackierung"
                             VerticalOptions="Center" />
                         <local:TitledEntryField
                             x:Name="FlatRatePaintingField"
                             Title="Pauschal"
-                            Grid.Row="1"
+                            Grid.Row="2"
                             Grid.Column="1"
                             Keyboard="Numeric"
                             Text="{Binding FlatRatePainting, StringFormat='{0:F2}'}" />
                         <local:TitledEntryField
                             x:Name="HourlyRatePaintingSurchargeField"
                             Title="Lackzuschlag %"
-                            Grid.Row="1"
-                            Grid.Column="2"
+                            Grid.Row="3"
+                            Grid.Column="0"
                             Keyboard="Numeric"
                             Text="{Binding HourlyRatePaintingSurcharge, StringFormat='{0:F1}'}" />
                         <local:TitledEntryField
                             x:Name="HourlyRatePaintPoinField"
                             Title="Lackpunkt"
-                            Grid.Row="1"
-                            Grid.Column="3"
+                            Grid.Row="3"
+                            Grid.Column="1"
                             Keyboard="Numeric"
                             Text="{Binding HourlyRatePaintPoint, StringFormat='{0:0.00}'}" />
                         <Label
-                            Grid.Row="2"
+                            Grid.Row="4"
                             Grid.Column="0"
                             Text="Verbringung"
                             VerticalOptions="Center" />
                         <local:TitledEntryField
                             x:Name="TimedRateTransportField"
                             Title="Zeit"
-                            Grid.Row="2"
+                            Grid.Row="4"
                             Grid.Column="1"
                             Keyboard="Numeric"
                             Text="{Binding TimedRateTransport, StringFormat='{0:0.00}'}" />
                         <local:TitledEntryField
                             x:Name="FlatrateTransportField"
                             Title="Pauschal"
-                            Grid.Row="2"
-                            Grid.Column="2"
+                            Grid.Row="5"
+                            Grid.Column="0"
                             Keyboard="Numeric"
                             Text="{Binding FlatrateTransport, StringFormat='{0:0.00}'}" />
 
                     </Grid>
                     <StackLayout
-                        Grid.Row="21"
+                        Grid.Row="4"
                         Margin="10,0,10,60"
                         AutomationId="8"
                         Orientation="Horizontal">
@@ -1275,9 +1191,8 @@
                     <!--#endregion-->
                     <!--#region Damage description-->
                     <StackLayout
-                        Grid.Row="23"
-                        Grid.ColumnSpan="2"
-                        Margin="10,-160,10,0"
+                        Grid.Row="0"
+                        Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
                         <Label Text="Unser Kunde" VerticalOptions="Center" />
@@ -1285,9 +1200,8 @@
                         <Label Text="musste verkehrbedingt bremsen" VerticalOptions="Center" />
                     </StackLayout>
                     <StackLayout
-                        Grid.Row="24"
-                        Grid.ColumnSpan="2"
-                        Margin="10,-100,10,0"
+                        Grid.Row="1"
+                        Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
                         <Label Text="Unfallgegner" VerticalOptions="Center" />
@@ -1299,9 +1213,8 @@
                         <Label Text="kam aus untergeordneter Straße" VerticalOptions="Center" />
                     </StackLayout>
                     <StackLayout
-                        Grid.Row="25"
-                        Grid.ColumnSpan="2"
-                        Margin="10,-40,10,0"
+                        Grid.Row="2"
+                        Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveBackwards}" />
@@ -1312,9 +1225,8 @@
                         <Label Text="gegen stendenden Kunden" VerticalOptions="Center" />
                     </StackLayout>
                     <StackLayout
-                        Grid.Row="26"
-                        Grid.ColumnSpan="2"
-                        Margin="10,-10,10,0"
+                        Grid.Row="3"
+                        Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstDrivingCustomer}" />
@@ -1325,9 +1237,8 @@
                         <Label Text="fuhr über Stoppschild" VerticalOptions="Center" />
                     </StackLayout>
                     <StackLayout
-                        Grid.Row="27"
-                        Grid.ColumnSpan="2"
-                        Margin="10,-10,10,0"
+                        Grid.Row="4"
+                        Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DisobeyingRightLeft}" />
@@ -1341,22 +1252,22 @@
                     </StackLayout>
                     <local:TitledEditorField
                         Title="Schriftliche Schilderung"
-                        Grid.Row="28"
+                        Grid.Row="5"
                         Grid.RowSpan="2"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         HeightRequest="200"
                         Text="{Binding Description}" />
                     <StackLayout
-                        Grid.Row="28"
-                        Grid.Column="1"
+                        Grid.Row="6"
+                        Grid.Column="0"
                         Margin="10,0,10,0"
                         AutomationId="9">
                         <local:TitledEntryField Title="Ort des Unfalls" Text="{Binding AccidentLocation}" />
                         <local:TitledEntryField Title="Genauer Zeitpunkt des Unfalls" Text="{Binding AccidentTimestamp, StringFormat='{0:dd.MM.yyyy hh:mm}'}" />
                     </StackLayout>
                     <StackLayout
-                        Grid.Row="31"
+                        Grid.Row="7"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
@@ -1368,14 +1279,14 @@
                     </StackLayout>
                     <local:PhotoField
                         x:Name="PoliceReport"
-                        Grid.Row="31"
-                        Grid.Column="1"
+                        Grid.Row="8"
+                        Grid.Column="0"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         ImagePath="{Binding PoliceReportPhotoPath}" />
                     <StackLayout
-                        Grid.Row="33"
-                        Margin="10,0,10,150"
+                        Grid.Row="9"
+                        Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
                         <Label Margin="0,26,0,0" Text="Anwalt erwünscht:" />
@@ -1394,11 +1305,12 @@
                             IsChecked="{Binding IsRecommendedAdvocate}"
                             VerticalOptions="Start" />
                     </StackLayout>
+
                     <local:TitledEntryField
                         x:Name="RecommendedAdvocate"
                         Title="Empfohlener Anwalt"
-                        Grid.Row="33"
-                        Grid.Column="1"
+                        Grid.Row="10"
+                        Grid.Column="0"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         IsVisible="False"
@@ -1406,8 +1318,8 @@
                     <local:TitledEntryField
                         x:Name="CustomersAdvocate"
                         Title="Anwalt des Kunden"
-                        Grid.Row="33"
-                        Grid.Column="1"
+                        Grid.Row="11"
+                        Grid.Column="0"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         IsVisible="false"

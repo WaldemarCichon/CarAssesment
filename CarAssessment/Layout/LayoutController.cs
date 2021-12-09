@@ -94,22 +94,22 @@ namespace CarAssessment.Layout
 
         public void Next() {
             Validate(DisplayedGroup);
-            ((NewItemPage)contentPage).PrevArrowButton.IsVisible = true;
+            contentPage.PrevArrowButtonVisiblity = true;
             if (DisplayedGroup < 12) {
                 DisplayedGroup++;
                 if (DisplayedGroup == 12) {
-                    ((NewItemPage)contentPage).NextArrowButton.IsVisible = false;
+                    contentPage.NextArrowButtonVisiblity = false;
                 }
             }
 		}
 
         public void Previous() {
             Validate(DisplayedGroup);
-            ((NewItemPage)contentPage).NextArrowButton.IsVisible = true;
+            contentPage.NextArrowButtonVisiblity = true;
             if (DisplayedGroup > 1) {
                 DisplayedGroup--;
                 if (DisplayedGroup == 1) {
-                    ((NewItemPage)contentPage).PrevArrowButton.IsVisible = false;
+                    contentPage.PrevArrowButtonVisiblity = false;
 				}
             }
 		}

@@ -19,6 +19,12 @@
                 HorizontalOptions="Center"
                 Source="camera64.png"
                 VerticalOptions="End" />
+            <Slider
+                x:Name="ZoomRangeSlider"
+                Margin="10,20,10,0"
+                HorizontalOptions="FillAndExpand"
+                ValueChanged="ZoomRangeSlider_ValueChanged"
+                VerticalOptions="Start" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
