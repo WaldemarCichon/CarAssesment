@@ -853,9 +853,13 @@
                                         FontSize="Large"
                                         Text=""
                                         TextColor="Black" />
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            x:Name="DamageDescriptionGridTGR"
+                                            CommandParameter="{Binding .}"
+                                            Tapped="DamageDescriptionGridTGR_Tapped" />
+                                    </Grid.GestureRecognizers>
                                 </Grid>
-
-
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -1328,45 +1332,43 @@
                     <!--#region Additional Data-->
                     <local:TitledEntryField
                         Title="Telefon"
-                        Grid.Row="36"
+                        Grid.Row="0"
                         Grid.Column="0"
-                        Margin="10,-200,10,0"
+                        Margin="10,00,10,0"
                         AutomationId="10"
                         Text="{Binding Phone}" />
                     <local:TitledEntryField
                         Title="Email"
-                        Grid.Row="36"
-                        Grid.Column="1"
-                        Margin="10,-200,10,0"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="10,00,10,0"
                         AutomationId="10"
                         Text="{Binding Email}" />
                     <local:TitledEntryField
                         Title="Schadensnummer"
-                        Grid.Row="37"
+                        Grid.Row="2"
                         Grid.Column="0"
-                        Margin="10,-140,10,0"
+                        Margin="10,0,10,0"
                         AutomationId="10"
                         Text="{Binding DamageId}" />
                     <local:TitledEntryField
                         Title="Versicherungsnummer"
-                        Grid.Row="37"
-                        Grid.Column="1"
+                        Grid.Row="3"
+                        Grid.Column="0"
                         Margin="10,-140,10,0"
                         AutomationId="10"
                         Text="{Binding InsuranceId}" />
                     <local:TitledEditorField
                         Title="Sonstiges"
-                        Grid.Row="38"
-                        Grid.ColumnSpan="2"
-                        Margin="10,-80,10,180"
+                        Grid.Row="4"
+                        Margin="10,0,10,0"
                         AutomationId="10"
                         Text="{Binding Miscellanious}" />
                     <!--#endregion-->
                     <!--#region Signature-->
                     <StackLayout
                         Grid.Row="0"
-                        Grid.ColumnSpan="2"
-                        Margin="0,0,0,-200"
+                        Margin="0,0,0,0"
                         AutomationId="11"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Vertical"
@@ -1450,7 +1452,7 @@
                     <StackLayout
                         Grid.Row="0"
                         Grid.ColumnSpan="2"
-                        Margin="0,0,0,-200"
+                        Margin="0,0,0,0"
                         Padding="5,0"
                         AutomationId="12"
                         HorizontalOptions="FillAndExpand"

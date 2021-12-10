@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="CarAssessment.Views.DamagePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CarAssessment.Components"
+    xmlns:model="clr-namespace:CarAssessment.Models.Row"
+    x:DataType="model:DamageDescription">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                Text="Schadenserfassung" />
+            <local:TitledEditorField
+                Title="Beschreibung"
+                Margin="10,15,10,0"
+                HeightRequest="150"
+                Text="{Binding Description}" />
+            <Grid Margin="10,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Text="Lackieren" />
+                <RadioButton
+                    Grid.Row="1"
+                    BackgroundColor="Transparent"
+                    IsChecked="{Binding Paint}"
+                    VerticalOptions="Center" />
+                <Label Grid.Column="1" Text="Ersetzen" />
+                <RadioButton
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BackgroundColor="Transparent"
+                    IsChecked="{Binding Replace}"
+                    VerticalOptions="Center" />
+                <Label Grid.Column="2" Text="Reparieren" />
+                <RadioButton
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    BackgroundColor="Transparent"
+                    IsChecked="{Binding Repair}"
+                    VerticalOptions="Center" />
+            </Grid>
+            <local:TitledEntryField
+                Title="Zeitaufwand"
+                Keyboard="Numeric"
+                Text="{Binding Hours}"
+                VerticalOptions="Center" />
+            <Grid Margin="10,15" VerticalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Schaden speichern" />
+                <Button Grid.Column="1" Text="Änderungen verwerfen" />
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

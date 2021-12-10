@@ -336,5 +336,12 @@ namespace CarAssessment.Views
 			Client.Text = "Hiermit erteile ich " + Assessment.OwnerName + " " + Assessment.Street + ", " + Assessment.City;
 			CityAndDate1.Text = Assessment.City + ", den " + Assessment.AdmissionDate.ToString("dd.MM.yy");
 		}
+
+		async void DamageDescriptionGridTGR_Tapped(System.Object sender, System.EventArgs e) {
+			var grid = sender as Grid;
+			var recognizer = grid.GestureRecognizers[0];
+			var damageDescription = (recognizer as TapGestureRecognizer).CommandParameter as DamageDescription;
+			await Shell.Current.Navigation.PushAsync(new DamagePage(damageDescription));
+		}
 	}
 }

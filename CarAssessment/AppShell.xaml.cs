@@ -16,6 +16,8 @@ namespace CarAssessment {
 			Routing.RegisterRoute(nameof(PhotoPage), typeof(PhotoPage));
 			Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
 			Routing.RegisterRoute(nameof(StartPage), typeof(StartPage));
+			Routing.RegisterRoute(nameof(DamagePage), typeof(DamagePage));
+			Routing.RegisterRoute(nameof(PreDamagePage), typeof(PreDamagePage));
 			if (HttpRepository.Instance.User != null) {
 				LoginSuccessed();
 			}
