@@ -23,7 +23,7 @@
                 <Label
                     Margin="0,5,0,5"
                     FontAttributes="Bold"
-                    FontSize="40"
+                    FontSize="24"
                     HorizontalOptions="Center"
                     Text="Kfz-Gutachten Version 0.9" />
                 <!--#region Title List-->
@@ -35,9 +35,9 @@
                     HorizontalOptions="FillAndExpand"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     Text="Grunddaten">
                     <Label.GestureRecognizers>
@@ -55,9 +55,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Fahrzeugbilder">
@@ -76,9 +76,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Schadensbilder">
@@ -97,9 +97,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Schäden">
@@ -118,9 +118,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Reifen">
@@ -139,9 +139,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Fahrzeugdaten">
@@ -160,9 +160,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Vorschäden">
@@ -181,9 +181,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Reparatur">
@@ -202,9 +202,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Schaden">
@@ -223,9 +223,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Weitere Daten">
@@ -244,9 +244,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="AGBs/Unterschrift">
@@ -265,9 +265,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-65,0,10"
+                    Margin="0,-55,0,10"
                     AutomationId="0"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Anwalt/Unterschrift">
@@ -294,9 +294,9 @@
                     HorizontalOptions="FillAndExpand"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="1"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     Text="Grunddaten" />
                 <BoxView
@@ -308,9 +308,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="2"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Fahrzeugbilder" />
@@ -323,9 +323,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="3"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Schadensbilder" />
@@ -338,9 +338,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="4"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Schäden" />
@@ -353,9 +353,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="5"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Reifen" />
@@ -368,9 +368,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="6"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Fahrzeugdaten" />
@@ -383,9 +383,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="7"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Vorschäden" />
@@ -398,9 +398,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="8"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Reparatur" />
@@ -413,9 +413,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="9"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Schaden" />
@@ -428,9 +428,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="10"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Weitere Daten" />
@@ -443,9 +443,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="11"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="AGBs/Unterschrift" />
@@ -458,9 +458,9 @@
                     IsVisible="false"
                     Color="LightGray" />
                 <Label
-                    Margin="0,-110,0,50"
+                    Margin="0,-100,0,50"
                     AutomationId="12"
-                    FontSize="40"
+                    FontSize="30"
                     HorizontalOptions="Center"
                     IsVisible="false"
                     Text="Anwalt/Unterschrift" />

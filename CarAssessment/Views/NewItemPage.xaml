@@ -26,7 +26,7 @@
                     FontAttributes="Bold"
                     FontSize="40"
                     HorizontalOptions="Center"
-                    Text="Kfz-Gutachten Version 0.8" />
+                    Text="Kfz-Gutachten Version 0.9" />
                 <!--#region Title List-->
                 <BoxView
                     Margin="10,0,10,0"

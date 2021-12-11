@@ -307,7 +307,7 @@ namespace CarAssessment.Views
 		}
 
 		async void NewPreDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {
-			await Shell.Current.Navigation.PushModalAsync(new PreDamagePage(this));
+			await Shell.Current.Navigation.PushAsync(new PreDamagePage(this));
 		}
 
 		async void DeleteDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {

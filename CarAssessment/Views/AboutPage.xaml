@@ -22,21 +22,25 @@
         VerticalOptions="CenterAndExpand">
         <Image Source="kfz-logo.gif" />
         <Label
+            x:Name="TitleLabel"
             FontAttributes="Bold"
             FontSize="40"
             HorizontalOptions="CenterAndExpand"
-            Text="Kfz-Gutachten Version 0.8" />
+            Text="Kfz-Gutachten Version 0.9" />
         <Label
+            x:Name="CopyrightLabel"
             Margin="0,20,0,0"
             FontSize="30"
             HorizontalOptions="CenterAndExpand"
             Text="(C) 2021 by Kfz-Gutachter-Team" />
         <Label
+            x:Name="StreetLabel"
             Margin="0,10,0,0"
             FontSize="30"
             HorizontalOptions="CenterAndExpand"
             Text="Nordstraße 28" />
         <Label
+            x:Name="CityLabel"
             Margin="0,10,0,0"
             FontSize="30"
             HorizontalOptions="CenterAndExpand"

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Threading;
 using CarAssessment.Models.Row;
 using CarAssessment.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,6 +13,13 @@ namespace CarAssessment.Views {
 
 		public AboutPage() {
 			InitializeComponent();
+			if (DeviceInfo.Idiom == DeviceIdiom.Phone) {
+				TitleLabel.FontSize = 30;
+				CopyrightLabel.FontSize = 20;
+				StreetLabel.FontSize = 20;
+				CityLabel.FontSize = 20;
+				
+			}
 		}
 
 		async void LogoutButton_Clicked(System.Object sender, System.EventArgs e) {

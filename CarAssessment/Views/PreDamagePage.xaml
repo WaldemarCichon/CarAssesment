@@ -7,7 +7,8 @@
     xmlns:local="clr-namespace:CarAssessment.Components"
     xmlns:model="clr-namespace:CarAssessment.Models.Row"
     ios:Page.UseSafeArea="true"
-    x:DataType="model:PreDamage">
+    x:DataType="model:PreDamage"
+    BackgroundColor="DarkGray">
     <ContentPage.Content>
         <StackLayout>
             <Label
