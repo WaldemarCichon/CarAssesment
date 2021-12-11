@@ -499,7 +499,7 @@
                 </Grid>
                 <!--#endregion-->
             </StackLayout>
-            <ScrollView Grid.Row="1">
+            <ScrollView x:Name="MainScrollView" Grid.Row="1">
                 <Grid
                     Padding="2,0,2,0"
                     HorizontalOptions="FillAndExpand"
@@ -665,7 +665,7 @@
                         AutomationId="1"
                         Text="{Binding InspectionLocation}" />
                     <local:TitledEditorField
-                        Title="Teilehmer Besichtigung"
+                        Title="Teilnehmer Besichtigung"
                         Grid.Row="9"
                         Margin="10,4,10,0"
                         AutomationId="1"
@@ -758,7 +758,7 @@
                         VerticalOptions="Center" />
 
                     <Label
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="3"
@@ -768,7 +768,7 @@
                         VerticalOptions="Center" />
 
                     <Label
-                        Grid.Row="2"
+                        Grid.Row="4"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="3"
@@ -778,10 +778,10 @@
                         VerticalOptions="Center" />
 
                     <Label
-                        Grid.Row="3"
+                        Grid.Row="6"
                         Grid.Column="0"
                         Margin="10,4"
-                        AutomationId="0"
+                        AutomationId="3"
                         FontAttributes="Bold"
                         HorizontalOptions="FillAndExpand"
                         Text="Sonstige Aufnahmen"
@@ -789,18 +789,18 @@
 
                     <local:PhotoCollectionField
                         x:Name="DamagePhotos"
-                        Grid.Row="4"
+                        Grid.Row="1"
                         Margin="10,4"
                         AutomationId="3" />
                     <local:PhotoCollectionField
                         x:Name="NearbyPhotos"
-                        Grid.Row="5"
+                        Grid.Row="3"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="3" />
                     <local:PhotoCollectionField
                         x:Name="DetailPhotos"
-                        Grid.Row="6"
+                        Grid.Row="5"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="3" />
@@ -1023,7 +1023,7 @@
                     <CollectionView
                         x:Name="PreDamageDescriptions"
                         Grid.Row="0"
-                        Margin="10,0,10,0"
+                        Margin="10,20,10,0"
                         AutomationId="7">
                         <CollectionView.Header>
                             <Grid>
@@ -1200,84 +1200,143 @@
                     </StackLayout>
                     <!--#endregion-->
                     <!--#region Damage description-->
-                    <StackLayout
+                    <Label
                         Grid.Row="0"
-                        Margin="10,0,10,0"
+                        Margin="10,10,10,0"
                         AutomationId="9"
-                        Orientation="Horizontal">
-                        <Label Text="Unser Kunde" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding MustSlowDown}" />
-                        <Label Text="musste verkehrbedingt bremsen" VerticalOptions="Center" />
-                    </StackLayout>
+                        FontAttributes="Bold"
+                        Text="Unser Kunde"
+                        VerticalOptions="Center" />
                     <StackLayout
                         Grid.Row="1"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
-                        <Label Text="Unfallgegner" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding WasDriving}" />
-                        <Label Text="fuhr" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveAgainst}" />
-                        <Label Text="fuhr auf" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding CameFromMinorStreet}" />
-                        <Label Text="kam aus untergeordneter Straße" VerticalOptions="Center" />
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding MustSlowDown}" />
+                        <Label Text="musste verkehrbedingt bremsen" VerticalOptions="Center" />
                     </StackLayout>
-                    <StackLayout
+                    <Label
                         Grid.Row="2"
-                        Margin="10,0,10,0"
+                        Margin="10,15,10,0"
                         AutomationId="9"
-                        Orientation="Horizontal">
-                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveBackwards}" />
-                        <Label Text="fuhr rückwärts" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstParkingCar}" />
-                        <Label Text="gegen parkendes Kfz" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstStoppedCustomer}" />
-                        <Label Text="gegen stendenden Kunden" VerticalOptions="Center" />
-                    </StackLayout>
+                        FontAttributes="Bold"
+                        Text="Unfallgegner"
+                        VerticalOptions="Center" />
                     <StackLayout
                         Grid.Row="3"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
-                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstDrivingCustomer}" />
-                        <Label Text="gegen vorbeifahrenden Kunden" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstDrivingCustomer}" />
-                        <Label Text="fuhr über Rot" VerticalOptions="Center" />
-                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding OverStop}" />
-                        <Label Text="fuhr über Stoppschild" VerticalOptions="Center" />
+
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding WasDriving}" />
+                        <Label Text="fuhr" VerticalOptions="Center" />
                     </StackLayout>
                     <StackLayout
                         Grid.Row="4"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveAgainst}" />
+                        <Label Text="fuhr auf" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="5"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding CameFromMinorStreet}" />
+                        <Label Text="kam aus untergeordneter Straße" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="6"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DroveBackwards}" />
+                        <Label Text="fuhr rückwärts" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="7"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstParkingCar}" />
+                        <Label Text="gegen parkendes Kfz" VerticalOptions="Center" />
+
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="8"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstStoppedCustomer}" />
+                        <Label Text="gegen stendenden Kunden" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="9"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding AgainstDrivingCustomer}" />
+                        <Label Text="gegen vorbeifahrenden Kunden" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="10"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
+                        <CheckBox Margin="0,0,-25,0" IsChecked="{Binding OverStop}" />
+                        <Label Text="fuhr über Stoppschild" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="11"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding DisobeyingRightLeft}" />
                         <Label Text="rechts vor links missachtet" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="12"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding TooFast}" />
                         <Label Text="war zu schnell" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="13"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding ChangedLane}" />
                         <Label Text="wechselte die Spur" VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="14"
+                        Margin="10,0,10,0"
+                        AutomationId="9"
+                        Orientation="Horizontal">
                         <CheckBox Margin="0,0,-25,0" IsChecked="{Binding OverlookedCustomer}" />
                         <Label Text="übersah unseren Kunden" VerticalOptions="Center" />
                     </StackLayout>
                     <local:TitledEditorField
                         Title="Schriftliche Schilderung"
-                        Grid.Row="5"
-                        Grid.RowSpan="2"
+                        Grid.Row="15"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         HeightRequest="200"
                         Text="{Binding Description}" />
                     <StackLayout
-                        Grid.Row="6"
+                        Grid.Row="16"
                         Grid.Column="0"
-                        Margin="10,0,10,0"
+                        Margin="10,-30,10,0"
                         AutomationId="9">
                         <local:TitledEntryField Title="Ort des Unfalls" Text="{Binding AccidentLocation}" />
-                        <local:TitledEntryField Title="Genauer Zeitpunkt des Unfalls" Text="{Binding AccidentTimestamp, StringFormat='{0:dd.MM.yyyy hh:mm}'}" />
+                        <local:TitledEntryField Title="Genauer Zeitpunkt des Unfalls" Text="{Binding AccidentTimestampS}" />
                     </StackLayout>
                     <StackLayout
-                        Grid.Row="7"
+                        Grid.Row="17"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         Orientation="Horizontal">
@@ -1289,14 +1348,14 @@
                     </StackLayout>
                     <local:PhotoField
                         x:Name="PoliceReport"
-                        Grid.Row="8"
+                        Grid.Row="18"
                         Grid.Column="0"
                         Margin="10,0,10,0"
                         AutomationId="9"
                         ImagePath="{Binding PoliceReportPhotoPath}" />
                     <StackLayout
-                        Grid.Row="9"
-                        Margin="10,0,10,0"
+                        Grid.Row="19"
+                        Margin="10,0,10,70"
                         AutomationId="9"
                         Orientation="Horizontal">
                         <Label Margin="0,26,0,0" Text="Anwalt erwünscht:" />
@@ -1319,18 +1378,18 @@
                     <local:TitledEntryField
                         x:Name="RecommendedAdvocate"
                         Title="Empfohlener Anwalt"
-                        Grid.Row="10"
+                        Grid.Row="20"
                         Grid.Column="0"
-                        Margin="10,0,10,0"
+                        Margin="10,-50,10,50"
                         AutomationId="9"
                         IsVisible="False"
                         Text="{Binding RecommendedAdvocate}" />
                     <local:TitledEntryField
                         x:Name="CustomersAdvocate"
                         Title="Anwalt des Kunden"
-                        Grid.Row="11"
+                        Grid.Row="21"
                         Grid.Column="0"
-                        Margin="10,0,10,0"
+                        Margin="10,-50,10,80"
                         AutomationId="9"
                         IsVisible="false"
                         Text="{Binding CustomersAdvocate}" />
@@ -1340,7 +1399,7 @@
                         Title="Telefon"
                         Grid.Row="0"
                         Grid.Column="0"
-                        Margin="10,00,10,0"
+                        Margin="10,10,10,0"
                         AutomationId="10"
                         Text="{Binding Phone}" />
                     <local:TitledEntryField
@@ -1361,7 +1420,7 @@
                         Title="Versicherungsnummer"
                         Grid.Row="3"
                         Grid.Column="0"
-                        Margin="10,-140,10,0"
+                        Margin="10,0,10,0"
                         AutomationId="10"
                         Text="{Binding InsuranceId}" />
                     <local:TitledEditorField
@@ -1436,15 +1495,15 @@
                             LineBreakMode="WordWrap" />
                         <StackLayout
                             Margin="0,0,0,30"
-                            HeightRequest="300"
-                            Orientation="Horizontal">
+                            HeightRequest="350"
+                            Orientation="Vertical">
                             <Label
                                 x:Name="CityAndDate"
-                                Margin="25,150,25,50"
+                                Margin="25,10,25,10"
                                 Text="Braunschweig, den 23.08.2021" />
                             <sig:SignaturePadView
                                 x:Name="Signature"
-                                Margin="0,0,0,100"
+                                Margin="10,0,10,10"
                                 CaptionText="Bitte oberhalb unterschreiben"
                                 ClearText="Löschen"
                                 Cleared="SignaturePadView_Cleared"
@@ -1458,7 +1517,7 @@
                     <StackLayout
                         Grid.Row="0"
                         Grid.ColumnSpan="2"
-                        Margin="0,0,0,0"
+                        Margin="10,20,10,0"
                         Padding="5,0"
                         AutomationId="12"
                         HorizontalOptions="FillAndExpand"
@@ -1489,15 +1548,15 @@
                             LineBreakMode="WordWrap" />
                         <StackLayout
                             Margin="0,0,0,30"
-                            HeightRequest="300"
-                            Orientation="Horizontal">
+                            HeightRequest="350"
+                            Orientation="Vertical">
                             <Label
                                 x:Name="CityAndDate1"
-                                Margin="25,150,25,50"
+                                Margin="25,10,25,10"
                                 Text="Braunschweig, den 23.08.2021" />
                             <sig:SignaturePadView
                                 x:Name="Signature1"
-                                Margin="0,0,0,100"
+                                Margin="10,0,10,10"
                                 CaptionText="Bitte oberhalb unterschreiben"
                                 ClearText="Löschen"
                                 Cleared="SignaturePadView_Cleared"

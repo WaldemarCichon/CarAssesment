@@ -9,6 +9,7 @@ using CarAssessment.Models;
 using CarAssessment.Views;
 using CarAssessment.Models.Row;
 using System.Collections.Generic;
+using Xamarin.Essentials;
 
 namespace CarAssessment.ViewModels {
 	public class ItemsViewModel : BaseViewModel {
@@ -94,7 +95,11 @@ namespace CarAssessment.ViewModels {
 				return;
 
 			// This will push the ItemDetailPage onto the navigation stack
-			await Shell.Current.Navigation.PushAsync(new NewItemPage(item));
+			if (DeviceInfo.Idiom == DeviceIdiom.Phone) {
+				await Shell.Current.Navigation.PushAsync(new NewItemPagePhone(item));
+			} else {
+				await Shell.Current.Navigation.PushAsync(new NewItemPage(item));
+			}
 		}
 	}
 }

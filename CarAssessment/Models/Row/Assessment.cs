@@ -89,6 +89,23 @@ namespace CarAssessment.Models.Row {
 			get => AccidentDate == EmptyDateTime ? "" : AccidentDate.ToString("dd.MM.yyyy");
 			set => AccidentDate = value == "" || value == null ? EmptyDateTime : tryParseDate(value);
 		}
+		public String AccidentTimestampS {
+			get => AccidentTimestamp == EmptyDateTime ? "" : AccidentTimestamp.ToString("dd.MM.yyyy hh:mm");
+			set => AccidentTimestamp = value == "" || value == null ? EmptyDateTime : tryParseAndAddDate(value);
+		}
+
+		private DateTime tryParseAndAddDate(string stringVal) {
+			var dateTime = tryParseDate(stringVal);
+			if (dateTime == EmptyDateTime) {
+				return dateTime;
+			}
+			if (dateTime.Year <= 2000 && AccidentDate != EmptyDateTime) {
+				dateTime = new DateTime(AccidentDate.Year, AccidentDate.Month, AccidentDate.Day, dateTime.Hour, dateTime.Minute, 0);
+			}
+			return dateTime;
+		}
+
+
 		public String InspectionLocation { get; set; }
 		public String InspectionAttendees { get; set; }
 		public String PreviousDamage { get; set; }

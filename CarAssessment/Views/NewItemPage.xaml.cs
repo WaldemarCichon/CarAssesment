@@ -274,12 +274,14 @@ namespace CarAssessment.Views {
 			DialogOuterBox.IsVisible = false;
 		}
 
-		void Previous(Object sender, EventArgs e) {
+		async void Previous(Object sender, EventArgs e) {
 			LayoutController.Previous();
+			await MainScrollView.ScrollToAsync(0, 0, true);
 		}
 
-		void Next(Object sender, EventArgs e) {
+		async void Next(Object sender, EventArgs e) {
 			LayoutController.Next();
+			await MainScrollView.ScrollToAsync(0, 0, true);
 		}
 
 		void NewDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {
