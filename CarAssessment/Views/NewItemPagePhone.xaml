@@ -1065,6 +1065,12 @@
                                         FontFamily="{StaticResource FontAwesomeSolid}"
                                         FontSize="Large"
                                         Text="" />
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            x:Name="PreDamageGridTGR"
+                                            CommandParameter="{Binding .}"
+                                            Tapped="PreDamageGridTGR_Tapped" />
+                                    </Grid.GestureRecognizers>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

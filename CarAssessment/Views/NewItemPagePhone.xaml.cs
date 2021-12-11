@@ -28,6 +28,25 @@ namespace CarAssessment.Views
 
 		public const string AssignmentLetter = "assignment";
 		public const string AdvocateLetter = "advocate";
+
+		internal void AddDamageDescription(DamageDescription damageDescription) {
+			this.Assessment.DamageDescriptions.Add(damageDescription);
+		}
+
+		internal void RefreshDamageDescriptions() {
+			DamageDescriptions.ItemsSource = null;
+			DamageDescriptions.ItemsSource = Assessment.DamageDescriptions;
+		}
+
+		internal void AddPreDamage(PreDamage preDamage) {
+			this.Assessment.PreDamages.Add(preDamage);
+		}
+
+		internal void RefreshPreDamages() {
+		    PreDamageDescriptions.ItemsSource = null;
+			PreDamageDescriptions.ItemsSource = Assessment.PreDamages;
+		}
+
 		private TitledEntryField[] numericFieldsToUpdate;
 		private bool newAssessment = false;
 
@@ -283,16 +302,12 @@ namespace CarAssessment.Views
 			LayoutController.Next();
 		}
 
-		void NewDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {
-			Assessment.DamageDescriptions.Add(new DamageDescription());
-			DamageDescriptions.ItemsSource = null;
-			DamageDescriptions.ItemsSource = Assessment.DamageDescriptions;
+		async void NewDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {
+			await Shell.Current.Navigation.PushAsync(new DamagePage(this));
 		}
 
-		void NewPreDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {
-			Assessment.PreDamages.Add(new PreDamage());
-			PreDamageDescriptions.ItemsSource = null;
-			PreDamageDescriptions.ItemsSource = Assessment.PreDamages;
+		async void NewPreDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {
+			await Shell.Current.Navigation.PushModalAsync(new PreDamagePage(this));
 		}
 
 		async void DeleteDamageDescriptionButton_Clicked(System.Object sender, System.EventArgs e) {
@@ -341,7 +356,15 @@ namespace CarAssessment.Views
 			var grid = sender as Grid;
 			var recognizer = grid.GestureRecognizers[0];
 			var damageDescription = (recognizer as TapGestureRecognizer).CommandParameter as DamageDescription;
-			await Shell.Current.Navigation.PushAsync(new DamagePage(damageDescription));
+			await Shell.Current.Navigation.PushAsync(new DamagePage(damageDescription, this));
 		}
+
+		async void PreDamageGridTGR_Tapped(System.Object sender, System.EventArgs e) {
+			var grid = sender as Grid;
+			var recognizer = grid.GestureRecognizers[0];
+			var preDamage = (recognizer as TapGestureRecognizer).CommandParameter as PreDamage;
+			await Shell.Current.Navigation.PushAsync(new PreDamagePage(preDamage, this));
+		}
+
 	}
 }

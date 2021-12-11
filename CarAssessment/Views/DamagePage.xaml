@@ -49,6 +49,7 @@
                     VerticalOptions="Center" />
             </Grid>
             <local:TitledEntryField
+                x:Name="HoursField"
                 Title="Zeitaufwand"
                 Keyboard="Numeric"
                 Text="{Binding Hours}"
@@ -58,8 +59,15 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Text="Schaden speichern" />
-                <Button Grid.Column="1" Text="Änderungen verwerfen" />
+                <Button
+                    x:Name="SaveDamage"
+                    Clicked="SaveDamage_Clicked"
+                    Text="Schaden speichern" />
+                <Button
+                    x:Name="CancelDamage"
+                    Grid.Column="1"
+                    Clicked="CancelDamage_Clicked"
+                    Text="Änderungen verwerfen" />
             </Grid>
         </StackLayout>
 

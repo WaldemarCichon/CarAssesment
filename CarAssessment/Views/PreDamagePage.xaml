@@ -1,9 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="CarAssessment.Views.PreDamagePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="CarAssessment.Views.PreDamagePage">
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:CarAssessment.Components"
+    xmlns:model="clr-namespace:CarAssessment.Models.Row"
+    ios:Page.UseSafeArea="true"
+    x:DataType="model:PreDamage">
     <ContentPage.Content>
-        
+        <StackLayout>
+            <Label
+                Margin="10,10,10,0"
+                FontAttributes="Bold"
+                FontSize="24"
+                Text="Vorschaden erfassen" />
+            <Editor Margin="10,15" Text="{Binding Description}" />
+            <StackLayout Margin="10,5" Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding IsRepaired}" />
+                <Label Text="Wurde repariert" VerticalOptions="Center" />
+                <CheckBox IsChecked="{Binding IsOldDamage}" />
+                <Label Text="Altschaden" VerticalOptions="Center" />
+            </StackLayout>
+            <local:PhotoField ImagePath="{Binding TempImagePath, Mode=OneWayToSource}" Source="{Binding ImagePath, Mode=TwoWay}" />
+            <Grid Margin="10,15" VerticalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    x:Name="SavePreDamage"
+                    Clicked="SavePreDamage_Clicked"
+                    Text="Schaden speichern" />
+                <Button
+                    x:Name="CancelPreDamage"
+                    Grid.Column="1"
+                    Clicked="CancelPreDamage_Clicked"
+                    Text="Änderungen verwerfen" />
+            </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
