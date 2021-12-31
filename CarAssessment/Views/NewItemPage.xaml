@@ -26,7 +26,7 @@
                     FontAttributes="Bold"
                     FontSize="40"
                     HorizontalOptions="Center"
-                    Text="Kfz-Gutachten Version 0.9" />
+                    Text="Kfz-Gutachten Version 0.91" />
                 <!--#region Title List-->
                 <BoxView
                     Margin="10,0,10,0"
@@ -486,7 +486,7 @@
                         Clicked="Up"
                         FontFamily="{StaticResource FontAwesomeSolid}"
                         HorizontalOptions="Center"
-                        Text=""
+                        Text=""
                         WidthRequest="50" />
                     <Button
                         x:Name="NextArrowButton"
@@ -566,8 +566,9 @@
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
                         Margin="3,0,3,158"
-                        AutomationId="99"
+                        AutomationId="199"
                         CornerRadius="0"
+                        IsVisible="false"
                         Color="Blue" />
                     <BoxView
                         x:Name="DialogBox"
@@ -577,6 +578,7 @@
                         Grid.ColumnSpan="2"
                         Margin="5,2,5,160"
                         CornerRadius="0"
+                        IsVisible="false"
                         Color="LightGray" />
 
                     <local:TitledEntryField
@@ -1057,18 +1059,61 @@
                         HeightRequest="200"
                         HorizontalOptions="Center"
                         ImagePath="{Binding ServiceRecordBookPhotoPath, Mode=TwoWay}" />
-                    <StackLayout
+                    <Grid
                         Grid.Row="16"
                         Grid.Column="0"
-                        Margin="10,80,10,40"
+                        Margin="10,100,10,40"
                         AutomationId="6"
-                        Orientation="Horizontal"
                         VerticalOptions="Center">
-                        <Label Text="Kfz verkehrssicher?" VerticalOptions="Center" />
-                        <CheckBox IsChecked="{Binding IsRoadWorthy}" />
-                        <Label Text="Kfz fahrbereit?" VerticalOptions="Center" />
-                        <CheckBox IsChecked="{Binding IsReadyToDrive}" />
-                    </StackLayout>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.ColumnSpan="2"
+                            Text="Kfz verkehrssicher?"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Column="2"
+                            Grid.ColumnSpan="2"
+                            Text="Kfz fahrbereit? "
+                            VerticalOptions="Center" />
+                        <Label Grid.Row="1" Text="Ja" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="Nein" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Text="Ja" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            Text="Nein" />
+
+                        <CheckBox Grid.Row="2" IsChecked="{Binding IsRoadWorthy}" />
+                        <CheckBox
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            IsChecked="{Binding IsNotRoadWorthy}" />
+                        <CheckBox
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            IsChecked="{Binding IsReadyToDrive}" />
+
+                        <CheckBox
+                            Grid.Row="2"
+                            Grid.Column="3"
+                            IsChecked="{Binding IsNotReadyToDrive}" />
+                    </Grid>
                     <local:PhotoField
                         x:Name="CarDocument"
                         Title="Fahrzeugschein"

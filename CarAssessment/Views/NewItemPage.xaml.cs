@@ -76,6 +76,7 @@ namespace CarAssessment.Views {
 			};
 			DeclarationOfAssignmentLabel.Text = TextTemplates.DeclarationOfAssignmentText;
 			AdvocateAssignmentLabel.Text = TextTemplates.AdvocateAssignmentText;
+			DialogOuterBox.IsVisible = false;
 		}
 
 		private async void InitializeContext(Assessment assessment) {
@@ -152,7 +153,7 @@ namespace CarAssessment.Views {
 			LayoutController.DisplayedGroup = group;
 
 			Device.BeginInvokeOnMainThread(() => {
-				dialogOuterBox.IsVisible = true;
+				dialogOuterBox.IsVisible = false; //true;
 			});
 		});
 		public override bool PrevArrowButtonVisiblity { get => PrevArrowButton.IsVisible; set => PrevArrowButton.IsVisible = value; }
@@ -178,7 +179,7 @@ namespace CarAssessment.Views {
 				DialogBox.IsVisible = false;
 			} else {
 				NavigationButtons.IsVisible = true;
-				DialogBox.IsVisible = true;
+				DialogBox.IsVisible = false; // true;
 			}
 			if (displayedGroup == 9) {
 				PoliceReport.IsVisible = Assessment.IsPoliceReport == true;
@@ -256,13 +257,18 @@ namespace CarAssessment.Views {
 					await HttpRepository.Instance.PostPicture(advocateSignature);
 				}
 
-				await sendPictures();
-				if (Assessment.ObjectId < 1) {
-					await HttpRepository.Instance.PostAssessment(Assessment);
-				} else {
-					await HttpRepository.Instance.PutAssessment(Assessment);
+				try {
+					await sendPictures();
+					if (Assessment.ObjectId < 1) {
+						await HttpRepository.Instance.PostAssessment(Assessment);
+					} else {
+						await HttpRepository.Instance.PutAssessment(Assessment);
+					}
+					await DataStore.UpdateItemAsync(Assessment);
+				} catch (Exception ex) {
+					await DisplayAlert("Fehler", $"Fehler wärend des Sendens.\n{ex.Message} in Zeile {ex.StackTrace[1]}", "OK");
+					return;
 				}
-				await DataStore.UpdateItemAsync(Assessment);
 			}
 			await DataStore.Commit();
 			await Shell.Current.GoToAsync("..");

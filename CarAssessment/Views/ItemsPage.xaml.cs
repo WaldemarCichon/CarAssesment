@@ -76,26 +76,30 @@ namespace CarAssessment.Views {
 		}
 
 		async void SendAssessementButton_Clicked(System.Object sender, System.EventArgs e) {
-			var response = await HttpRepository.Instance.GetCredits();
-			if (response == null || !response.StartsWith("CarAssessment")) {
-				await DisplayAlert("Fehler", "Senden nicht gelungen, bitte ggf. später versuchen", "OK");
-				return;
+			try {
+				var response = await HttpRepository.Instance.GetCredits();
+				if (response == null || !response.StartsWith("CarAssessment")) {
+					await DisplayAlert("Fehler", "Senden nicht gelungen, bitte ggf. später versuchen", "OK");
+					return;
+				}
+				var assessment = (sender as Button).CommandParameter as Assessment;
+
+				await sendSignature(assessment, NewItemPage.AssignmentLetter);
+				await sendSignature(assessment, NewItemPage.AdvocateLetter);
+
+				await sendPictures(assessment);
+
+				if (assessment.ObjectId < 1) {
+					await HttpRepository.Instance.PostAssessment(assessment);
+				} else {
+					await HttpRepository.Instance.PutAssessment(assessment);
+				}
+				await DataStore.UpdateItemAsync(assessment);
+				await DataStore.Commit();
+				_viewModel.Refresh();
+			} catch (Exception ex) {
+				await DisplayAlert("Fehler", $"Fehler wärend des Sendens.\n{ex.Message} in Zeile {ex.StackTrace[1]}","OK");
 			}
-			var assessment = (sender as Button).CommandParameter as Assessment;
-
-			await sendSignature(assessment, NewItemPage.AssignmentLetter);
-			await sendSignature(assessment, NewItemPage.AdvocateLetter);
-
-			await sendPictures(assessment);
-
-			if (assessment.ObjectId < 1) {                  
-				await HttpRepository.Instance.PostAssessment(assessment);
-			} else {
-				await HttpRepository.Instance.PutAssessment(assessment);
-			}
-			await DataStore.UpdateItemAsync(assessment);
-			await DataStore.Commit();
-			_viewModel.Refresh();
 		}
 	}
 }

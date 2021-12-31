@@ -135,7 +135,7 @@ namespace CarAssessment.Components {
 
 		async void MakePhotoButton_Clicked(System.Object sender, System.EventArgs e) {
 			EntityRepository.Instance.CurrentPhotoField = this;
-			await Shell.Current.GoToAsync(nameof(CameraPage));
+			await new CameraComponent().CapturePhoto();
 		}
 
 		async void Image_Clicked(System.Object sender, System.EventArgs e) {

@@ -116,7 +116,9 @@ namespace CarAssessment.Models.Row {
 		public Tire RearLeft { get; set; }
 		public Tire RearRight { get; set; }
 		public Boolean IsRoadWorthy { get; set; }
+		public Boolean IsNotRoadWorthy { get; set; }
 		public Boolean IsReadyToDrive { get; set; }
+		public Boolean IsNotReadyToDrive { get; set; }
 		public Boolean Repair { get; set; }
 		public String WhereToRepair { get; set; }
 		public decimal HourlyRateBody { get; set; }

@@ -75,6 +75,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -137,6 +138,9 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="System.Numerics" />
+    <Reference Include="SkiaSharp">
+      <HintPath>..\packages\SkiaSharp.2.80.3\lib\xamarinios1.0\SkiaSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -145,4 +149,5 @@
       <Name>CarAssessment</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\packages\SkiaSharp.2.80.3\build\xamarinios1.0\SkiaSharp.targets" Condition="Exists('..\packages\SkiaSharp.2.80.3\build\xamarinios1.0\SkiaSharp.targets')" />
 </Project>

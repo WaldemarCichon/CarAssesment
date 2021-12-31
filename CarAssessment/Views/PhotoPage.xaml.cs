@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using CarAssessment.Components;
 using CarAssessment.DataHandling;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -24,9 +27,12 @@ namespace CarAssessment.Views {
 			Shell.Current.Navigation.PopAsync();
 		}
 
-		void MakePhotoButton_Clicked(System.Object sender, System.EventArgs e) {
-			Shell.Current.GoToAsync(nameof(CameraPage));
+		async void MakePhotoButton_Clicked(System.Object sender, System.EventArgs e) {
+			await new CameraComponent(DisplayedImage).CapturePhoto();
+			//await Shell.Current.GoToAsync(nameof(CameraPage));
 		}
+
+
 
 	}
 }
