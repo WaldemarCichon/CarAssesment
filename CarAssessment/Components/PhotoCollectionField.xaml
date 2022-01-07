@@ -12,13 +12,33 @@
         FontAttributes="Bold"
         HorizontalOptions="Start"
         VerticalOptions="Center" />
-    <Button
-        x:Name="MakePhotoButton"
-        Grid.Row="0"
-        Clicked="MakePhotoButton_Clicked"
+
+    <StackLayout
+        x:Name="ButtonStack"
         HorizontalOptions="End"
-        Text="Foto hinzufügen"
-        VerticalOptions="CenterAndExpand" />
+        Orientation="Horizontal"
+        VerticalOptions="Center">
+        <Button
+            x:Name="MakePhotoButton"
+            Grid.Row="0"
+            Padding="15,0"
+            Clicked="MakePhotoButton_Clicked"
+            FontFamily="{StaticResource FontAwesomeSolid}"
+            FontSize="24"
+            Text=""
+            VerticalOptions="CenterAndExpand" />
+        <Button
+            x:Name="GetPhotoButton"
+            Grid.Row="0"
+            Padding="15,0"
+            Clicked="GetPhotoButton_Clicked"
+            FontFamily="{StaticResource FontAwesomeSolid}"
+            FontSize="24"
+            Text="&#xf87c;"
+            VerticalOptions="CenterAndExpand" />
+
+    </StackLayout>
+
     <CollectionView
         x:Name="PhotoCollection"
         Grid.Row="1"

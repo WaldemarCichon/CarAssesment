@@ -18,7 +18,7 @@ namespace CarAssessment.Components {
 		public CameraComponent() {
 			OrientationSensor.Start(SensorSpeed.UI);
 			OrientationSensor.ReadingChanged += OrientationSensor_ReadingChanged;
-			DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
+			//DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
 		}
 
 		private void DeviceDisplay_MainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e) {
@@ -29,7 +29,7 @@ namespace CarAssessment.Components {
 			this.orientation = e.Reading.Orientation;
 		}
 
-		public CameraComponent(Image displayedImage) {
+		public CameraComponent(Image displayedImage):this() {
 			DisplayedImage = displayedImage;
 		}
 
@@ -55,8 +55,32 @@ namespace CarAssessment.Components {
 			return rotation;
 		}
 
+		async public Task GetPhoto() {
+			var newFile = getNewFileName();
+			var photo = await MediaPicker.PickPhotoAsync();
+			if (photo == null) {
+				return;
+			}
+			using (var stream = await photo.OpenReadAsync()) {
+				using (var newStream = File.OpenWrite(newFile)) {
+					await stream.CopyToAsync(newStream);
+				}
+			}
+			if (this.DisplayedImage != null) {
+				this.DisplayedImage.Source = newFile;
+			}
+			Device.BeginInvokeOnMainThread(() =>
+				EntityRepository.Instance.CurrentPhotoField.Source = newFile
+			);
+			OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
+			OrientationSensor.Stop();
+		}
+
 		async public Task CapturePhoto() {
 			var photo = await MediaPicker.CapturePhotoAsync();
+			if (photo == null) {
+				return;
+			}
 			var filename = await LoadPhotoAsync(photo);
 			if (this.DisplayedImage != null) {
 				this.DisplayedImage.Source = filename;
@@ -64,6 +88,7 @@ namespace CarAssessment.Components {
 			Device.BeginInvokeOnMainThread(() =>
 				EntityRepository.Instance.CurrentPhotoField.Source = filename
 			);
+			OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
 			OrientationSensor.Stop();
 		}
 

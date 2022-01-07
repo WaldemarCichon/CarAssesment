@@ -58,7 +58,22 @@ namespace CarAssessment.Components {
 					});
 				}
 			};
-			await Shell.Current.GoToAsync(nameof(CameraPage));
+			await new CameraComponent().CapturePhoto();
+		}
+
+		async void GetPhotoButton_Clicked(System.Object sender, System.EventArgs e) {
+			EntityRepository.Instance.CurrentPhotoField = new PhotoField();
+			EntityRepository.Instance.CurrentPhotoField.PropertyChanged += (senderProp, args) => {
+				if (args.PropertyName == "Source") {
+					MainThread.BeginInvokeOnMainThread(() => {
+						var image = new Image();
+						image.Source = EntityRepository.Instance.CurrentPhotoField.Source;
+						SourceList.Add(image);
+						PhotoCollection.ItemsSource = null; PhotoCollection.ItemsSource = SourceList;
+					});
+				}
+			};
+			await new CameraComponent().GetPhoto();
 		}
 
 		async void Image_Clicked(System.Object sender, System.EventArgs e) {
@@ -73,5 +88,7 @@ namespace CarAssessment.Components {
 			};
 			await Shell.Current.GoToAsync(nameof(PhotoPage));
 		}
+
+
 	}
 }

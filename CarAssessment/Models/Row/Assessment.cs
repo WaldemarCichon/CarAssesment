@@ -77,13 +77,13 @@ namespace CarAssessment.Models.Row {
 		public String LicensePlateOponent { get; set; }
 		public String ChassisNumber { get; set; }
 		public decimal Mileage { get; set; }
-		public DateTime AdmissionDate { get; set; }
+		public DateTime AdmissionDate { get; set; } = DateTime.Now;
 		public String AdmissionDateS
         {
 			get => AdmissionDate == EmptyDateTime ? "" : AdmissionDate.ToString("dd.MM.yyyy");
 			set => AdmissionDate = value == "" || value == null ? EmptyDateTime : tryParseDate(value); 
         }
-		public DateTime AccidentDate { get; set; }
+		public DateTime AccidentDate { get; set; } = DateTime.Now;
 		public String AccidentDateS
 		{
 			get => AccidentDate == EmptyDateTime ? "" : AccidentDate.ToString("dd.MM.yyyy");

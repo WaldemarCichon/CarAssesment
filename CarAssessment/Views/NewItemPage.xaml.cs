@@ -20,6 +20,8 @@ namespace CarAssessment.Views {
 	public partial class NewItemPage : NewItemPageBase {
 		private static LayoutController LayoutController { get; set; }
 		private static BoxView dialogOuterBox {get;set;}
+		private static ScrollView mainScrollView { get; set; }
+
 
 		IDataStore<Assessment> DataStore => DependencyService.Get<IDataStore<Assessment>>();
 		Assessment Assessment { get; set; }
@@ -77,6 +79,7 @@ namespace CarAssessment.Views {
 			DeclarationOfAssignmentLabel.Text = TextTemplates.DeclarationOfAssignmentText;
 			AdvocateAssignmentLabel.Text = TextTemplates.AdvocateAssignmentText;
 			DialogOuterBox.IsVisible = false;
+			mainScrollView = MainScrollView;
 		}
 
 		private async void InitializeContext(Assessment assessment) {
@@ -153,6 +156,7 @@ namespace CarAssessment.Views {
 			LayoutController.DisplayedGroup = group;
 
 			Device.BeginInvokeOnMainThread(() => {
+				mainScrollView.ScrollToAsync(0, 0, true);
 				dialogOuterBox.IsVisible = false; //true;
 			});
 		});
@@ -342,6 +346,9 @@ namespace CarAssessment.Views {
 			Advocate1.Text = "dem Rechtsanwalt: " + Assessment.RecommendedAdvocate;
 			Client.Text = "Hiermit erteile ich " + Assessment.OwnerName + " " + Assessment.Street + ", " + Assessment.City;
 			CityAndDate1.Text = Assessment.City + ", den " + Assessment.AdmissionDate.ToString("dd.MM.yy");
+		}
+
+		void SaveSendButton_Clicked(System.Object sender, System.EventArgs e) {
 		}
 	}
 }

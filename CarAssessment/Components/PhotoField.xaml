@@ -14,11 +14,29 @@
         Clicked="Image_Clicked"
         HeightRequest="250"
         IsVisible="True" />
-    <Button
-        x:Name="MakePhotoButton"
+    <StackLayout
+        x:Name="ButtonStack"
         Grid.Row="1"
-        Clicked="MakePhotoButton_Clicked"
         HorizontalOptions="Center"
-        Text="Foto aufnehmen"
-        VerticalOptions="CenterAndExpand" />
+        Orientation="Horizontal">
+        <Button
+            x:Name="MakePhotoButton"
+            Padding="15,0"
+            Clicked="MakePhotoButton_Clicked"
+            FontFamily="{StaticResource FontAwesomeSolid}"
+            FontSize="24"
+            HorizontalOptions="Center"
+            Text=""
+            VerticalOptions="CenterAndExpand" />
+        <Button
+            x:Name="GetPhotoButton"
+            Padding="15,0"
+            Clicked="GetPhotoButton_Clicked"
+            FontFamily="{StaticResource FontAwesomeSolid}"
+            FontSize="24"
+            HorizontalOptions="Center"
+            Text="&#xf87c;"
+            VerticalOptions="Center" />
+
+    </StackLayout>
 </Grid>

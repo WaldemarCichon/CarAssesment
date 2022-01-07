@@ -1638,6 +1638,11 @@
                     HorizontalOptions="FillAndExpand"
                     Text="Verlassen" />
                 <Button
+                    x:Name="SaveSendButton"
+                    Clicked="SaveSendButton_Clicked"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Speichern/senden" />
+                <Button
                     x:Name="SaveButton"
                     Clicked="SaveButton_Clicked"
                     HorizontalOptions="FillAndExpand"

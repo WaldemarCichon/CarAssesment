@@ -32,10 +32,10 @@ namespace CarAssessment.Components {
 				SetValue(ImagePathProperty, ImagePath);
 				if (value == null) {
 					Image.IsVisible = false;
-					MakePhotoButton.IsVisible = true;
+					ButtonStack.IsVisible = true;
 				} else {
 					Image.IsVisible = true;
-					MakePhotoButton.IsVisible = false;
+					ButtonStack.IsVisible = false;
 				}
 			}
 		}
@@ -68,10 +68,10 @@ namespace CarAssessment.Components {
 				if (value != ImagePath) {
 					if (value == null) {
 						Image.IsVisible = false;
-						MakePhotoButton.IsVisible = true;
+						ButtonStack.IsVisible = true;
 					} else {
 						Image.IsVisible = true;
-						MakePhotoButton.IsVisible = false;
+						ButtonStack.IsVisible = false;
 					}
 					SetValue(SourceProperty, value);
 					var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -141,6 +141,11 @@ namespace CarAssessment.Components {
 		async void Image_Clicked(System.Object sender, System.EventArgs e) {
 			EntityRepository.Instance.CurrentPhotoField = this;
 			await Shell.Current.GoToAsync(nameof(PhotoPage));
+		}
+
+		async void GetPhotoButton_Clicked(System.Object sender, System.EventArgs e) {
+			EntityRepository.Instance.CurrentPhotoField = this;
+			await new CameraComponent().GetPhoto();
 		}
 	}
 }
