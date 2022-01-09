@@ -13,6 +13,7 @@
     <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="SkiaSharp" Version="2.80.3" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.2.0.562" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\Single\" />
@@ -34,6 +35,7 @@
     <None Remove="Views\AbstractViews\" />
     <None Remove="SkiaSharp" />
     <None Remove="SkiaSharp.Views.Forms" />
+    <None Remove="Acr.UserDialogs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Row\" />

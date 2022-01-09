@@ -15,6 +15,8 @@ using CarAssessment.Models.Row;
 using CarAssessment.Services;
 using CarAssessment.Tooling;
 using System.IO;
+using Acr.UserDialogs;
+using System.Threading;
 
 namespace CarAssessment.Views {
 	public enum CreationMode {
@@ -58,12 +60,13 @@ namespace CarAssessment.Views {
 			_viewModel.OnAddItem(directMode);
 		}
 
-		async Task sendPictures(Assessment assessment) {
+		async Task sendPictures(Assessment assessment, IProgressDialog progress, ImagePathList imageList) {
 			var httpRepository = HttpRepository.Instance;
-			var imageList = new ImagePathList(assessment);
 			var assessmentId = assessment.Id;
+			var i = 3;
 			foreach (var imagePath in imageList.ActiveImageList) {
 				await httpRepository.PostPicture(imagePath, assessmentId);
+				progress.PercentComplete = i*100/(imageList.ActiveImageList.Count+2);
 			}
 		}
 
@@ -76,7 +79,9 @@ namespace CarAssessment.Views {
 		}
 
 		async void SendAssessementButton_Clicked(System.Object sender, System.EventArgs e) {
+			IProgressDialog progress = UserDialogs.Instance.Progress("Sende Daten");
 			try {
+
 				var response = await HttpRepository.Instance.GetCredits();
 				if (response == null || !response.StartsWith("CarAssessment")) {
 					await DisplayAlert("Fehler", "Senden nicht gelungen, bitte ggf. später versuchen", "OK");
@@ -84,10 +89,21 @@ namespace CarAssessment.Views {
 				}
 				var assessment = (sender as Button).CommandParameter as Assessment;
 
-				await sendSignature(assessment, NewItemPage.AssignmentLetter);
-				await sendSignature(assessment, NewItemPage.AdvocateLetter);
+				
 
-				await sendPictures(assessment);
+				var imageList = new ImagePathList(assessment);
+
+				await sendSignature(assessment, NewItemPage.AssignmentLetter);
+				if (progress != null) {
+					progress.PercentComplete = 200 / (imageList.ActiveImageList.Count + 2);
+				}
+
+				await sendSignature(assessment, NewItemPage.AdvocateLetter);
+				if (progress != null) {
+					progress.PercentComplete = 200 / (imageList.ActiveImageList.Count + 2);
+				}
+
+				await sendPictures(assessment, progress, imageList);
 
 				if (assessment.ObjectId < 1) {
 					await HttpRepository.Instance.PostAssessment(assessment);
@@ -99,7 +115,13 @@ namespace CarAssessment.Views {
 				_viewModel.Refresh();
 			} catch (Exception ex) {
 				await DisplayAlert("Fehler", $"Fehler wärend des Sendens.\n{ex.Message} in Zeile {ex.StackTrace[1]}","OK");
+			} finally {
+				if (progress != null) {
+					progress.Hide();
+					progress.Dispose();
+				}
 			}
+
 		}
 	}
 }

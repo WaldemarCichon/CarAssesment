@@ -59,6 +59,8 @@ namespace CarAssessment.Components {
 			var newFile = getNewFileName();
 			var photo = await MediaPicker.PickPhotoAsync();
 			if (photo == null) {
+				OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
+				OrientationSensor.Stop();
 				return;
 			}
 			using (var stream = await photo.OpenReadAsync()) {
@@ -79,6 +81,8 @@ namespace CarAssessment.Components {
 		async public Task CapturePhoto() {
 			var photo = await MediaPicker.CapturePhotoAsync();
 			if (photo == null) {
+				OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
+				OrientationSensor.Stop();
 				return;
 			}
 			var filename = await LoadPhotoAsync(photo);
@@ -118,6 +122,7 @@ namespace CarAssessment.Components {
 		}
 
 		private Stream rotate(Stream stream, int rotation) {
+			return stream; 
 			var bitmap = SKBitmap.Decode(stream);
 			var rotatedBitmap = rotation == 180 ? new SKBitmap(bitmap.Width, bitmap.Height) : new SKBitmap(bitmap.Height, bitmap.Width);
 			using (var surface = new SKCanvas(rotatedBitmap)) {

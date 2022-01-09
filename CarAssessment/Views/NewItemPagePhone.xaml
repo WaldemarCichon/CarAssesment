@@ -12,6 +12,17 @@
     ios:Page.UseSafeArea="true"
     x:DataType="model:Assessment"
     BackgroundColor="DarkGray">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior x:Name="BackButton">
+            <BackButtonBehavior.TextOverride>
+                <OnPlatform x:TypeArguments="x:String">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="&#8592;" />
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </BackButtonBehavior.TextOverride>
+        </BackButtonBehavior>
+    </Shell.BackButtonBehavior>
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -25,258 +36,261 @@
                     FontAttributes="Bold"
                     FontSize="24"
                     HorizontalOptions="Center"
-                    Text="Kfz-Gutachten Version 0.91" />
+                    Text="Kfz-Gutachten Version 0.92" />
                 <!--#region Title List-->
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    Text="Grunddaten">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="1" />
-                        <TapGestureRecognizer />
+                <ScrollView>
+                    <StackLayout x:Name="TitleStackLayout">
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            Text="Grunddaten">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="1" />
+                                <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="Fahrzeugbilder">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="2" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Fahrzeugbilder">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="2" />
-                        <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="Schadensbilder">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="3" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Schadensbilder">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="3" />
-                        <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="Schäden">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="4" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Schäden">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="4" />
-                        <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="Reifen">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="5" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Reifen">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="5" />
-                        <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="Fahrzeugdaten">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="6" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Fahrzeugdaten">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="6" />
-                        <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="Vorschäden">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="7" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Vorschäden">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="7" />
-                        <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="Reparatur">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="8" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Reparatur">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="8" />
-                        <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="Schaden">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="9" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Schaden">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="9" />
-                        <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="Weitere Daten">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="10" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Weitere Daten">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="10" />
-                        <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="AGBs/Unterschrift">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="11" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="AGBs/Unterschrift">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="11" />
-                        <TapGestureRecognizer />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <BoxView
+                            Margin="10,0,10,0"
+                            AutomationId="0"
+                            CornerRadius="30"
+                            HeightRequest="60"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
+                            Color="LightGray" />
+                        <Label
+                            Margin="0,-55,0,10"
+                            AutomationId="0"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            IsVisible="false"
+                            Text="Anwalt/Unterschrift">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="12" />
+                                <TapGestureRecognizer />
 
-                    </Label.GestureRecognizers>
-                </Label>
-                <BoxView
-                    Margin="10,0,10,0"
-                    AutomationId="0"
-                    CornerRadius="30"
-                    HeightRequest="60"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="false"
-                    Color="LightGray" />
-                <Label
-                    Margin="0,-55,0,10"
-                    AutomationId="0"
-                    FontSize="30"
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    Text="Anwalt/Unterschrift">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="12" />
-                        <TapGestureRecognizer />
-
-                    </Label.GestureRecognizers>
-                </Label>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </ScrollView>
                 <!--#endregion-->
                 <!--#region Single Titles-->
                 <BoxView
@@ -287,7 +301,7 @@
                     HorizontalOptions="FillAndExpand"
                     Color="Blue" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="1"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -300,7 +314,7 @@
                     HorizontalOptions="Center"
                     Text="Grunddaten" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="2"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -315,7 +329,7 @@
                     IsVisible="false"
                     Text="Fahrzeugbilder" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="3"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -330,7 +344,7 @@
                     IsVisible="false"
                     Text="Schadensbilder" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="4"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -345,7 +359,7 @@
                     IsVisible="false"
                     Text="Schäden" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="5"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -360,7 +374,7 @@
                     IsVisible="false"
                     Text="Reifen" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="6"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -375,7 +389,7 @@
                     IsVisible="false"
                     Text="Fahrzeugdaten" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="7"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -390,7 +404,7 @@
                     IsVisible="false"
                     Text="Vorschäden" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="8"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -405,7 +419,7 @@
                     IsVisible="false"
                     Text="Reparatur" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="9"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -420,7 +434,7 @@
                     IsVisible="false"
                     Text="Schaden" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="10"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -435,7 +449,7 @@
                     IsVisible="false"
                     Text="Weitere Daten" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="11"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -450,7 +464,7 @@
                     IsVisible="false"
                     Text="AGBs/Unterschrift" />
                 <BoxView
-                    Margin="10,-108,10,0"
+                    Margin="10,0,10,0"
                     AutomationId="12"
                     CornerRadius="30"
                     HeightRequest="100"
@@ -466,7 +480,7 @@
                     Text="Anwalt/Unterschrift" />
                 <!--#endregion-->
                 <!--#region Navigation Buttons-->
-                <Grid x:Name="NavigationButtons" Margin="0,-50,0,40">
+                <Grid x:Name="NavigationButtons" Margin="0,-50,0,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -566,7 +580,7 @@
                         AutomationId="99"
                         CornerRadius="0"
                         IsVisible="false"
-                        Color="Blue" />
+                        Color="LightGray" />
                     <BoxView
                         x:Name="DialogBox"
                         Grid.Row="0"
@@ -973,7 +987,7 @@
                         <local:TitledEntryField
                             x:Name="RearRightTireThreadDepth"
                             Title="Profil"
-                            Grid.Row="8"
+                            Grid.Row="7"
                             Grid.Column="2"
                             Keyboard="Numeric"
                             Text="{Binding RearRight.TreadDepth}" />

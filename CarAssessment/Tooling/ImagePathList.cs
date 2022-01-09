@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using CarAssessment.Models.Row;
 
 namespace CarAssessment.Tooling {
@@ -38,12 +39,17 @@ namespace CarAssessment.Tooling {
 			}
 		}
 
+		private String sanitize(string path) {
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			return Path.Combine(documents, Path.GetFileName(path));
+		}
+
 		public List<String> ActiveImageList {
 			get {
 				var activeImagePathList = new List<String>();
 				foreach (var imagePath in imagePathList) {
 					if (imagePath != null && imagePath != "") {
-						activeImagePathList.Add(imagePath);
+						activeImagePathList.Add(sanitize(imagePath));
 					}
 				}
 				return activeImagePathList;

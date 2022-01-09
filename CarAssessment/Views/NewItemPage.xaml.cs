@@ -13,6 +13,8 @@ using CarAssessment.Tooling;
 using SignaturePad.Forms;
 using Xamarin.Forms;
 using CarAssessment.Views.AbstractViews;
+using System.Threading;
+using Acr.UserDialogs;
 
 [assembly: NeutralResourcesLanguage("de-DE")]
 // Page is used as well for the new item but also for the editiƒadng
@@ -21,7 +23,6 @@ namespace CarAssessment.Views {
 		private static LayoutController LayoutController { get; set; }
 		private static BoxView dialogOuterBox {get;set;}
 		private static ScrollView mainScrollView { get; set; }
-
 
 		IDataStore<Assessment> DataStore => DependencyService.Get<IDataStore<Assessment>>();
 		Assessment Assessment { get; set; }
@@ -45,7 +46,7 @@ namespace CarAssessment.Views {
 			//PrevArrowButton.BindingContext = LayoutController;
 			//NextArrowButton.BindingContext = LayoutController;
 			var grid = this.Content as Grid;
-			var stackLayout = grid.Children[0] as StackLayout;
+			var stackLayout = TitleScrollLayout;
 			foreach (var view in stackLayout.Children) {
 				if (view.GetType() == typeof(Label)) {
 					var label = view as Label;
@@ -80,6 +81,19 @@ namespace CarAssessment.Views {
 			AdvocateAssignmentLabel.Text = TextTemplates.AdvocateAssignmentText;
 			DialogOuterBox.IsVisible = false;
 			mainScrollView = MainScrollView;
+
+			BackButton.Command = new Command(async () => await GoBack());
+		}
+
+		private async Task GoBack() {
+			var result = await Shell.Current.DisplayAlert(
+				"Verlassen?",
+				"Wollen Sie wirklich die Eingabe verlasen? All Ihre neu eingegebenen Daten werden nicht gespeichert?",
+				"Ja!", "Nein!");
+
+			if (result) {
+				await Shell.Current.GoToAsync("..", true);
+			}
 		}
 
 		private async void InitializeContext(Assessment assessment) {
@@ -168,11 +182,13 @@ namespace CarAssessment.Views {
 		}
 
 		protected override bool OnBackButtonPressed() {
-			return DisplayAlert("Abbrechen?", "Wollen Sie die Eingabe wirklich ohne Speichern abbrechen?", "Ja", "Nein").Result;
+			return DisplayAlert("Verlassen?",
+	"Wollen Sie wirklich die Eingabe verlasen? All Ihre neu eingegebenen Daten werden nicht gespeichert?", "Ja", "Nein").Result;
 		}
 
 		async void CancelButton_Clicked(System.Object sender, System.EventArgs e) {
-			if (await DisplayAlert("Abbrechen?", "Wollen Sie die Eingabe wirklich ohne Speichern abbrechen?", "Ja", "Nein")) {
+			if (await DisplayAlert("Verlassen?",
+	"Wollen Sie wirklich die Eingabe verlasen? All Ihre neu eingegebenen Daten werden nicht gespeichert?", "Ja", "Nein")) {
 				await Shell.Current.GoToAsync("..");
 			}
 		}
@@ -183,7 +199,7 @@ namespace CarAssessment.Views {
 				DialogBox.IsVisible = false;
 			} else {
 				NavigationButtons.IsVisible = true;
-				DialogBox.IsVisible = false; // true;
+				DialogBox.IsVisible = true;
 			}
 			if (displayedGroup == 9) {
 				PoliceReport.IsVisible = Assessment.IsPoliceReport == true;
@@ -221,12 +237,17 @@ namespace CarAssessment.Views {
 			}
 		}
 
-		async Task sendPictures() {
+		async Task sendPictures(IProgressDialog progress, ImagePathList imageList) {
 			var httpRepository = HttpRepository.Instance;
-			var imageList = new ImagePathList(Assessment);
 			var assessmentId = Assessment.Id;
+			int i = 3;
 			foreach (var imagePath in imageList.ActiveImageList) {
 				await httpRepository.PostPicture(imagePath,assessmentId);
+				if (progress != null) {
+					Device.BeginInvokeOnMainThread(() =>
+						progress.PercentComplete = i * 100 / (imageList.ActiveImageList.Count + 2));
+				}
+				i++;
 			}
 		}
 
@@ -239,30 +260,43 @@ namespace CarAssessment.Views {
 					preDamage.ImagePath = preDamage.TempImagePath;
 				}
 			}
-			if (Assessment.IsNewRow) {
-				Assessment.LastSaved = DateTime.Now;
+			Assessment.LastSaved = DateTime.Now;
+			if (Assessment.IsNewRow) {				
 				await DataStore.AddItemAsync(Assessment);
 			} else {
 				await DataStore.UpdateItemAsync(Assessment);
 			}
 			
-			if (await DisplayAlert("Senden", "Soll der Datensatz auch gesendet werden?", "Ja", "Nein")) {
+			if (sender == SaveSendButton) {
 				var response = await HttpRepository.Instance.GetCredits();
 				if (response == null || !response.StartsWith("CarAssessment")) {
 					await DisplayAlert("Fehler", "Senden nicht gelungen, bitte ggf. später bei besserer Verbindung versuchen", "OK");
 					return;
 				}
+				
+				IProgressDialog progress = UserDialogs.Instance.Progress("Sende Daten", show: false);
+				progress.Show();
+				//var displayThread = new Thread(new ThreadStart(() =>
+					//Device.BeginInvokeOnMainThread(() => progress.Show())));
+				//displayThread.Start();
 
+				var imageList = new ImagePathList(Assessment);
 				if (assignmentSignature != null) {
 					await HttpRepository.Instance.PostPicture(assignmentSignature);
+					if (progress != null) {
+						progress.PercentComplete = 100 / (imageList.ActiveImageList.Count+2);
+					}
 				}
 
 				if (advocateSignature != null) {
 					await HttpRepository.Instance.PostPicture(advocateSignature);
+					if (progress != null) {
+						progress.PercentComplete = 200 / (imageList.ActiveImageList.Count + 2);
+					}
 				}
 
 				try {
-					await sendPictures();
+					await sendPictures(progress, imageList);
 					if (Assessment.ObjectId < 1) {
 						await HttpRepository.Instance.PostAssessment(Assessment);
 					} else {
@@ -272,10 +306,21 @@ namespace CarAssessment.Views {
 				} catch (Exception ex) {
 					await DisplayAlert("Fehler", $"Fehler wärend des Sendens.\n{ex.Message} in Zeile {ex.StackTrace[1]}", "OK");
 					return;
+				} finally {
+					if (progress != null) {
+						progress.Hide();
+						progress.Dispose();
+					}
+					//displayThread.Abort();
 				}
+				
 			}
 			await DataStore.Commit();
 			await Shell.Current.GoToAsync("..");
+		}
+
+		void SaveSendButton_Clicked(System.Object sender, System.EventArgs e) {
+			SaveButton_Clicked(sender, e);
 		}
 
 
@@ -348,7 +393,6 @@ namespace CarAssessment.Views {
 			CityAndDate1.Text = Assessment.City + ", den " + Assessment.AdmissionDate.ToString("dd.MM.yy");
 		}
 
-		void SaveSendButton_Clicked(System.Object sender, System.EventArgs e) {
-		}
+
 	}
 }

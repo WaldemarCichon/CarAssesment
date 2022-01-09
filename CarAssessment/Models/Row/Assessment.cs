@@ -95,7 +95,8 @@ namespace CarAssessment.Models.Row {
 		}
 
 		private DateTime tryParseAndAddDate(string stringVal) {
-			var dateTime = tryParseDate(stringVal);
+
+			var dateTime = tryParseDate(stringVal.Replace(',', '.'));
 			if (dateTime == EmptyDateTime) {
 				return dateTime;
 			}

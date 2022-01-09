@@ -15,7 +15,11 @@
             HorizontalOptions="FillAndExpand"
             VerticalOptions="CenterAndExpand">
             <Label
-                Margin="0,0,0,50"
+                Margin="0,0,0,20"
+                FontSize="20"
+                Text="Kfz-Gutachten 0.92" />
+            <Label
+                Margin="0,0,0,20"
                 FontSize="40"
                 HorizontalOptions="Center"
                 Text="Login"
@@ -25,7 +29,7 @@
                 Text="Login name"
                 TextColor="AliceBlue" />
             <Entry
-                Margin="50"
+                Margin="10"
                 Keyboard="Plain"
                 Text="{Binding UserName}" />
             <Label
@@ -33,7 +37,7 @@
                 Text="Passwort"
                 TextColor="AliceBlue" />
             <Entry
-                Margin="50"
+                Margin="10"
                 Keyboard="Plain"
                 Text="{Binding Password}" />
 

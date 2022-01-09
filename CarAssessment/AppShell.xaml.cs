@@ -21,9 +21,9 @@ namespace CarAssessment {
 			if (HttpRepository.Instance.User != null) {
 				LoginSuccessed();
 			}
-		}
 
-		
+			
+		}
 
 		public void LoginSuccessed() {
 			Device.BeginInvokeOnMainThread(() => {
@@ -36,5 +36,7 @@ namespace CarAssessment {
 		void LoginTab_ChildAdded(System.Object sender, Xamarin.Forms.ElementEventArgs e) {
 			(e.Element as LoginPage).Shell = this;
 		}
+
+
 	}
 }
