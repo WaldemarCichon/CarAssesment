@@ -148,6 +148,12 @@
     <Reference Include="Acr.UserDialogs">
       <HintPath>..\packages\Acr.UserDialogs.7.2.0.562\lib\xamarinios10\Acr.UserDialogs.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Rollbar">
+      <HintPath>..\packages\Rollbar.4.0.3\lib\netstandard2.1\Rollbar.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

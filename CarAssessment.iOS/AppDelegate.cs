@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Rollbar;
+using Sample.Xamarin.Forms;
 using UIKit;
 
 namespace CarAssessment.iOS {
@@ -19,8 +21,12 @@ namespace CarAssessment.iOS {
 		// You have 17 seconds to return from this method, or iOS will terminate your application.
 		//
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options) {
+
 			global::Xamarin.Forms.Forms.Init();
 			LoadApplication(new App());
+			RollbarLocator.RollbarInstance.Configure(new RollbarConfig("09103503556346bfba9702ec0ba4be7a"));
+			RollbarHelper.RegisterForGlobalExceptionHandling();
+
 
 			return base.FinishedLaunching(app, options);
 		}
