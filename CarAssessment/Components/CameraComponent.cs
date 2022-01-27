@@ -4,6 +4,7 @@ using System.Numerics;
 using System.Threading.Tasks;
 using CarAssessment.DataHandling;
 using CarAssessment.Views;
+using Rollbar;
 using SkiaSharp;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -16,8 +17,8 @@ namespace CarAssessment.Components {
 		public DisplayInfo DisplayInfo { get; private set; }
 
 		public CameraComponent() {
-			OrientationSensor.Start(SensorSpeed.UI);
-			OrientationSensor.ReadingChanged += OrientationSensor_ReadingChanged;
+			//OrientationSensor.Start(SensorSpeed.UI);
+			//OrientationSensor.ReadingChanged += OrientationSensor_ReadingChanged;
 			//DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
 		}
 
@@ -74,26 +75,32 @@ namespace CarAssessment.Components {
 			Device.BeginInvokeOnMainThread(() =>
 				EntityRepository.Instance.CurrentPhotoField.Source = newFile
 			);
-			OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
-			OrientationSensor.Stop();
+			//OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
+			//OrientationSensor.Stop();
 		}
 
 		async public Task CapturePhoto() {
-			var photo = await MediaPicker.CapturePhotoAsync();
-			if (photo == null) {
-				OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
-				OrientationSensor.Stop();
-				return;
+			//RollbarLocator.RollbarInstance.Configure(new RollbarConfig("724c00a2fa824c10904c10356fcdaaba"));
+			//RollbarLocator.RollbarInstance.Info("Rollbar is configured properly.");
+			try {
+				var photo = await MediaPicker.CapturePhotoAsync();
+				if (photo == null) {
+					OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
+					OrientationSensor.Stop();
+					return;
+				}
+				var filename = await LoadPhotoAsync(photo);
+				if (this.DisplayedImage != null) {
+					this.DisplayedImage.Source = filename;
+				}
+				Device.BeginInvokeOnMainThread(() =>
+					EntityRepository.Instance.CurrentPhotoField.Source = filename
+				);
+				//OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
+				//OrientationSensor.Stop();
+			} catch (Exception ex) {
+				await Shell.Current.DisplayAlert("Fehler", $"Fehler wärend des Speicherns eines Fotos.\n{ex.Message} in Zeile {ex.StackTrace[1]}", "OK");
 			}
-			var filename = await LoadPhotoAsync(photo);
-			if (this.DisplayedImage != null) {
-				this.DisplayedImage.Source = filename;
-			}
-			Device.BeginInvokeOnMainThread(() =>
-				EntityRepository.Instance.CurrentPhotoField.Source = filename
-			);
-			OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
-			OrientationSensor.Stop();
 		}
 
 		async Task<String> LoadPhotoAsync(FileResult photo) {

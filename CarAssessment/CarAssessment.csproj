@@ -14,6 +14,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="SkiaSharp" Version="2.80.3" />
     <PackageReference Include="Acr.UserDialogs" Version="7.2.0.562" />
+    <PackageReference Include="Rollbar" Version="4.0.3" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\Single\" />
@@ -36,6 +37,8 @@
     <None Remove="SkiaSharp" />
     <None Remove="SkiaSharp.Views.Forms" />
     <None Remove="Acr.UserDialogs" />
+    <None Remove="RollbarSharp" />
+    <None Remove="Rollbar" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Row\" />

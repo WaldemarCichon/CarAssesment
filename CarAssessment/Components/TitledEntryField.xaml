@@ -3,6 +3,7 @@
     x:Class="CarAssessment.Components.TitledEntryField"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="MainStackLayout"
     HorizontalOptions="FillAndExpand">
 
     <Label
@@ -12,5 +13,6 @@
     <Entry
         x:Name="TextEntry"
         HorizontalOptions="FillAndExpand"
-        PropertyChanged="TextEntry_PropertyChanged" />
+        PropertyChanged="TextEntry_PropertyChanged"
+        Unfocused="TextEntry_Unfocused" />
 </StackLayout>

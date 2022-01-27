@@ -37,7 +37,7 @@
                     FontAttributes="Bold"
                     FontSize="40"
                     HorizontalOptions="Center"
-                    Text="Kfz-Gutachten Version 0.92" />
+                    Text="Kfz-Gutachten Version 0.96" />
                 <!--#region Title List-->
                 <ScrollView>
                     <StackLayout x:Name="TitleScrollLayout">
@@ -948,12 +948,16 @@
                             Text="Vorne Links"
                             VerticalOptions="StartAndExpand" />
                         <local:TitledEntryField
+                            x:Name="FrontLeftManufacturer"
                             Title="Hersteller"
                             Grid.Column="1"
+                            PropertyChanged="FrontLeftManufacturer_PropertyChanged"
                             Text="{Binding FrontLeft.Manufacturer}" />
                         <local:TitledEntryField
+                            x:Name="FrontLeftSize"
                             Title="Größe"
                             Grid.Column="2"
+                            PropertyChanged="FrontLeftSize_PropertyChanged"
                             Text="{Binding FrontLeft.Size}" />
                         <local:TitledEntryField
                             x:Name="FrontLeftTireThreadDepth"
@@ -979,10 +983,12 @@
                             Text="Vorne Rechts"
                             VerticalOptions="Center" />
                         <local:TitledEntryField
+                            x:Name="FrontRightManufacturer"
                             Title="Hersteller"
                             Grid.Column="1"
                             Text="{Binding FrontRight.Manufacturer}" />
                         <local:TitledEntryField
+                            x:Name="FrontRightSize"
                             Title="Größe"
                             Grid.Column="2"
                             Text="{Binding FrontRight.Size}" />
@@ -1009,12 +1015,16 @@
                             Text="Hinten Links"
                             VerticalOptions="Center" />
                         <local:TitledEntryField
+                            x:Name="RearLeftManufacturer"
                             Title="Hersteller"
                             Grid.Column="1"
+                            PropertyChanged="RearLeftManufacturer_PropertyChanged"
                             Text="{Binding RearLeft.Manufacturer}" />
                         <local:TitledEntryField
+                            x:Name="RearLeftSize"
                             Title="Größe"
                             Grid.Column="2"
+                            PropertyChanged="RearLeftSize_PropertyChanged"
                             Text="{Binding RearLeft.Size}" />
                         <local:TitledEntryField
                             x:Name="RearLeftTireThreadDepth"
@@ -1040,10 +1050,12 @@
                             Text="Hinten Rechts"
                             VerticalOptions="Center" />
                         <local:TitledEntryField
+                            x:Name="RearRightManufacturer"
                             Title="Hersteller"
                             Grid.Column="1"
                             Text="{Binding RearRight.Manufacturer}" />
                         <local:TitledEntryField
+                            x:Name="RearRightSize"
                             Title="Größe"
                             Grid.Column="2"
                             Text="{Binding RearRight.Size}" />
@@ -1482,37 +1494,44 @@
                     <!--#region Additional Data-->
                     <local:TitledEntryField
                         Title="Telefon"
-                        Grid.Row="36"
+                        Grid.Row="0"
                         Grid.Column="0"
-                        Margin="10,-200,10,0"
+                        Margin="10,00,10,0"
                         AutomationId="10"
                         Text="{Binding Phone}" />
                     <local:TitledEntryField
                         Title="Email"
-                        Grid.Row="36"
+                        Grid.Row="0"
                         Grid.Column="1"
                         Margin="10,-200,10,0"
                         AutomationId="10"
                         Text="{Binding Email}" />
+                    <local:TitledEditorField
+                        Title="Versicherung des Unfallgegners"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="10,0,10,0"
+                        AutomationId="10"
+                        Text="{Binding InsuranceId}" />
                     <local:TitledEntryField
                         Title="Schadensnummer"
-                        Grid.Row="37"
+                        Grid.Row="2"
                         Grid.Column="0"
-                        Margin="10,-140,10,0"
+                        Margin="10,0,10,0"
                         AutomationId="10"
                         Text="{Binding DamageId}" />
                     <local:TitledEntryField
                         Title="Versicherungsnummer"
-                        Grid.Row="37"
+                        Grid.Row="2"
                         Grid.Column="1"
-                        Margin="10,-140,10,0"
+                        Margin="10,0,10,0"
                         AutomationId="10"
                         Text="{Binding InsuranceId}" />
                     <local:TitledEditorField
                         Title="Sonstiges"
-                        Grid.Row="38"
+                        Grid.Row="3"
                         Grid.ColumnSpan="2"
-                        Margin="10,-80,10,180"
+                        Margin="10,0,10,180"
                         AutomationId="10"
                         Text="{Binding Miscellanious}" />
                     <!--#endregion-->

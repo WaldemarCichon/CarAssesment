@@ -15,6 +15,7 @@ using SignaturePad.Forms;
 using CarAssessment.Views.AbstractViews;
 using Acr.UserDialogs;
 using System.Threading;
+using Rollbar;
 
 namespace CarAssessment.Views
 {
@@ -159,6 +160,7 @@ namespace CarAssessment.Views
 			fillSignature(Signature, AssignmentLetter);
 			fillSignature(Signature1, AdvocateLetter);
 			emptyNumericFields();
+			Title = $"{assessment.OwnerName} ({assessment.Id}/{assessment.ObjectId})";
 		}
 
 		private bool isZero(String text) {
@@ -265,8 +267,11 @@ namespace CarAssessment.Views
 			var httpRepository = HttpRepository.Instance;
 			var assessmentId = Assessment.Id;
 			int i = 3;
+			RollbarLocator.RollbarInstance.Logger.Log(ErrorLevel.Info, "Count of pics: "+imageList.ActiveImageList.Count);
 			foreach (var imagePath in imageList.ActiveImageList) {
+				RollbarLocator.RollbarInstance.Logger.Log(ErrorLevel.Info, "Sending pic: " + imagePath);
 				await httpRepository.PostPicture(imagePath, assessmentId);
+				RollbarLocator.RollbarInstance.Logger.Log(ErrorLevel.Info, "Picture sent");
 				if (progress != null) {
 					Device.BeginInvokeOnMainThread(() =>
 						progress.PercentComplete = i * 100 / imageList.ActiveImageList.Count);
@@ -276,25 +281,36 @@ namespace CarAssessment.Views
 		}
 
 		async void SaveButton_Clicked(System.Object sender, System.EventArgs e) {
-			var assignmentSignature = await checkAndPersistSignature(Signature, AssignmentLetter);
-			var advocateSignature = await checkAndPersistSignature(Signature1, AdvocateLetter);
-			workAroundForDecimalComma();
-			foreach (var preDamage in Assessment.PreDamages) {
-				if (preDamage.TempImagePath != null) {
-					preDamage.ImagePath = preDamage.TempImagePath;
+			String assignmentSignature = null;
+			String advocateSignature = null;
+			try {
+				assignmentSignature = await checkAndPersistSignature(Signature, AssignmentLetter);
+				advocateSignature = await checkAndPersistSignature(Signature1, AdvocateLetter);
+				workAroundForDecimalComma();
+				foreach (var preDamage in Assessment.PreDamages) {
+					if (preDamage.TempImagePath != null) {
+						preDamage.ImagePath = preDamage.TempImagePath;
+					}
 				}
-			}
-			Assessment.LastSaved = DateTime.Now;
-			if (Assessment.IsNewRow) {
-				await DataStore.AddItemAsync(Assessment);
-			} else {
-				await DataStore.UpdateItemAsync(Assessment);
-			}
 
+				if (Assessment.IsNewRow) {
+					Assessment.LastSaved = DateTime.Now;
+					await DataStore.AddItemAsync(Assessment);
+				} else {
+					Assessment.LastSaved = DateTime.Now;
+					await DataStore.UpdateItemAsync(Assessment);
+				}
+
+				
+			} catch (Exception ex) {
+				await DisplayAlert("Fehler", $"Fehler wärend des Speicherns.\n{ex.Message} in Zeile {ex.StackTrace[1]}", "OK");
+				return;
+			}
 			if (sender == SaveSendButton) {
 				var response = await HttpRepository.Instance.GetCredits();
 				if (response == null || !response.StartsWith("CarAssessment")) {
 					await DisplayAlert("Fehler", "Senden nicht gelungen, bitte ggf. später bei besserer Verbindung versuchen", "OK");
+					RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical("Not send because of bad response: "+response);
 					return;
 				}
 
@@ -326,6 +342,7 @@ namespace CarAssessment.Views
 					await DataStore.UpdateItemAsync(Assessment);
 				} catch (Exception ex) {
 					await DisplayAlert("Fehler", $"Fehler wärend des Sendens.\n{ex.Message} in Zeile {ex.StackTrace[1]}", "OK");
+					RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(ex);
 					return;
 				} finally {
 					if (progress != null) {
@@ -425,6 +442,36 @@ namespace CarAssessment.Views
 
 		void Button_Clicked(System.Object sender, System.EventArgs e) {
 			var buttonNumber = (sender as Button).CommandParameter;
+		}
+
+		private void copyTireText(TitledEntryField from, TitledEntryField to) {
+			if (from.Tag == to.Text) {
+				from.Tag = to.Text = from.Text;
+			}
+		}
+
+		void FrontLeftManufacturer_PropertyChanged(System.Object sender, System.ComponentModel.PropertyChangedEventArgs e) {
+			if (e.PropertyName == "Text") {
+				copyTireText(FrontLeftManufacturer, FrontRightManufacturer);
+			}
+		}
+
+		void FrontLeftSize_PropertyChanged(System.Object sender, System.ComponentModel.PropertyChangedEventArgs e) {
+			if (e.PropertyName == "Text") {
+				copyTireText(FrontLeftSize, FrontRightSize);
+			}
+		}
+
+		void RearLeftSize_PropertyChanged(System.Object sender, System.ComponentModel.PropertyChangedEventArgs e) {
+			if (e.PropertyName == "Text") {
+				copyTireText(RearLeftSize, RearRightSize);
+			}
+		}
+
+		void RearLeftManufacturer_PropertyChanged(System.Object sender, System.ComponentModel.PropertyChangedEventArgs e) {
+			if (e.PropertyName == "Text") {
+				copyTireText(RearLeftManufacturer, RearRightManufacturer);
+			}
 		}
 	}
 }

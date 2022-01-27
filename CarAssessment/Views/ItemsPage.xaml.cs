@@ -89,8 +89,6 @@ namespace CarAssessment.Views {
 				}
 				var assessment = (sender as Button).CommandParameter as Assessment;
 
-				
-
 				var imageList = new ImagePathList(assessment);
 
 				await sendSignature(assessment, NewItemPage.AssignmentLetter);

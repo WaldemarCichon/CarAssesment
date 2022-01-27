@@ -25,8 +25,8 @@ namespace CarAssessment.iOS {
 			global::Xamarin.Forms.Forms.Init();
 			LoadApplication(new App());
 			RollbarLocator.RollbarInstance.Configure(new RollbarConfig("09103503556346bfba9702ec0ba4be7a"));
+			RollbarLocator.RollbarInstance.Logger.Log(ErrorLevel.Info, "Application Started");
 			RollbarHelper.RegisterForGlobalExceptionHandling();
-
 
 			return base.FinishedLaunching(app, options);
 		}

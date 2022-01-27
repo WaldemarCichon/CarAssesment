@@ -83,7 +83,7 @@ namespace CarAssessment.Models.Row {
 			get => AdmissionDate == EmptyDateTime ? "" : AdmissionDate.ToString("dd.MM.yyyy");
 			set => AdmissionDate = value == "" || value == null ? EmptyDateTime : tryParseDate(value); 
         }
-		public DateTime AccidentDate { get; set; } = DateTime.Now;
+		public DateTime AccidentDate { get; set; }
 		public String AccidentDateS
 		{
 			get => AccidentDate == EmptyDateTime ? "" : AccidentDate.ToString("dd.MM.yyyy");
@@ -153,6 +153,7 @@ namespace CarAssessment.Models.Row {
 		public String AccidentLocation { get; set; }
 		public DateTime AccidentTimestamp { get; set; }
 		public String Miscellanious { get; set; }
+		public String InsurenceName { get; set; }
 		public String InsuranceId { get; set; }
 		public String DamageId { get; set; }
 		public String Email { get; set; }

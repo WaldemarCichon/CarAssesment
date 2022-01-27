@@ -6,6 +6,12 @@ using CarAssessment.Models.Row;
 using LiteDB;
 
 namespace CarAssessment.Services {
+	class IdRecord {
+		public Int16 Id { get; set; }
+		public string Name { get; set; }
+		public UInt16 Value { get; set; }
+	}
+
 	public class LiteDatabaseDataStore : IDataStore<Assessment> {
 		public LiteDatabaseDataStore() {
 			var prefix = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -13,14 +19,23 @@ namespace CarAssessment.Services {
 			Database = new LiteDatabase(path);
 			Assessments = Database.GetCollection<Assessment>();
 			Users = Database.GetCollection<User>();
+			Ids = Database.GetCollection<IdRecord>();
+			if (Ids.Count() == 0) {
+				Ids.Insert(new IdRecord {
+					Id = 1,
+					Name = "AssessmentId",
+					Value = 100
+				});
+				Database.Commit();
+			}
+
 			// Assessments.DeleteAll();
-			id = Assessments.Count() == 0 ? 1 : (Assessments.Max((assessment) => assessment.Id)+1);
 		}
 
-		private int id;
 		private LiteDatabase Database { get; }
 		private ILiteCollection<Assessment> Assessments { get; }
 		private ILiteCollection<User> Users { get; }
+		private ILiteCollection<IdRecord> Ids;
 
 		public async Task<bool> StartTransaction() {
 			Database.BeginTrans();
@@ -43,7 +58,16 @@ namespace CarAssessment.Services {
 		}
 
 		public async Task<Assessment> CreateItemAsync() {
-			var newAssessment = new Assessment(id++);
+			var idRecord = Ids.FindById(1);
+
+			if (idRecord.Value == 0) {
+				idRecord.Value = 100;
+			}
+			var id = idRecord.Value;
+			idRecord.Value++;
+			var result = Ids.Update(idRecord);
+			Database.Commit();
+			var newAssessment = new Assessment(id);
 			// await AddItemAsync(newAssessment);
 			return await Task.FromResult(newAssessment);
 		}

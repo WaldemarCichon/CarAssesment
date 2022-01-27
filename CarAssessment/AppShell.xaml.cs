@@ -18,6 +18,22 @@ namespace CarAssessment {
 			Routing.RegisterRoute(nameof(StartPage), typeof(StartPage));
 			Routing.RegisterRoute(nameof(DamagePage), typeof(DamagePage));
 			Routing.RegisterRoute(nameof(PreDamagePage), typeof(PreDamagePage));
+			/*
+			AppDomain.CurrentDomain.FirstChanceException += (sender, args) => {
+
+				System.Exception ex = (System.Exception)args.Exception;
+				System.Threading.
+				DisplayAlert("Blah")
+				
+				// Console.WriteLine(ex);
+			}; 
+			AppDomain.CurrentDomain.UnhandledException += (sender, args) => {
+
+				System.Exception ex = (System.Exception)args.ExceptionObject;
+				Navigation.PushAsync(new AboutPage());
+				// Console.WriteLine(ex);
+			};
+			*/
 			if (HttpRepository.Instance.User != null) {
 				LoginSuccessed();
 			}

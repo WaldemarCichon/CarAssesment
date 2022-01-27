@@ -11,6 +11,7 @@ namespace CarAssessment.Components {
 
 		public TitledEntryField() {
 			InitializeComponent();
+			TextEntry.Unfocused += TextEntry_Unfocused;
 		}
 
 		public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(TitledEntryField), default(string), BindingMode.TwoWay);
@@ -64,5 +65,11 @@ namespace CarAssessment.Components {
 		void TextEntry_PropertyChanged(System.Object sender, System.ComponentModel.PropertyChangedEventArgs e) {
 			Text = TextEntry.Text;
 		}
+
+		void TextEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e) {
+
+		}
+
+		public string Tag { get; set; }
 	}
 }
