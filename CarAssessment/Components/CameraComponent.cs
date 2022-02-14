@@ -117,10 +117,10 @@ namespace CarAssessment.Components {
 				case DisplayRotation.Rotation270: rotation = 180; break;
 			}*/
 			using (var stream = await photo.OpenReadAsync()) {
-				var stream1 = stream;
-				if (rotation != 0) {
-					stream1 = rotate(stream, rotation);
-				}
+				
+				var bitmap = SKBitmap.Decode(stream);
+				var encoded = bitmap.Encode(SKEncodedImageFormat.Jpeg, 50);
+				var stream1 = encoded.AsStream();
 				using (var newStream = File.OpenWrite(newFile)) {
 					await stream1.CopyToAsync(newStream);
 				}
