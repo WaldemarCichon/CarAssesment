@@ -22,7 +22,8 @@ namespace CarAssessment.Tooling {
 				assessment.ServiceRecordBookPhotoPath,
 				assessment.CarDocumentPhotoPath,
 				assessment.PoliceReportPhotoPath,
-				assessment.ChassisNumberPhotoPath
+				assessment.ChassisNumberPhotoPath,
+				assessment.SpeedometerPhotoPath
 			});
 		}
 

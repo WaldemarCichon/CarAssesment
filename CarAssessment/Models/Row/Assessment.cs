@@ -211,6 +211,8 @@ namespace CarAssessment.Models.Row {
 				addIfNotEmpty(list, ServiceRecordBookPhotoPath);
 				addIfNotEmpty(list, PoliceReportPhotoPath);
 				addIfNotEmpty(list, CarDocumentPhotoPath);
+				addIfNotEmpty(list, SpeedometerPhotoPath);
+				addIfNotEmpty(list, ChassisNumberPhotoPath);
 				return list;
 			}
 		}
