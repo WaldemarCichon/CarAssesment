@@ -36,7 +36,7 @@
                     FontAttributes="Bold"
                     FontSize="24"
                     HorizontalOptions="Center"
-                    Text="Kfz-Gutachten Version 0.96" />
+                    Text="Kfz-Gutachten Version 0.97a" />
                 <!--#region Title List-->
                 <ScrollView>
                     <StackLayout x:Name="TitleStackLayout">
