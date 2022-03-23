@@ -36,7 +36,7 @@
                     FontAttributes="Bold"
                     FontSize="24"
                     HorizontalOptions="Center"
-                    Text="Kfz-Gutachten Version 0.97a" />
+                    Text="Kfz-Gutachten Version 0.98" />
                 <!--#region Title List-->
                 <ScrollView>
                     <StackLayout x:Name="TitleStackLayout">
@@ -859,8 +859,40 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Entry Text="{Binding Description}" />
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        Margin="0,0,0,5"
+                                        Orientation="Horizontal">
+                                        <Label Text="Lack." VerticalOptions="Center" />
+                                        <CheckBox
+                                            BackgroundColor="Transparent"
+                                            IsChecked="{Binding Paint}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="Ers."
+                                            VerticalOptions="Center" />
+                                        <CheckBox
+                                            BackgroundColor="Transparent"
+                                            IsChecked="{Binding Replace}"
+                                            VerticalOptions="Center" />
+                                        <Label
+                                            Grid.Column="2"
+                                            Text="Rep."
+                                            VerticalOptions="Center" />
+                                        <CheckBox
+                                            BackgroundColor="Transparent"
+                                            IsChecked="{Binding Repair}"
+                                            VerticalOptions="Center" />
+                                        <Entry
+                                            x:Name="HoursField"
+                                            Keyboard="Numeric"
+                                            Text="{Binding Hours}"
+                                            VerticalOptions="End" />
+                                    </StackLayout>
                                     <Button
                                         x:Name="DeleteDamageDescriptionButton"
+                                        Grid.RowSpan="2"
                                         Grid.Column="1"
                                         BackgroundColor="White"
                                         Clicked="DeleteDamageDescriptionButton_Clicked"

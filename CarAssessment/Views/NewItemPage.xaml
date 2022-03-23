@@ -37,7 +37,7 @@
                     FontAttributes="Bold"
                     FontSize="40"
                     HorizontalOptions="Center"
-                    Text="Kfz-Gutachten Version 0.97a" />
+                    Text="Kfz-Gutachten Version 0.98" />
                 <!--#region Title List-->
                 <ScrollView>
                     <StackLayout x:Name="TitleScrollLayout">
@@ -894,17 +894,17 @@
                                         <ColumnDefinition Width="50" />
                                     </Grid.ColumnDefinitions>
                                     <Entry Text="{Binding Description}" />
-                                    <RadioButton
+                                    <CheckBox
                                         Grid.Column="1"
                                         BackgroundColor="Transparent"
                                         IsChecked="{Binding Paint}"
                                         VerticalOptions="Center" />
-                                    <RadioButton
+                                    <CheckBox
                                         Grid.Column="2"
                                         BackgroundColor="Transparent"
                                         IsChecked="{Binding Replace}"
                                         VerticalOptions="Center" />
-                                    <RadioButton
+                                    <CheckBox
                                         Grid.Column="3"
                                         BackgroundColor="Transparent"
                                         IsChecked="{Binding Repair}"

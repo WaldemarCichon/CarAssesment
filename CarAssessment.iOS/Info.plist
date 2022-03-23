@@ -27,7 +27,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>de.cisoft.CarAssessment</string>
 	<key>CFBundleVersion</key>
-	<string>1.0103</string>
+	<string>1.0105</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
