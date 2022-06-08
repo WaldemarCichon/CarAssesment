@@ -32,6 +32,7 @@ namespace CarAssessment.Tooling {
 			imagePathList.AddRange(assessment.NearbyPhotos);
 			imagePathList.AddRange(assessment.OtherPhotos);
 			imagePathList.AddRange(assessment.DetailPhotos);
+			imagePathList.AddRange(assessment.ServiceRecordBookPhotos);
 		}
 
 		private void addPreDamageImagePathes(Assessment assessment) {

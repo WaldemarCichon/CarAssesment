@@ -36,7 +36,7 @@
                     FontAttributes="Bold"
                     FontSize="24"
                     HorizontalOptions="Center"
-                    Text="Kfz-Gutachten Version 0.98" />
+                    Text="Kfz-Gutachten Version 0.991" />
                 <!--#region Title List-->
                 <ScrollView>
                     <StackLayout x:Name="TitleStackLayout">
@@ -659,8 +659,16 @@
                         </local:TitledEntryField.Keyboard>
                     </local:TitledEntryField>
                     <local:TitledEntryField
-                        Title="Aufnahmedatum"
+                        Title="TÜV bis"
+                        Text="{Binding TuevUntil}"
                         Grid.Row="6"
+                        Grid.Column="0"
+                        Margin="10,4"
+                        AutomationId="1"
+                        />
+                    <local:TitledEntryField
+                        Title="Aufnahmedatum"
+                        Grid.Row="7"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="1"
@@ -668,7 +676,7 @@
                         Text="{Binding AdmissionDateS}" />
                     <local:TitledEntryField
                         Title="Unfalldatum"
-                        Grid.Row="7"
+                        Grid.Row="8"
                         Grid.Column="0"
                         Margin="10,4"
                         AutomationId="1"
@@ -676,13 +684,13 @@
                         Text="{Binding AccidentDateS}" />
                     <local:TitledEditorField
                         Title="Besichtigungsort"
-                        Grid.Row="8"
+                        Grid.Row="9"
                         Margin="10,4,10,0"
                         AutomationId="1"
                         Text="{Binding InspectionLocation}" />
                     <local:TitledEditorField
                         Title="Teilnehmer Besichtigung"
-                        Grid.Row="9"
+                        Grid.Row="10"
                         Margin="10,4,10,0"
                         AutomationId="1"
                         Text="{Binding InspectionAttendees}" />
@@ -1047,16 +1055,14 @@
                         <CheckBox IsChecked="{Binding IsServiceRecordBook}" />
                     </StackLayout>
 
-                    <local:PhotoField
-                        x:Name="ServiceRecordBook"
+                    <local:PhotoCollectionField
+                        x:Name="ServiceRecordBookPhotos"
                         Title="Scheckheft"
                         Grid.Row="1"
                         Grid.Column="0"
-                        Margin="10,0,10,0"
+                        Margin="10,4"
                         AutomationId="6"
-                        HeightRequest="200"
-                        HorizontalOptions="Center"
-                        ImagePath="{Binding ServiceRecordBookPhotoPath, Mode=TwoWay}" />
+                        />
                     <Grid
                         Grid.Row="2"
                         Grid.Column="0"

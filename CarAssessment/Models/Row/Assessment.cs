@@ -51,6 +51,11 @@ namespace CarAssessment.Models.Row {
 				OtherPhotos = new List<string>();
 			}
 
+			if (ServiceRecordBookPhotos == null)
+            {
+				ServiceRecordBookPhotos = new List<string>();
+            }
+
 			if (DamageDescriptions == null) {
 				DamageDescriptions = new List<DamageDescription>();
 			}
@@ -155,6 +160,7 @@ namespace CarAssessment.Models.Row {
 		public String Miscellanious { get; set; }
 		public String InsurenceName { get; set; }
 		public String InsuranceId { get; set; }
+		public String TuevUntil { get; set; }
 		public String DamageId { get; set; }
 		public String Email { get; set; }
 		public String Phone { get; set; }
@@ -169,6 +175,7 @@ namespace CarAssessment.Models.Row {
 		public List<String> NearbyPhotos { get; set; }
 		public List<String> DetailPhotos { get; set; }
 		public List<String> OtherPhotos { get; set; }
+		public List<String> ServiceRecordBookPhotos { get; set; }
 
 		public String FrontRightPhotoPath { get; set; }
 		public String FrontLeftPhotoPath { get; set; }

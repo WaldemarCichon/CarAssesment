@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 namespace CarAssessment.Services {
 	public interface IDataStore<T> {
 		Task<T> CreateItemAsync();
+		T CreateItem();
 		Task<bool> AddItemAsync(T item);
 		Task<bool> UpdateItemAsync(T item);
 		Task<bool> DeleteItemAsync(int id);

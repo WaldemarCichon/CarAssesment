@@ -57,6 +57,23 @@ namespace CarAssessment.Services {
 			return await Task.FromResult(true);
 		}
 
+		public Assessment CreateItem()
+		{
+			var idRecord = Ids.FindById(1);
+
+			if (idRecord.Value == 0)
+			{
+				idRecord.Value = 100;
+			}
+			var id = idRecord.Value;
+			idRecord.Value++;
+			var result = Ids.Update(idRecord);
+			Database.Commit();
+			var newAssessment = new Assessment(id);
+			// await AddItemAsync(newAssessment);
+			return newAssessment; //await Task.FromResult(newAssessment);
+		}
+
 		public async Task<Assessment> CreateItemAsync() {
 			var idRecord = Ids.FindById(1);
 

@@ -131,6 +131,7 @@ namespace CarAssessment.Views
 			NearbyPhotos.SourceList = new ImageList(assessment.NearbyPhotos);
 			DetailPhotos.SourceList = new ImageList(assessment.DetailPhotos);
 			OtherPhotos.SourceList = new ImageList(assessment.OtherPhotos);
+			ServiceRecordBookPhotos.SourceList = new ImageList(assessment.ServiceRecordBookPhotos);
 			Device.BeginInvokeOnMainThread(() => {
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
@@ -139,7 +140,7 @@ namespace CarAssessment.Views
 				RearLeftPhoto.ImagePath = assessment.RearLeftPhotoPath;
 				RearRightPhoto.ImagePath = assessment.RearRightPhotoPath;
 				CarDocument.ImagePath = assessment.CarDocumentPhotoPath;
-				ServiceRecordBook.ImagePath = assessment.ServiceRecordBookPhotoPath;
+				// ServiceRecordBook.ImagePath = assessment.ServiceRecordBookPhotoPath;
 				PoliceReport.ImagePath = assessment.PoliceReportPhotoPath;
 				SpeedometerPhoto.ImagePath = assessment.SpeedometerPhotoPath;
 				ChassisNumberPhoto.ImagePath = assessment.ChassisNumberPhotoPath;
